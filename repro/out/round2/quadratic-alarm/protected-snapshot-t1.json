@@ -1,0 +1,118 @@
+{
+  "contract": "r1-protected-snapshot-v1",
+  "taskStart": "2026-11-19T19:19:56+08:00",
+  "source": "reports\\fix\\t4-protected-baseline.json",
+  "count": 22,
+  "files": {
+    "Project/main.m": {
+      "sha256": "cfe55713bc9c948781223b35fb780c7d1b604347edded14b22ef81c0b1c624e4",
+      "mtime": 1790239692.903,
+      "bytes": 5813
+    },
+    "artical/ARTICAL-revised.tex": {
+      "sha256": "fa8737064f098599af79e7e683eb6ccdf52ef8848a88d51aba0b0a05ab352260",
+      "mtime": 1795077182.29,
+      "bytes": 21502
+    },
+    "artical/ARTICAL-rolling.tex": {
+      "sha256": "8923d3ca560f0e6e9a91af825a5511b35e3514daa71efa90647ba2962f7271f4",
+      "mtime": 1795082798.209,
+      "bytes": 18916
+    },
+    "artical/ARTICAL.tex": {
+      "sha256": "d412cfe1a689b20c02be9f0fb888744028e6ec289b469e832931322f883ad243",
+      "mtime": 1795071131.352,
+      "bytes": 48508
+    },
+    "reports/DSH-project-handoff.md": {
+      "sha256": "e64298e74e7177399aaae179c62951ecc4e3f0d6b5bf958c565a90fc9c6458d7",
+      "mtime": 1795086776.245,
+      "bytes": 23674
+    },
+    "repro/analyze_quality_warning.py": {
+      "sha256": "e485d326cb7ea7d1bc27c1dc70d2f405ecf85d64cb479f0de43749777fb1dbd6",
+      "mtime": 1795082465.955,
+      "bytes": 9809
+    },
+    "repro/out/rolling/focused-scoring-index.csv": {
+      "sha256": "36ccb34658aa609d3c4c557c16351551be9a862baeaee29bdc65dc6e0ee1ac1d",
+      "mtime": 1795081910.232,
+      "bytes": 8189
+    },
+    "repro/out/rolling/ieee39quality-design.csv": {
+      "sha256": "adefa9da83e87b35420ef5c33e6e6db83e623da34436de1dd769fd3804f5025f",
+      "mtime": 1795082634.628,
+      "bytes": 11106
+    },
+    "repro/out/rolling/ieee39quality-trajectories.npz": {
+      "sha256": "323709e67133ffe48d5318e793ebd849c72b2f125c0203b4bd2ceda2f2d337b1",
+      "mtime": 1795082634.775,
+      "bytes": 2491562
+    },
+    "repro/out/rolling/protocol-results.json": {
+      "sha256": "88d8da8e3642deea376976b4cf0682a7312000129e29e35343a651f11e45ef44",
+      "mtime": 1795080901.105,
+      "bytes": 3700
+    },
+    "repro/out/rolling/quality-aggregate-index.csv": {
+      "sha256": "1b9306fa82edbe2b95dd5ff7efa3d3552de28effac97cde849f5e7894766b189",
+      "mtime": 1795082650.176,
+      "bytes": 261261
+    },
+    "repro/out/rolling/quality-estimates.csv": {
+      "sha256": "1308711de771ff851b4589363f95d523b7f553bc2f31c903a2432e8757fa8121",
+      "mtime": 1795082661.031,
+      "bytes": 943975
+    },
+    "repro/out/rolling/quality-events.csv": {
+      "sha256": "805ecd33d7b14fc2d8a2f700f99e13612b4839279dec2f53820dbf619c0ce37b",
+      "mtime": 1795082661.008,
+      "bytes": 16914079
+    },
+    "repro/out/rolling/quality-paired.csv": {
+      "sha256": "4bc78f36fdf8527e7e7172739f33d1711098e8304dceaf870836293dcb1b190d",
+      "mtime": 1795082661.795,
+      "bytes": 1789
+    },
+    "repro/out/rolling/quality-summary.csv": {
+      "sha256": "32ba6d269d89903d340864223f33835726deaced2cfc9a26757422cbb0a4a38d",
+      "mtime": 1795082661.034,
+      "bytes": 47392
+    },
+    "repro/out/rolling/quality-thresholds.csv": {
+      "sha256": "bff626f797616fee566eacb665b9e401e7b99bbe3d1fb4bd60e93949660bf8e8",
+      "mtime": 1795082661.796,
+      "bytes": 4181
+    },
+    "repro/out/rolling/residual-pilot-errors.csv": {
+      "sha256": "369f531845482595ad10f2cd7b050bb8439d09db979b814e4b97d36db6409f4d",
+      "mtime": 1795082999.753,
+      "bytes": 275652
+    },
+    "repro/out/rolling/residual-pilot-events.csv": {
+      "sha256": "03f3a0a5a89a1cd3e939363f6bc3b7dcdad049640c462328d7e68ae281827b81",
+      "mtime": 1795082999.743,
+      "bytes": 269727
+    },
+    "repro/out/rolling/residual-pilot-summary.csv": {
+      "sha256": "4b2cb06f41ab2c19c9df35ac6409e680039a4107ed8f55e6eac4b4d969ab5c1c",
+      "mtime": 1795082999.745,
+      "bytes": 11355
+    },
+    "repro/out/rolling/scenarios.csv": {
+      "sha256": "d056ebf188d2d465493cee9914b525d323aea9d84f1ee61464fe683af412b5fd",
+      "mtime": 1795080899.737,
+      "bytes": 319856
+    },
+    "repro/run_andes_warning.py": {
+      "sha256": "cce6bac86898a2c568292c4466d4ca9e3d95fa8f8ed023f3242f7c0c2a7961d1",
+      "mtime": 1795082253.56,
+      "bytes": 6579
+    },
+    "repro/try_residual_warning.py": {
+      "sha256": "481dce9c513b898c4981e504191f06dd7d1af968240082995ace338bde220a51",
+      "mtime": 1795082987.673,
+      "bytes": 4804
+    }
+  }
+}

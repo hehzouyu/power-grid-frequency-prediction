@@ -1,0 +1,231 @@
+{
+  "task": "R2/T3 multi-implementation alarm long table",
+  "planId": "wp-a30aed7e-0416-494c-b7b0-5774985223fe",
+  "subtaskId": "T3",
+  "generatedAt": "2026-11-19T20:06:33",
+  "commands": {
+    "main": "python reports/round2/t3/run_multi_noise_alarm.py --count 40 --out-dir repro/out/round2/multi-noise",
+    "rerun": "python reports/round2/t3/run_multi_noise_alarm.py --count 40 --out-dir reports/round2/t3/_rerun",
+    "verify": "python reports/round2/t3/verify_multi_noise_alarm.py --count 40 --seeds 0,34"
+  },
+  "outputs": {
+    "events-long.csv": "087c922c103fdb27bcea6dcd0bc27054a4526a5f0571c508ce706d5b3be1fe94",
+    "windows-long.csv": "57c16fdfaf950508f10d4b4732a011172c2f16ba53f36a50a16ca29cfaa5337b",
+    "cuts-long.csv": "058f5b068f2a15a70a563cf384dad25010a99d3a65a6f6673cc4cc72c8ec8aa4",
+    "per-seed-summary.csv": "0f63db3449a13a62602563352697b81322e5344982d7d250c0e20d887a65e625",
+    "far-curve-long.csv": "cc3767e44e99ed32081364b2b8ec5f4b89bd8f181d63428a9089c79e3134d57a"
+  },
+  "rerunOutputs": {
+    "events-long.csv": "087c922c103fdb27bcea6dcd0bc27054a4526a5f0571c508ce706d5b3be1fe94",
+    "windows-long.csv": "57c16fdfaf950508f10d4b4732a011172c2f16ba53f36a50a16ca29cfaa5337b",
+    "cuts-long.csv": "058f5b068f2a15a70a563cf384dad25010a99d3a65a6f6673cc4cc72c8ec8aa4",
+    "per-seed-summary.csv": "0f63db3449a13a62602563352697b81322e5344982d7d250c0e20d887a65e625",
+    "far-curve-long.csv": "cc3767e44e99ed32081364b2b8ec5f4b89bd8f181d63428a9089c79e3134d57a"
+  },
+  "doubleRunIdentical": true,
+  "rowCounts": {
+    "expected": {
+      "events-long.csv": 51840,
+      "windows-long.csv": 207360,
+      "cuts-long.csv": 720,
+      "per-seed-summary.csv": 360,
+      "far-curve-long.csv": 3480
+    },
+    "actual": {
+      "events-long.csv": 51840,
+      "windows-long.csv": 207360,
+      "cuts-long.csv": 720,
+      "per-seed-summary.csv": 360,
+      "far-curve-long.csv": 3480
+    }
+  },
+  "seeds": {
+    "first": 39192514,
+    "last": 39192553,
+    "count": 40,
+    "rule": "seed_k = 39192514 + k, k=0..39"
+  },
+  "anchors": {
+    "S1_k0": {
+      "quadratic": {
+        "Hits": 100,
+        "FAR": 0.16339869281045752
+      },
+      "persistence": {
+        "Hits": 102,
+        "FAR": 0.11764705882352941
+      },
+      "residual": {
+        "Hits": 73,
+        "FAR": 0.13725490196078433
+      },
+      "cutsIdenticalToR1": true,
+      "t6MaxAbsDiffPu": 4.9960036108132044e-15
+    },
+    "S1_k34": {
+      "persistence": {
+        "Hits": 113,
+        "FAR": 0.1993464052287581
+      },
+      "quadratic": {
+        "Hits": 101,
+        "FAR": 0.218954248366013
+      },
+      "residual": {
+        "Hits": 86,
+        "FAR": 0.1503267973856209
+      }
+    },
+    "S2_counts": {
+      "per_implementation": {
+        "events": 432,
+        "risk": 126,
+        "non_risk": 306
+      },
+      "per_condition": {
+        "events": 72,
+        "risk": 21,
+        "non_risk": 51
+      },
+      "asserted": true
+    },
+    "S3_tiers": {
+      "tier_counts_first": {
+        "clean": {
+          "low": 144,
+          "high": 0
+        },
+        "white40": {
+          "low": 144,
+          "high": 0
+        },
+        "white20": {
+          "low": 0,
+          "high": 144
+        },
+        "correlated20": {
+          "low": 0,
+          "high": 144
+        },
+        "white30": {
+          "low": 79,
+          "high": 65
+        },
+        "noise_jump": {
+          "low": 144,
+          "high": 0
+        }
+      },
+      "tier_counts_last": {
+        "clean": {
+          "low": 144,
+          "high": 0
+        },
+        "white40": {
+          "low": 144,
+          "high": 0
+        },
+        "white20": {
+          "low": 0,
+          "high": 144
+        },
+        "correlated20": {
+          "low": 0,
+          "high": 144
+        },
+        "white30": {
+          "low": 78,
+          "high": 66
+        },
+        "noise_jump": {
+          "low": 144,
+          "high": 0
+        }
+      },
+      "all_conditions_144": true
+    },
+    "S4_models_frozen": {
+      "clean_feature_sha256": "d0fea3704af6b1d0f2889170efafa9818b10cf9fadaa67b5858f467c248ab502",
+      "model_prediction_sha256": "e989a09c4ada78f7a0b1edb7be2b6b05d9754e588034341a6e395b87774f73e5",
+      "per_implementation_clean_sha256_equal": true,
+      "refit_per_implementation": false
+    },
+    "S5_row_counts": {
+      "expected": {
+        "events-long.csv": 51840,
+        "windows-long.csv": 207360,
+        "cuts-long.csv": 720,
+        "per-seed-summary.csv": 360,
+        "far-curve-long.csv": 3480
+      },
+      "actual": {
+        "events-long.csv": 51840,
+        "windows-long.csv": 207360,
+        "cuts-long.csv": 720,
+        "per-seed-summary.csv": 360,
+        "far-curve-long.csv": 3480
+      },
+      "asserted": true
+    }
+  },
+  "sanityAtPrimaryFar_main20": {
+    "persistence": {
+      "min": 92.0,
+      "median": 105.5,
+      "max": 118.0
+    },
+    "quadratic": {
+      "min": 96.0,
+      "median": 101.0,
+      "max": 111.0
+    },
+    "residual": {
+      "min": 66.0,
+      "median": 78.5,
+      "max": 89.0
+    }
+  },
+  "topModelCounts_main20": {
+    "persistence": 18,
+    "quadratic": 2
+  },
+  "verification": {
+    "checks": 102,
+    "passed": 102,
+    "seedsRecounted": [
+      39192514,
+      39192548
+    ],
+    "report": "repro/out/round2/multi-noise/verify-report.json"
+  },
+  "protected": {
+    "checked": 82,
+    "changed": []
+  },
+  "environment": {
+    "python": "3.14.6",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "sklearn": "1.9.0"
+  },
+  "inputs": {
+    "repro\\out\\rolling\\ieee39quality-design.csv": "adefa9da83e87b35420ef5c33e6e6db83e623da34436de1dd769fd3804f5025f",
+    "repro\\out\\rolling\\ieee39quality-split-v1.csv": "82d3d3cfecc49457095fa7418d257f4ce7875904b1b64077de28dbf99dfbe5d7",
+    "repro\\out\\rolling\\ieee39quality-trajectories.npz": "323709e67133ffe48d5318e793ebd849c72b2f125c0203b4bd2ceda2f2d337b1",
+    "repro\\out\\revision\\trajectories.mat": "319f5140d5058ed98a78c22e84fff583650dec551dd134686c5202dd7fecb262",
+    "repro\\out\\rolling\\t6-quadratic-v1\\t6-quadratic-predictions.csv": "c618a2c1b5999182f8dd8f8bb496bb00366a23107c54df0bd65df21aed1cac11",
+    "repro\\out\\round2\\quadratic-alarm\\quadratic-alarm-events.csv": "f89851fa68a6f350e9291d1b4ccf7066fc57edac371f7aebb354a81622add00a",
+    "repro\\out\\round2\\quadratic-alarm\\quadratic-alarm-cuts.csv": "ca9eb91f0cc79544383221ee6dafc8d2f8d0e7c51e10c912094e8df3511c0ca6",
+    "repro\\out\\round2\\quadratic-alarm\\quadratic-alarm-summary.csv": "22d3ce20f31ffc9d9d14433da770ecac2db7c1463c4008fa38d1852bbd508ed3",
+    "repro\\out\\rolling\\residual-pilot-events.csv": "03f3a0a5a89a1cd3e939363f6bc3b7dcdad049640c462328d7e68ae281827b81",
+    "repro\\analyze_quality_warning.py": "c6124abac7470e3a665e7d0ef69107503ab29eca041cf2d5495174234176f3b4",
+    "repro\\run_rolling_warning.py": "ca2525cb3dfa052a85855116781a1cfb52dfcbae196b85b7d15b8297676550c5",
+    "repro\\r2_noise_impl.py": "a0bfc99cda854b6a09730402f06434b8d3c13f09ac75e27d023f5400c3c517e5"
+  },
+  "deviations": [
+    "cuts-long.csv adds Model column: the three models need distinct cuts; protocol §8.2 schema omitted it.",
+    "far-curve-long.csv is an extra output (29 FAR targets x 40 seeds x 3 models) so T5 matched-FAR analysis does not have to recompute thresholds.",
+    "events-long.csv carries extra traceability columns NoiseImplId, k, InMain and only the primary FAR 0.10 (protocol row formula 432*N*3)."
+  ]
+}

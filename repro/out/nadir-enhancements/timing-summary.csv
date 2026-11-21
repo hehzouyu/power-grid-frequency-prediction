@@ -1,0 +1,9 @@
+Feature,Stage,Median_ms,P95_ms
+endpoint,feature,0.0003,0.0013049999999999982
+endpoint,prediction,0.17045,0.2955
+fitted_segments,feature,0.0056,0.0061
+fitted_segments,prediction,0.15805,0.26564499999999985
+quadratic,feature,0.0047,0.0064
+quadratic,prediction,0.16215000000000002,0.2908399999999998
+segmented,feature,0.0007,0.001
+segmented,prediction,0.16675,0.364565

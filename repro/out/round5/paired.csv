@@ -1,0 +1,5 @@
+Block,VersusPersistence,Metric,Difference,Low95,High95
+spatial_holdout,quadratic,Timely,,,
+spatial_holdout,quadratic,FAR,0.03125,-0.03125,0.09375
+spatial_holdout,residual,Timely,,,
+spatial_holdout,residual,FAR,0.03125,-0.03125,0.09375

@@ -1,0 +1,5 @@
+{
+  "single_per_band": 64,
+  "noise_seed": 951000,
+  "repeats": 10
+}

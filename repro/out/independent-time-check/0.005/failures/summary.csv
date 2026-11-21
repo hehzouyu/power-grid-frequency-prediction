@@ -1,0 +1,4 @@
+DesignID,Step_s,Group,Status,LastAccepted_s,Outcome,CrossingAfterEvent_s,MinVoltage_pu,COIMaxError_pu,MinVoltageError_pu,ControlPassed,Error
+2102,0.005,failures,failed,2.775,truncated_unknown,,0.635734152799536,,,False,BDF2 nonlinear solve stopped at 2.780000 s (residual 0.2458)
+2114,0.005,failures,failed,3.1550000000000002,truncated_unknown,,0.6424313585094169,,,False,BDF2 nonlinear solve stopped at 3.160000 s (residual 0.3828)
+2122,0.005,failures,failed,2.865,truncated_unknown,,0.6234761244481601,,,False,BDF2 nonlinear solve stopped at 2.870000 s (residual 0.2161)

@@ -1,0 +1,68 @@
+{
+  "version": "near-endpoint-ecgr-confirm-v1",
+  "nominal_hz": 50,
+  "disturbance_s": 1,
+  "cutoff_relative_s": 0.5,
+  "step_s": 0.02,
+  "end_s": 20,
+  "endpoint_tolerance_hz": 0.0001,
+  "minimum_target_gap_hz": 0.002,
+  "tie_hz": 0.0005,
+  "reference_seed": 884501,
+  "noise_seed": 884502,
+  "bootstrap_seed": 884503,
+  "bootstrap_draws": 5000,
+  "references_per_r_band": 48,
+  "r_bands": [
+    [
+      0.041,
+      0.044
+    ],
+    [
+      0.056,
+      0.059
+    ]
+  ],
+  "reference_ranges_H_D_Tg_d": [
+    [
+      3,
+      5.6
+    ],
+    [
+      0.6,
+      1.25
+    ],
+    [
+      0.22,
+      0.65
+    ],
+    [
+      0.03,
+      0.065
+    ]
+  ],
+  "candidate_factors": [
+    "H",
+    "D",
+    "Tg"
+  ],
+  "candidate_multipliers": [
+    0.8,
+    1.5,
+    1.5
+  ],
+  "deficit_bracket": [
+    0.02,
+    0.08
+  ],
+  "root_tolerance_pu": 1e-10,
+  "white_snr_db": 30,
+  "noise_repeats": 10,
+  "features": [
+    "endpoint",
+    "initial_rate",
+    "quadratic",
+    "fitted_segments"
+  ],
+  "historical_prediction_tolerance_hz": 1e-10
+}

@@ -1,0 +1,52 @@
+{
+  "rule": {
+    "proxy": "hybrid",
+    "clean": 0.0025,
+    "fallback": 0.016,
+    "middle": "quadratic"
+  },
+  "best_fixed": "endpoint",
+  "hashes": {
+    "repro\\nadir_quality.py": "c8adf8617852fc5c1891247023729bf28314740b4b50ef003e8628f87dc67d38",
+    "repro\\nadir_quality.m": "bc9b0ad1af4044134d5af6866616275c79695567adccd8f251ebf62070065497",
+    "repro\\prepare_nadir_quality.py": "d977b8c4e429daff95ffe48801614034b0c71e881b8d9a7f6eb8e03a46147b0d",
+    "repro\\nadir_quality_protocol.json": "44379ddb6e5ad40d134f57361f5955e0c2649e7a3447665d04735b7fbe348d1a",
+    "repro\\nadir_pair_test.m": "40a82c8a438e2197d60f1da38930a9db49b598464a6b9d955cdd6774f8e4171d",
+    "repro\\nadir_pair_protocol.json": "7f9cb24f3da243ee5915ff0412a4c670e93c0f788e8a25536d7a521a6f048b44",
+    "repro\\nadir_ecgr.py": "35ef4ba500fca35d8579ae7c0f0ccc6c0e5028855e4bda755373ee50c9ad6702",
+    "repro\\nadir_ecgr.m": "577aceb091d4eaae287d91ac603b7a8022132159c741d5c09e54d3cdd4df55fe",
+    "repro\\analyze_revision.py": "7d7e374d7e5a58ce86d4b2fa525c76ae8c21e499d9b094cfe38b5ea1c1d0a8f7",
+    "repro\\out\\nadir-ecgr\\confirmation-v1\\freeze.json": "3e7859c7728f502cf811d687ad6054438814b7e691e3aadff2289f7234ffd3a1",
+    "repro\\out\\nadir-ecgr\\confirmation-v1\\development-features.csv": "4c760f708b3a520f7203cc818e4ddc2175b1da96709edc5336a9d62b00231c62",
+    "repro\\out\\revision\\grid-index.csv": "c448d93dc94c3ba32d980afa329f434c7816bdec3bf86ecdb60a8f1462277543",
+    "repro\\out\\revision\\features.mat": "437f33e4e730af9e606451074cf1f69f8ef000c929072b5879472ebb71c64470",
+    "repro\\out\\revision\\trajectories.mat": "319f5140d5058ed98a78c22e84fff583650dec551dd134686c5202dd7fecb262",
+    "repro\\out\\revision\\predictions.csv": "01eeef3c061b9b984b84791d4dabd62443cb3ca59bef3a11bfbd46c2dd9ae6d7",
+    "repro\\out\\revision\\continuous-index.csv": "699a36a93b65540d184556b193ac525bcdf4f68629d18bc86593215e80879c70",
+    "repro\\out\\nadir-intervals\\scenarios.csv": "7c6dcfca03609f73c41ac21e8c0db59b968a1a5ef51046b582a2a7f1721e16f2",
+    "repro\\out\\nadir-identifiability\\matched-scan.csv": "c3e8ec4e2837a46f91ece1ba9dcfae74f51f8c68ca7b73da86d596c37133e22a",
+    "repro\\out\\nadir-pair-tests\\independent-v1\\pair-index.csv": "381395466cbf933f63ff71566b2a3687c84fb9132a37eeebad0ef6d0256d0e34",
+    "repro\\out\\nadir-ecgr\\confirmation-v1\\pair-index.csv": "3abc1c689fbc71ec88fb634d865a20d1caa2685ed01ea065c00bcfd0062bbeba",
+    "repro\\out\\nadir-quality\\dev\\stage.json": "87479bc7e348483ca258a93de089a3b595532fd032a1c41da9cb9cc137802cf9",
+    "repro\\out\\nadir-quality\\dev\\protocol.json": "75204b6d108b38f867adfef0b29ea9155c23d5d3f7b47156e3cf78cf3e93f817",
+    "repro\\out\\nadir-quality\\dev\\entity-index.csv": "8c093ddafcfed4185bfddfe1fd663383bcc8bb9357652dad253924a346466033",
+    "repro\\out\\nadir-quality\\dev\\pair-keys.csv": "8712eecd3892271e015a16c8b288249585b4bc844cf1f9e4bf9f539d4c41932d",
+    "repro\\out\\nadir-quality\\dev\\visible-features.csv": "73ce853a9a2574674d8dfedfff5a0c1cb0f9865575beec95067efab0addb0a4c",
+    "repro\\out\\nadir-quality\\dev\\single-index.csv": "092ecabb204a2c22af8499309126421dd2dfb738915a5370f65cd95e0ce8484e",
+    "repro\\out\\nadir-quality\\dev\\pair-index.csv": "eea8bdda02d8b881ed7d862a2527a612b270043d38db7a13ef55ab0c4a5c5ccf",
+    "Project\\core\\simulate_freq.m": "65fea1c0a01838713fa917c0060c029c1cf9b87e6b4232e454642bde26e20fd1",
+    "Project\\core\\swing_equation.m": "82e38aa2d0076ccf22d7dd51f64c9c86cbb96e0edb6eab2e6e790a93c0f116c5",
+    "Project\\core\\pfr_model.m": "185e43e4e5191f5f3b4d74f067b694c7a250f9b85f27794c3e8601b0ce59c8d5",
+    "Project\\config\\sim_config.m": "993b34b8876eb68a990544fc60de441371c74caf82d88652e5bed500246d23ed",
+    "Project\\config\\sys_config.m": "6476a9ad2373dc4cd76a09dc0f88150a09ebcfdb94b7dbf2adc7f0e44e55d60a",
+    "Project\\utils\\calc_nadir.m": "82f31567ffa4d7fd0492277c42f14a8907901cb1882b4ee92965aa9e49930acd"
+  },
+  "acceptance": {
+    "mae": "each equal-condition relative change <= -2% and upper 95% limit < 0",
+    "tail": "each P95 <= 105% of the frozen comparator",
+    "tail_comparators": "clean quadratic; white30 endpoint; other conditions development best fixed",
+    "noise_mae": "white30 <= 105% of endpoint for both tasks",
+    "clean": "both tasks preserve 80% of the ECGR improvement against quadratic, or at least match quadratic if ECGR does not improve",
+    "jump": "report separately; the per-condition P95 gate also applies"
+  }
+}

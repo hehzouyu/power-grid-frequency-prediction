@@ -1,0 +1,168 @@
+{
+  "counts": {
+    "calibration": 72,
+    "calibrationRisk": 17,
+    "overlap": 0,
+    "perRolePerLoadScale": [
+      {
+        "LoadScale": 0.95,
+        "Role": "calibration",
+        "n": 18
+      },
+      {
+        "LoadScale": 0.975,
+        "Role": "calibration",
+        "n": 18
+      },
+      {
+        "LoadScale": 1.01,
+        "Role": "calibration",
+        "n": 18
+      },
+      {
+        "LoadScale": 1.04,
+        "Role": "calibration",
+        "n": 18
+      },
+      {
+        "LoadScale": 0.96,
+        "Role": "test",
+        "n": 18
+      },
+      {
+        "LoadScale": 0.99,
+        "Role": "test",
+        "n": 18
+      },
+      {
+        "LoadScale": 1.025,
+        "Role": "test",
+        "n": 18
+      },
+      {
+        "LoadScale": 1.05,
+        "Role": "test",
+        "n": 18
+      }
+    ],
+    "stepFraction": {
+      "calibration": {
+        "max": 0.142143,
+        "median": 0.111436,
+        "min": 0.086299
+      },
+      "test": {
+        "max": 0.142507,
+        "median": 0.112472,
+        "min": 0.085344
+      }
+    },
+    "test": 72,
+    "testRisk": 21
+  },
+  "dataset": "ieee39quality",
+  "eventAlignmentT3": {
+    "conditions_per_scenario": 6,
+    "crossing_condition_consistent": true,
+    "crossing_units": 126,
+    "design_vs_crossing_agreement": true,
+    "events_rows": 3888,
+    "noncrossing_units": 306,
+    "nonrisk_scenarios": 51,
+    "physical_event_units": 432,
+    "risk_scenarios": 21,
+    "rows_far010_persistence": 432,
+    "scenarios": 72
+  },
+  "frozen": true,
+  "frozenAtLocalDate": "2026-11-19",
+  "inputs": {
+    "repro/out/rolling/ieee39quality-design.csv": {
+      "bytes": 11106,
+      "sha256": "adefa9da83e87b35420ef5c33e6e6db83e623da34436de1dd769fd3804f5025f"
+    },
+    "repro/out/rolling/residual-pilot-events.csv": {
+      "bytes": 269727,
+      "sha256": "03f3a0a5a89a1cd3e939363f6bc3b7dcdad049640c462328d7e68ae281827b81"
+    }
+  },
+  "modificationPolicy": "read-only; any change requires a new version file + record",
+  "outputs": {
+    "ieee39quality-split-v1.csv": {
+      "rows": 144,
+      "sha256": "82d3d3cfecc49457095fa7418d257f4ce7875904b1b64077de28dbf99dfbe5d7"
+    }
+  },
+  "rule": {
+    "assignment": "calibration if LoadScale in calibrationLoadScales else test",
+    "calibrationLoadScales": [
+      0.95,
+      0.975,
+      1.01,
+      1.04
+    ],
+    "filter": "Status=='ok'",
+    "source": "repro/analyze_quality_warning.py:137-142",
+    "testLoadScales": [
+      0.96,
+      0.99,
+      1.025,
+      1.05
+    ]
+  },
+  "sampleScope": {
+    "designIds": [
+      1,
+      144
+    ],
+    "fractionsPerScaleSite": 9,
+    "loadBuses": [
+      "3;39;24;21",
+      "8;16;29;23"
+    ],
+    "loadScales": [
+      0.95,
+      0.96,
+      0.975,
+      0.99,
+      1.01,
+      1.025,
+      1.04,
+      1.05
+    ],
+    "measurementBuses": [
+      "1;20;39"
+    ],
+    "scenarios": 144,
+    "sites": [
+      1,
+      2
+    ]
+  },
+  "seeds": {
+    "observeNoise": 39192514,
+    "observeNoiseNote": "analysis-time noise implementation seed; does not define the split",
+    "randomnessInSplit": "none (rule is a deterministic function of LoadScale)",
+    "scenarioGeneration": 39192511,
+    "scenarioGenerationWhere": "repro/run_andes_warning.py run(quality=True)"
+  },
+  "timeBoundary": {
+    "decisionWindows_s": [
+      0.2,
+      0.3,
+      0.4,
+      0.5
+    ],
+    "disturbanceAt_s": 1.0,
+    "dt_s": 0.02,
+    "samplesPerTrace": 1001,
+    "thresholdHzEquivalent": {
+      "at50HzBase": 49.75,
+      "at60HzBase": 59.7
+    },
+    "thresholdRelativeDeviation": -0.005,
+    "trajectoryEnd_s": 20.0,
+    "trajectoryStart_s": 0.0
+  },
+  "version": "1.0.0"
+}

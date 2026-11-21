@@ -1,0 +1,9 @@
+{
+  "andes": "2.0.0",
+  "scipy": "1.18.1",
+  "case": "ieee39_full.xlsx",
+  "case_sha256": "9c2048dc94201ee48ffe816de65d53831fa1f4b0e7fdf32f24c50f1017edcfe5",
+  "tolerance_pu": 1e-08,
+  "step_count": 20,
+  "type": "constant PQ, fixed PV setpoints, no generator reactive limits"
+}

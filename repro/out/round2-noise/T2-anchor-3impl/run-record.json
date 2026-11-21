@@ -1,0 +1,83 @@
+{
+  "task": "R2/T2 noise stage",
+  "argv": [
+    "--count",
+    "3",
+    "--out-dir",
+    "repro/out/round2-noise/T2-anchor-3impl"
+  ],
+  "plan": "count 3 start_k 0",
+  "outDir": "repro/out/round2-noise/T2-anchor-3impl",
+  "inputs": {
+    "trajectories": {
+      "path": "ieee39quality-trajectories.npz",
+      "key": "multi",
+      "shape": [
+        144,
+        1001
+      ],
+      "sha256": "92775a98d39f5a6daa5fbbc674225eeab5eb189c1f138d0260e6b4d8b5adae70"
+    },
+    "referencePu": 0.0020110590273670886,
+    "referenceJson": "protocol-results.json"
+  },
+  "environment": {
+    "python": "3.14.6",
+    "numpy": "2.4.6",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "doubleRunBitwiseIdentical": true,
+  "anchorR1Bitwise": {
+    "checked": true,
+    "baselineFile": "reports/round2/t2/baseline-observe.json",
+    "bitwiseIdentical": true
+  },
+  "implementations": [
+    {
+      "noiseImplId": "N01",
+      "k": 0,
+      "seed": 39192514,
+      "signalSha256": {
+        "clean": "92775a98d39f5a6daa5fbbc674225eeab5eb189c1f138d0260e6b4d8b5adae70",
+        "white40": "28d41c7fcce715386c349a491e6d39d111fa2e118e39b844ad56e41557252512",
+        "white20": "edf1e43930296a37cac352dc8f1de3a2e34773fa0a964bcf1e8e40c0ac5f24c9",
+        "correlated20": "174b7217b88f25ea9727b8946a012ab7d27851ed7b466d53999f79c1eb43581e",
+        "white30": "dfc523101bcb0b73053e17447c3657741478a333c9802436b6d39d562934cb9f",
+        "noise_jump": "edf1e43930296a37cac352dc8f1de3a2e34773fa0a964bcf1e8e40c0ac5f24c9"
+      },
+      "doubleRunBitwiseIdentical": true
+    },
+    {
+      "noiseImplId": "N02",
+      "k": 1,
+      "seed": 39192515,
+      "signalSha256": {
+        "clean": "92775a98d39f5a6daa5fbbc674225eeab5eb189c1f138d0260e6b4d8b5adae70",
+        "white40": "b63a93973acc8e4a9bdb4a627fea253836d5c24368adfb179b3f5762ce1584b6",
+        "white20": "651f4111ef881acf84b81c59783baa40b6d79a70918510b4e18fcc7d3f019a79",
+        "correlated20": "1f673ad59240663c3be433a7914f10af7f1a4c7edb7f9bb7f361460182f8fc4d",
+        "white30": "ef5ca519c3390d7bff37712c126ae7fe2741db945eae46673afe6155dab962a8",
+        "noise_jump": "651f4111ef881acf84b81c59783baa40b6d79a70918510b4e18fcc7d3f019a79"
+      },
+      "doubleRunBitwiseIdentical": true
+    },
+    {
+      "noiseImplId": "N03",
+      "k": 2,
+      "seed": 39192516,
+      "signalSha256": {
+        "clean": "92775a98d39f5a6daa5fbbc674225eeab5eb189c1f138d0260e6b4d8b5adae70",
+        "white40": "f2b816ed41551a3f1bc18e90a1500a746c9c574ef8502b511e541d87469e2753",
+        "white20": "7f1f1b3168b3210a160497bccd9f93bb94c2240e6b1a90a3f0ca56888d73e69e",
+        "correlated20": "f8e34d4f436534bbf9b2972348aba3d0a47c9e771657c5bb87f7e250f2be3968",
+        "white30": "9e22b663bdf379e29e98f075c82f941277663809fcb9e68db02ba543f499598a",
+        "noise_jump": "7f1f1b3168b3210a160497bccd9f93bb94c2240e6b1a90a3f0ca56888d73e69e"
+      },
+      "doubleRunBitwiseIdentical": true
+    }
+  ],
+  "outputs": {
+    "noiseImplementationsCsv": "noise-implementations.csv"
+  },
+  "elapsedSeconds": 0.091
+}

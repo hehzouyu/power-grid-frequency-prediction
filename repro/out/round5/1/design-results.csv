@@ -1,0 +1,25 @@
+DesignID,Block,LoadScale,Pattern,StepFraction,Status,Error,LoadBuses,MeasurementBuses,NadirDeviation_pu
+2002,spatial_holdout,1.052,new_a,0.10811138660467083,ok,,3;4;29;7,1;20;39,-0.004346563708023221
+2004,spatial_holdout,1.052,new_a,0.13616990230005163,failed,time-domain simulation failed at t=1.859689 s: Time step reduced to zero. Convergence is not likely.,,,
+2006,spatial_holdout,1.052,new_a,0.1367677454154021,failed,time-domain simulation failed at t=1.837524 s: Time step reduced to zero. Convergence is not likely.,,,
+2008,spatial_holdout,1.052,new_b,0.10901229404569315,ok,,8;15;27;25,1;20;39,-0.00437664966529594
+2010,spatial_holdout,1.052,new_b,0.13588515893310654,failed,time-domain simulation failed at t=2.311567 s: Time step reduced to zero. Convergence is not likely.,,,
+2012,spatial_holdout,1.052,new_b,0.13280189663111827,failed,time-domain simulation failed at t=2.460155 s: Time step reduced to zero. Convergence is not likely.,,,
+2014,spatial_holdout,1.058,new_a,0.09977134499816113,ok,,3;4;29;7,1;20;39,-0.0040034093472012255
+2016,spatial_holdout,1.058,new_a,0.13641019067579566,failed,time-domain simulation failed at t=1.748949 s: Time step reduced to zero. Convergence is not likely.,,,
+2018,spatial_holdout,1.058,new_a,0.13436629207907744,failed,time-domain simulation failed at t=1.814785 s: Time step reduced to zero. Convergence is not likely.,,,
+2020,spatial_holdout,1.058,new_b,0.1103294782336108,ok,,8;15;27;25,1;20;39,-0.004467763573619443
+2022,spatial_holdout,1.058,new_b,0.13875987533166076,failed,time-domain simulation failed at t=2.038290 s: Time step reduced to zero. Convergence is not likely.,,,
+2024,spatial_holdout,1.058,new_b,0.13166682164028778,failed,time-domain simulation failed at t=2.389271 s: Time step reduced to zero. Convergence is not likely.,,,
+2026,spatial_holdout,1.067,new_a,0.09924100074710775,ok,,3;4;29;7,1;20;39,-0.0040201358249202235
+2028,spatial_holdout,1.067,new_a,0.13712354125116158,failed,time-domain simulation failed at t=1.618117 s: Time step reduced to zero. Convergence is not likely.,,,
+2030,spatial_holdout,1.067,new_a,0.13946871723160945,failed,time-domain simulation failed at t=1.573834 s: Time step reduced to zero. Convergence is not likely.,,,
+2032,spatial_holdout,1.067,new_b,0.10718902486196123,ok,,8;15;27;25,1;20;39,-0.004369704190784751
+2034,spatial_holdout,1.067,new_b,0.13472437885194657,failed,time-domain simulation failed at t=2.007575 s: Time step reduced to zero. Convergence is not likely.,,,
+2036,spatial_holdout,1.067,new_b,0.1378249314878304,failed,time-domain simulation failed at t=1.877194 s: Time step reduced to zero. Convergence is not likely.,,,
+2038,spatial_holdout,1.075,new_a,0.09956508706906428,ok,,3;4;29;7,1;20;39,-0.0040710706922897355
+2040,spatial_holdout,1.075,new_a,0.13818730011440802,failed,time-domain simulation failed at t=1.526816 s: Time step reduced to zero. Convergence is not likely.,,,
+2042,spatial_holdout,1.075,new_a,0.13042051748755715,failed,time-domain simulation failed at t=1.678202 s: Time step reduced to zero. Convergence is not likely.,,,
+2044,spatial_holdout,1.075,new_b,0.10746910064465061,ok,,8;15;27;25,1;20;39,-0.0044252707432584915
+2046,spatial_holdout,1.075,new_b,0.13099454596980487,failed,time-domain simulation failed at t=1.985464 s: Time step reduced to zero. Convergence is not likely.,,,
+2048,spatial_holdout,1.075,new_b,0.13384770976041563,failed,time-domain simulation failed at t=1.865244 s: Time step reduced to zero. Convergence is not likely.,,,

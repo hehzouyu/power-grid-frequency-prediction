@@ -1,0 +1,3 @@
+DesignID,Batch,PriorStatus,Method,IntegrationStep_s,LoadScale,Pattern,StepFraction,Status,Error,LastAccepted_s,PrefixSamples,PrefixNadirDeviation_pu,ObservedCrossingAfterStep_s,MinVoltage_pu,MinVoltageBus,MinVoltageTime_s
+1054,round4,failed,backeuler,0.0025,1.061,known_a,0.140869857426434,failed,time-domain simulation failed at t=4.928354 s: Time step reduced to zero. Convergence is not likely.,4.92835400581906,197,-0.005787723746105922,1.58,0.3386719400584,34,4.92
+1109,round4,failed,backeuler,0.0025,1.073,known_b,0.136314428801727,ok,,21.0,1001,-0.005710279290629505,1.62,0.7121354718570136,34,3.98

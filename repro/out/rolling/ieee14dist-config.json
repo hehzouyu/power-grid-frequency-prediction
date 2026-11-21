@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "nominal_Hz": 60,
+  "case_files": {
+    "ieee14/ieee14.raw": "de871c963e50c38d980552f138d54320a2d342a1cc8b31eb01f0fb5f0ce6c9e7",
+    "ieee14/ieee14.dyr": "4a59b2e203a312cb6ce44b282de26963974b387064c009a71f13f17fd941d106"
+  },
+  "events_planned": 90,
+  "events_completed": 90,
+  "decision_sample_s": 0.02,
+  "distributed_load": true
+}

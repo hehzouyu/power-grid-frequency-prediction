@@ -1,0 +1,13 @@
+LoadScale,Model,PhysicalEvents,PhysicalRisk,RiskVariants,NonriskVariants,Hits,FalseAlarms,Timely,FAR,TimelyLow,TimelyHigh,FARLow,FARHigh,Late,LeadMedian_ms,LeadP5_ms
+1.052,persistence,4,0,0,16,0,1,,0.0625,,,0.0,0.1875,0,,
+1.052,quadratic,4,0,0,16,0,1,,0.0625,,,0.0,0.1875,0,,
+1.052,residual,4,0,0,16,0,1,,0.0625,,,0.0,0.1875,0,,
+1.058,persistence,4,0,0,16,0,0,,0.0,,,0.0,0.0,0,,
+1.058,quadratic,4,0,0,16,0,1,,0.0625,,,0.0,0.1875,0,,
+1.058,residual,4,0,0,16,0,0,,0.0,,,0.0,0.0,0,,
+1.067,persistence,4,0,0,16,0,0,,0.0,,,0.0,0.0,0,,
+1.067,quadratic,4,0,0,16,0,0,,0.0,,,0.0,0.0,0,,
+1.067,residual,4,0,0,16,0,1,,0.0625,,,0.0,0.1875,0,,
+1.075,persistence,4,0,0,16,0,0,,0.0,,,0.0,0.0,0,,
+1.075,quadratic,4,0,0,16,0,1,,0.0625,,,0.0,0.1875,0,,
+1.075,residual,4,0,0,16,0,1,,0.0625,,,0.0,0.1875,0,,

@@ -1,0 +1,21 @@
+{
+  "command": "python reports/fix/t6_fit_quadratic.py",
+  "python": "3.14.6",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "numpy": "2.4.6",
+  "pandas": "3.0.3",
+  "scipy": "1.18.0",
+  "sklearn": "1.9.0",
+  "seed": 42,
+  "out_dir": "repro\\out\\rolling\\t6-quadratic-v1",
+  "input_sha256": {
+    "repro\\out\\rolling\\ieee39quality-split-v1.csv": "82d3d3cfecc49457095fa7418d257f4ce7875904b1b64077de28dbf99dfbe5d7",
+    "repro\\out\\rolling\\ieee39quality-design.csv": "adefa9da83e87b35420ef5c33e6e6db83e623da34436de1dd769fd3804f5025f",
+    "repro\\out\\rolling\\ieee39quality-trajectories.npz": "323709e67133ffe48d5318e793ebd849c72b2f125c0203b4bd2ceda2f2d337b1",
+    "repro\\out\\revision\\trajectories.mat": "319f5140d5058ed98a78c22e84fff583650dec551dd134686c5202dd7fecb262"
+  },
+  "output_sha256": {
+    "t6-quadratic-predictions.csv": "c618a2c1b5999182f8dd8f8bb496bb00366a23107c54df0bd65df21aed1cac11",
+    "t6-quadratic-errors-long.csv": "a0213ad6cce961f39628588ebf47eb450ac6a88d3fda93e3364181a3f2a6f486"
+  }
+}

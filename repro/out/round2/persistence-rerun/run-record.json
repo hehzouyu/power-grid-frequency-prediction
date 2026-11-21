@@ -1,0 +1,94 @@
+{
+  "planId": "wp-fe31e9b3-d5b4-4ecc-a302-5073809fe04b",
+  "subtaskId": "T5",
+  "artifactVersion": "t5-persistence-v1",
+  "model": {
+    "name": "persistence",
+    "definition": "per decision window, the last observed sample is held constant as the forecast minimum",
+    "source": "repro/run_rolling_warning.py::predictions -> output['persistence'].append(block[0])",
+    "fittedParameters": 0,
+    "calibrationUsed": "none (zero-parameter model; roles read from the frozen split)",
+    "testLabelsUsedForTuning": false
+  },
+  "split": {
+    "file": "repro\\out\\rolling\\ieee39quality-split-v1.csv",
+    "sha256": "82d3d3cfecc49457095fa7418d257f4ce7875904b1b64077de28dbf99dfbe5d7",
+    "roleRule": "verbatim from repro/analyze_quality_warning.py:137-142, frozen as v1.0.0",
+    "testScenarios": 72,
+    "calibrationScenarios": 72
+  },
+  "inputs": {
+    "design": {
+      "file": "repro\\out\\rolling\\ieee39quality-design.csv",
+      "sha256": "adefa9da83e87b35420ef5c33e6e6db83e623da34436de1dd769fd3804f5025f"
+    },
+    "trajectories": {
+      "file": "repro\\out\\rolling\\ieee39quality-trajectories.npz",
+      "sha256": "323709e67133ffe48d5318e793ebd849c72b2f125c0203b4bd2ceda2f2d337b1"
+    },
+    "revisionGrid": {
+      "file": "repro\\out\\revision\\trajectories.mat",
+      "sha256": "319f5140d5058ed98a78c22e84fff583650dec551dd134686c5202dd7fecb262"
+    },
+    "noiseReference_pu": 0.0020110590273670886
+  },
+  "observationModel": {
+    "source": "repro/analyze_quality_warning.py::observe",
+    "seed": 39192514,
+    "conditions": [
+      "clean",
+      "white40",
+      "white20",
+      "correlated20",
+      "white30",
+      "noise_jump"
+    ],
+    "estimatorBoundary": "reference/sqrt(1000)"
+  },
+  "decisionWindows_s": [
+    0.2,
+    0.3,
+    0.4,
+    0.5
+  ],
+  "windowLabels": [
+    "200ms",
+    "300ms",
+    "400ms",
+    "500ms"
+  ],
+  "threshold_pu": -0.005,
+  "seed": {
+    "observationNoise": 39192514,
+    "scenarios": 39192511,
+    "residualBootstrapUnused": 39192517
+  },
+  "environment": {
+    "python": "3.14.6",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "rows": {
+    "wide": 432,
+    "long": 1728,
+    "expectedTestEvents": 432
+  },
+  "guard": {
+    "protectedRoots": [
+      "repro\\out\\rolling",
+      "repro\\out\\revision",
+      "out",
+      "artical"
+    ],
+    "outDir": "repro\\out\\round2\\persistence-rerun",
+    "isNewDirectory": true
+  },
+  "outputs": {
+    "wide": "ieee39quality-test-persistence-predictions.csv",
+    "wide_sha256": "7b0d226b26acc0fc2171e4407af2af41cc9948f60b4522f724f856f8c752e05e",
+    "long": "ieee39quality-test-persistence-windows.csv",
+    "long_sha256": "91145b7f25556b5d0308feaa298d7a5cc0cf5c9463cadf4813ece32bba8262ae"
+  },
+  "command": "python reports/fix/t5_persistence_baseline.py --out-dir <out-dir>"
+}

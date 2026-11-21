@@ -1,0 +1,5 @@
+DesignID,Block,LoadScale,Pattern,StepFraction
+1001,high_load,1.052,known_a,0.09591769367798926
+1004,high_load,1.052,known_a,0.13965089015708176
+1009,high_load,1.052,known_b,0.09996465579602024
+1012,high_load,1.052,known_b,0.1327449009199208

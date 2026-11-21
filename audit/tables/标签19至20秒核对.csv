@@ -1,0 +1,9 @@
+Split,Window_s,Events,Changed,MaxDecrease_Hz,FrozenReplayMaxError_Hz,ShortHorizon_s
+calibration,0.2,800,0,0,0,19
+calibration,0.3,800,0,0,0,19
+calibration,0.4,800,0,0,0,19
+calibration,0.5,800,0,0,0,19
+test,0.2,2400,0,0,0,19
+test,0.3,2400,0,0,0,19
+test,0.4,2400,0,0,0,19
+test,0.5,2400,0,0,0,19

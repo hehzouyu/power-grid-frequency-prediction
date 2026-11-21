@@ -1,0 +1,5 @@
+Condition,Feature,Comparator,PrimaryPairs,ClustersWithPrimaryPairs,ChangeMAE_mHz,Low95_mHz,High95_mHz,ValidBootstrapDraws
+clean,quadratic,initial_rate,148,64,-5.4345598215058,-6.6995282856608,-4.12929111274711,5000
+clean,fitted_segments,initial_rate,148,64,-4.34646937504056,-5.72664611308965,-3.06065881508183,5000
+white30,quadratic,initial_rate,148,64,-10.5488086631152,-13.1710164181338,-8.20460904361797,5000
+white30,fitted_segments,initial_rate,148,64,-6.0565981437652,-8.13987750189844,-4.11420935467043,5000

@@ -1,0 +1,15 @@
+{
+  "release": "2025a",
+  "matlab": "25.1.0.2943329 (R2025a)",
+  "cut_s": 1.5,
+  "split_seed": 42,
+  "continuous_seed": 777,
+  "noise_seed": 1681,
+  "noise_repeats": 10,
+  "tree_cycles": 100,
+  "tree_learn_rate": 0.1,
+  "tree_max_depth": 3,
+  "vmd_modes": 4,
+  "threshold_Hz": 49.75,
+  "cascade_fast_fraction": 0.25
+}

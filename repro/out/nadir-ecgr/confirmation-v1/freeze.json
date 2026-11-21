@@ -1,0 +1,41 @@
+{
+  "environment": {
+    "python": "3.14.6",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "scikit_learn": "1.9.0"
+  },
+  "index": 2,
+  "lambda": 4,
+  "training_cubic_second_moment_hz2": 7.38305499400101e-05,
+  "anchor_prediction_sha256": {
+    "endpoint": "bbafedaac6d8861c94fceae8e95e944db658b0430c3744569e7c3ee4f5d325d1",
+    "initial_rate": "0654f7e27b59e7b7136a2dd98da5f0f9a0a1f8be44e465048e0781e68fb7d75b",
+    "quadratic": "80be25cf097f9bf2034374e098a061f25aee0f96fbe9d03ca8560e0ca065e214",
+    "fitted_segments": "ef31c9378e6b65cee6072d09ca091e5f5c61a71f3468aadd7efeba03dd378308",
+    "ecgr": "80093546c53409b9a92b0dcb33ba4cb81d0bde0c62169adcfe640553b38a5915"
+  },
+  "hashes": {
+    "repro\\nadir_ecgr.py": "35ef4ba500fca35d8579ae7c0f0ccc6c0e5028855e4bda755373ee50c9ad6702",
+    "repro\\nadir_ecgr.m": "577aceb091d4eaae287d91ac603b7a8022132159c741d5c09e54d3cdd4df55fe",
+    "repro\\nadir_ecgr_protocol.json": "081f5d5a38e9e235e149cf57d5a3cc2a4996f64820d91b8206fecb5a17a21d0b",
+    "repro\\nadir_pair_test.m": "40a82c8a438e2197d60f1da38930a9db49b598464a6b9d955cdd6774f8e4171d",
+    "repro\\analyze_revision.py": "7d7e374d7e5a58ce86d4b2fa525c76ae8c21e499d9b094cfe38b5ea1c1d0a8f7",
+    "repro\\run_nadir_ecgr.ps1": "f5ed7787a53f682ae5d6f7b49c7ea3fd8ecbab2dd272c613e7c2dcd4ad6ea63c",
+    "repro\\out\\nadir-ecgr\\confirmation-v1\\method-protocol.json": "081f5d5a38e9e235e149cf57d5a3cc2a4996f64820d91b8206fecb5a17a21d0b",
+    "repro\\out\\nadir-ecgr\\confirmation-v1\\protocol.json": "935a211db7739487ab107090086a33803218dcbc6942b1599815cf489982041d",
+    "repro\\out\\nadir-ecgr\\confirmation-v1\\development-features.csv": "4c760f708b3a520f7203cc818e4ddc2175b1da96709edc5336a9d62b00231c62",
+    "repro\\out\\nadir-ecgr\\confirmation-v1\\training-cubic-moment.csv": "6a6274ab21bf161bc7f05da45a91710951811ba7054f86e463c20d3f88995395",
+    "repro\\out\\revision\\grid-index.csv": "c448d93dc94c3ba32d980afa329f434c7816bdec3bf86ecdb60a8f1462277543",
+    "repro\\out\\revision\\features.mat": "437f33e4e730af9e606451074cf1f69f8ef000c929072b5879472ebb71c64470",
+    "repro\\out\\revision\\trajectories.mat": "319f5140d5058ed98a78c22e84fff583650dec551dd134686c5202dd7fecb262",
+    "repro\\out\\revision\\predictions.csv": "01eeef3c061b9b984b84791d4dabd62443cb3ca59bef3a11bfbd46c2dd9ae6d7",
+    "repro\\out\\nadir-pair-tests\\independent-v1\\pair-index.csv": "381395466cbf933f63ff71566b2a3687c84fb9132a37eeebad0ef6d0256d0e34",
+    "Project\\config\\sim_config.m": "993b34b8876eb68a990544fc60de441371c74caf82d88652e5bed500246d23ed",
+    "Project\\config\\sys_config.m": "6476a9ad2373dc4cd76a09dc0f88150a09ebcfdb94b7dbf2adc7f0e44e55d60a",
+    "Project\\core\\simulate_freq.m": "65fea1c0a01838713fa917c0060c029c1cf9b87e6b4232e454642bde26e20fd1",
+    "Project\\core\\pfr_model.m": "185e43e4e5191f5f3b4d74f067b694c7a250f9b85f27794c3e8601b0ce59c8d5",
+    "Project\\core\\swing_equation.m": "82e38aa2d0076ccf22d7dd51f64c9c86cbb96e0edb6eab2e6e790a93c0f116c5",
+    "Project\\utils\\calc_nadir.m": "82f31567ffa4d7fd0492277c42f14a8907901cb1882b4ee92965aa9e49930acd"
+  }
+}

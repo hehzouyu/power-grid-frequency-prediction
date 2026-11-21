@@ -1,0 +1,9 @@
+{
+  "scope": "archived-score post-hoc diagnostic only",
+  "x": [0.05, 0.10],
+  "same_far_rule": "Ascending negative event-min scores, only attainable grouped thresholds; earliest threshold on a zero-slope FAR plateau, including origin no-alarm; linear interpolation between adjacent distinct FARs; no extrapolation",
+  "positive_score": "Minimum prediction strictly before first crossing; absent scores are +Inf",
+  "bootstrap": "4000 paired physical-event draws, all noise conditions travel together; recompute the full bracket on each resample",
+  "clean_threshold_decomposition": "Complete 2x2 score/threshold swap at original pooled 10%; symmetric average contribution, descriptive, no causal attribution",
+  "frozen_comparisons_unchanged": true
+}

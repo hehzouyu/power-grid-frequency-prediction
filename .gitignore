@@ -1,0 +1,13 @@
+# Local assistant state and execution environments
+.dsh-meow/
+.andes-env/
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.log

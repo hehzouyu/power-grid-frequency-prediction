@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "nominal_Hz": 60,
+  "case_files": {
+    "ieee39/ieee39_full.xlsx": "9c2048dc94201ee48ffe816de65d53831fa1f4b0e7fdf32f24c50f1017edcfe5"
+  },
+  "events_planned": 144,
+  "events_completed": 144,
+  "decision_sample_s": 0.02,
+  "distributed_load": true,
+  "focused_design_seed": null
+}

@@ -1,0 +1,77 @@
+{
+  "plan": "wp-fe31e9b3-d5b4-4ecc-a302-5073809fe04b",
+  "subtask": "T6",
+  "model": "quadratic",
+  "definition_reused_from": [
+    "repro/run_rolling_warning.py:41-61 extract()",
+    "repro/run_rolling_warning.py:64-72 train()",
+    "repro/analyze_quality_warning.py:20-33 observe()"
+  ],
+  "polynomial_degree": 2,
+  "features_per_window": [
+    "endpoint",
+    "linear_coefficient",
+    "quadratic_coefficient"
+  ],
+  "windows_samples": [
+    10,
+    15,
+    20,
+    25
+  ],
+  "decision_times_s": [
+    0.2,
+    0.3,
+    0.4,
+    0.5
+  ],
+  "regressor": "GradientBoostingRegressor",
+  "hyperparameters": {
+    "n_estimators": 100,
+    "max_depth": 3,
+    "learning_rate": 0.1,
+    "subsample": 1.0,
+    "min_samples_split": 2,
+    "min_samples_leaf": 1,
+    "random_state": 42,
+    "loss": "squared_error"
+  },
+  "regularization": "none explicit; tree depth 3 + 100 shallow trees is the inherited regularizer",
+  "target": "min(truth[decision_index+1:]) per scenario and window",
+  "training_scope": {
+    "scenarios": "T4 calibration only (Role=calibration, n=72)",
+    "conditions": "clean observation only",
+    "fit_rows_per_window": 72,
+    "test_scenarios": 72
+  },
+  "choice_basis": {
+    "degree_2": "reuse repository quadratic model definition; same as analyze_revision FEATURES",
+    "gbr_100_3": "reuse run_rolling_warning.train hyperparameters unchanged so results are comparable",
+    "clean_only_training": "repository convention trains on clean development trajectories; noise is an evaluation condition, not a training input",
+    "calibration_only_fit": "T6 requirement: fit only on T4 calibration; test used for forward prediction only, no test peeking",
+    "retrain_on_target_system": "handoff section 2 lists target-system retraining as a separate option; this deliverable is that option"
+  },
+  "reference_noise_rms": 0.0020110590273670886,
+  "conditions": [
+    "clean",
+    "white40",
+    "white20",
+    "correlated20",
+    "white30",
+    "noise_jump"
+  ],
+  "input_sha256": {
+    "repro\\out\\rolling\\ieee39quality-split-v1.csv": "82d3d3cfecc49457095fa7418d257f4ce7875904b1b64077de28dbf99dfbe5d7",
+    "repro\\out\\rolling\\ieee39quality-design.csv": "adefa9da83e87b35420ef5c33e6e6db83e623da34436de1dd769fd3804f5025f",
+    "repro\\out\\rolling\\ieee39quality-trajectories.npz": "323709e67133ffe48d5318e793ebd849c72b2f125c0203b4bd2ceda2f2d337b1",
+    "repro\\out\\revision\\trajectories.mat": "319f5140d5058ed98a78c22e84fff583650dec551dd134686c5202dd7fecb262"
+  },
+  "rows": {
+    "wide": 432,
+    "long": 1728
+  },
+  "output_sha256": {
+    "t6-quadratic-predictions.csv": "c618a2c1b5999182f8dd8f8bb496bb00366a23107c54df0bd65df21aed1cac11",
+    "t6-quadratic-errors-long.csv": "a0213ad6cce961f39628588ebf47eb450ac6a88d3fda93e3364181a3f2a6f486"
+  }
+}

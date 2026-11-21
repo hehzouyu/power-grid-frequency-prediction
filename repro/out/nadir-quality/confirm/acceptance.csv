@@ -1,0 +1,21 @@
+Kind,Criterion,Value,Limit,Pass
+single,equal-condition MAE relative improvement,-0.19545295467064017,-0.02,True
+single,upper 95% limit of relative MAE change,-0.1660115025889541,0.0,True
+single,clean P95 vs quadratic,21.511403485564877,29.221420076418642,True
+single,white40 P95 vs endpoint,30.719330020573555,67.81809110340653,True
+single,white30 P95 vs endpoint,63.256535031767285,66.41936178335565,True
+single,white20 P95 vs endpoint,66.5820595013244,69.91116247639061,True
+single,ar30 P95 vs endpoint,63.82900791155777,67.0391836567687,True
+single,jump P95 vs endpoint,66.1806920631342,69.24522205285193,True
+single,white30 MAE vs endpoint,23.478915977705473,24.652861776590747,True
+single,clean ECGR MAE gain retention,8.236697612924837,8.516243262795001,True
+pair,equal-condition MAE relative improvement,-0.13736743282955455,-0.02,True
+pair,upper 95% limit of relative MAE change,-0.12507075067140236,0.0,True
+pair,clean P95 vs quadratic,13.109021721107855,17.147839789215958,True
+pair,white40 P95 vs endpoint,21.232707143195043,28.378925209175584,True
+pair,white30 P95 vs endpoint,35.506536541397736,37.281863368467626,True
+pair,white20 P95 vs endpoint,47.80396553926458,50.194163816227814,True
+pair,ar30 P95 vs endpoint,38.04531870164988,39.611915582553586,True
+pair,jump P95 vs endpoint,49.78390890519599,52.273104350455796,True
+pair,white30 MAE vs endpoint,14.753696027987722,15.49138082938711,True
+pair,clean ECGR MAE gain retention,4.719496772748083,4.991331713634741,True

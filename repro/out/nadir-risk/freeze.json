@@ -1,0 +1,47 @@
+{
+  "hashes": {
+    "repro\\nadir_risk.py": "fe885f3ac68dc7cff2b209e9d3ecce48d5e8846e705a5b9e094d625bb48c482d",
+    "repro\\nadir_risk.m": "8d05361492c85309762871a27ec674e01db092103dac4d30a905955dcb2c0420",
+    "repro\\nadir_risk_protocol.json": "c4eb6c222ca0d1bbb64bba692fb9de054540e489af8fb357fe5403c5068e841c",
+    "repro\\analyze_revision.py": "7d7e374d7e5a58ce86d4b2fa525c76ae8c21e499d9b094cfe38b5ea1c1d0a8f7",
+    "repro\\run_nadir_risk.ps1": "68fb53eba66a3d94251d2899d76d17d4983916f3ede2a4501c610e928aaede5d",
+    "repro\\out\\nadir-risk\\protocol.json": "c4eb6c222ca0d1bbb64bba692fb9de054540e489af8fb357fe5403c5068e841c",
+    "repro\\out\\nadir-risk\\development.csv": "8ed7291ceaa5239388a193fd84e8a604a142fae1d0cba28312f280a21917c25b",
+    "repro\\out\\revision\\features.mat": "437f33e4e730af9e606451074cf1f69f8ef000c929072b5879472ebb71c64470",
+    "repro\\out\\revision\\grid-index.csv": "c448d93dc94c3ba32d980afa329f434c7816bdec3bf86ecdb60a8f1462277543",
+    "repro\\out\\revision\\predictions.csv": "01eeef3c061b9b984b84791d4dabd62443cb3ca59bef3a11bfbd46c2dd9ae6d7",
+    "repro\\out\\revision\\continuous-index.csv": "699a36a93b65540d184556b193ac525bcdf4f68629d18bc86593215e80879c70",
+    "repro\\out\\revision\\cascade-index.csv": "9fa6922106ad480edb7b9b93dc6cabca4c92ff903e885532172a2b0064e8af98",
+    "repro\\out\\revision\\trajectories.mat": "319f5140d5058ed98a78c22e84fff583650dec551dd134686c5202dd7fecb262",
+    "Project\\core\\simulate_freq.m": "65fea1c0a01838713fa917c0060c029c1cf9b87e6b4232e454642bde26e20fd1",
+    "Project\\core\\swing_equation.m": "82e38aa2d0076ccf22d7dd51f64c9c86cbb96e0edb6eab2e6e790a93c0f116c5",
+    "Project\\core\\pfr_model.m": "185e43e4e5191f5f3b4d74f067b694c7a250f9b85f27794c3e8601b0ce59c8d5",
+    "Project\\config\\sys_config.m": "6476a9ad2373dc4cd76a09dc0f88150a09ebcfdb94b7dbf2adc7f0e44e55d60a",
+    "Project\\config\\sim_config.m": "993b34b8876eb68a990544fc60de441371c74caf82d88652e5bed500246d23ed",
+    "Project\\utils\\calc_nadir.m": "82f31567ffa4d7fd0492277c42f14a8907901cb1882b4ee92965aa9e49930acd"
+  },
+  "edges_Hz": [
+    0.0002833483138553,
+    0.0033597958144854327
+  ],
+  "scales_Hz": [
+    0.001792639707556276,
+    0.0072151890302478705,
+    0.00392168329990028
+  ],
+  "symmetric90_radius_Hz": 0.03459092027555499,
+  "uniform_radius_Hz": 0.016315160698439968,
+  "scaled_q": 4.371115426979708,
+  "grouped_Hz": [
+    0.011144442293307577,
+    0.02092318331013132,
+    0.017008187284098142
+  ],
+  "grouped_sizes": [
+    150,
+    176,
+    174
+  ],
+  "guarded_q": 11.81216706562872,
+  "calibration_events": 500
+}

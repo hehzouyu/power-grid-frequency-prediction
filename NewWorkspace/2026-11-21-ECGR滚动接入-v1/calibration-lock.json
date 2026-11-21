@@ -1,0 +1,10 @@
+{
+  "NewWorkspace\\2026-11-21-ECGR滚动接入-v1\\protocol.json": "ebd87c699b3b16803350c9988e5b3e50987d9bf7793e1439f5c1bb76020f900d",
+  "NewWorkspace\\2026-11-21-ECGR滚动接入-v1\\run_experiment.py": "e8bb7ce20a458aafde59ed4815adc920c082a33bbb1bc67d3bb10e4ed7ec6a8b",
+  "NewWorkspace\\2026-11-21-ECGR滚动接入-v1\\window-models.joblib": "ee3aa1af3e71160945c9084417ac2137e27b17add718ab8fe6a32c3d7f9c1384",
+  "NewWorkspace\\2026-11-21-ECGR滚动接入-v1\\cutoffs.csv": "ad27dd123c4b2f95a590cb7a278442380006d0b8bbe21074a2673540dc4ef4c9",
+  "repro\\out\\nadir-quality\\frozen-selector.json": "24a7b50c5189abb6cd5ad6553fcc154a32948c6e0cb6c4954f7ad05776949a8b",
+  "repro\\out\\nadir-ecgr\\confirmation-v1\\freeze.json": "3e7859c7728f502cf811d687ad6054438814b7e691e3aadff2289f7234ffd3a1",
+  "repro\\out\\nadir-ecgr\\confirmation-v1\\method-protocol.json": "081f5d5a38e9e235e149cf57d5a3cc2a4996f64820d91b8206fecb5a17a21d0b",
+  "repro\\run_rolling_warning.py": "ca2525cb3dfa052a85855116781a1cfb52dfcbae196b85b7d15b8297676550c5"
+}

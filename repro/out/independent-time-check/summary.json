@@ -1,0 +1,10 @@
+{
+  "andes": "2.0.0",
+  "scipy": "1.18.1",
+  "control_runs": 6,
+  "controls_accepted": 0,
+  "failure_runs": 6,
+  "failures_completed": 0,
+  "failures_observed_crossing": 0,
+  "failures_truncated_unknown": 6
+}

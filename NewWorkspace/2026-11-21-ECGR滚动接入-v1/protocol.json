@@ -1,0 +1,28 @@
+{
+  "design": "window-specific ECGR transfer under frozen fixed-cutoff selector",
+  "fit": "archived 1200-case grid with existing rolling tree configuration",
+  "windows": [10, 15, 20, 25],
+  "calibration_events": 800,
+  "test_events": 2400,
+  "calibration_seed": 269418021,
+  "test_seed": 269418022,
+  "calibration_noise_seed": 269418031,
+  "test_noise_seed": 269418032,
+  "bootstrap_seed": 269418041,
+  "bootstrap_draws": 4000,
+  "nominal_hz": 50,
+  "event_threshold_hz": 49.75,
+  "far_targets": [0.05, 0.10],
+  "primary_far_target": 0.10,
+  "conditions": ["clean", "white40", "white30", "white20", "ar30", "jump"],
+  "calibration_conditions": ["clean", "white40", "white30", "white20", "ar30"],
+  "primary_comparison": ["gate", "quadratic"],
+  "holdout_stress": "jump: pre-event white40 and post-event AR(1)20",
+  "noise_reference": "per-event RMS clean 0-0.50 s deviation, simulation only",
+  "decision_rule": "strict score < calibrated cutoff; strictly before first crossing",
+  "acceptance": {
+    "min_hit_rate_gain": 0.02,
+    "max_far_increase_ci_upper": 0.02,
+    "max_jump_far_increase_ci_upper": 0.05
+  }
+}

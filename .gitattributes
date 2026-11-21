@@ -1,0 +1,2 @@
+# Preserve published input bytes on every platform for historical SHA-256 checks.
+* -text

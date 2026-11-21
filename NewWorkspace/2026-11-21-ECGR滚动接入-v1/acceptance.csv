@@ -1,0 +1,5 @@
+Criterion,Value_pp,Operator,Threshold_pp,Pass
+mixed point hit gain,29.82885085574572,≥,2.0,True
+mixed hit gain lower CI,26.460704733761016,>,0.0,True
+mixed FAR increase upper CI,2.579385752455155,≤,2.0,False
+jump FAR increase upper CI,-4.974563199371792,≤,5.0,True

@@ -1,0 +1,5 @@
+ChangedFactor,Attempted,GeometricMatches,MatchFailures,MatchFailureRate,ScorableMatches,PrimaryPairs,TrueTies,SmallNonTies,FeatureFailures,NoBracket,OutsideTolerance
+all,192,192,0,0,192,148,1,43,0,0,0
+D,64,64,0,0,64,20,1,43,0,0,0
+H,64,64,0,0,64,64,0,0,0,0,0
+Tg,64,64,0,0,64,64,0,0,0,0,0

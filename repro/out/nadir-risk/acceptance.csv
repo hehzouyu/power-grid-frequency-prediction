@@ -1,0 +1,22 @@
+Scenario,Criterion,Value,Limit,EnoughCases,Pass
+mixed,empirical one-sided miss,0.0078125,0.12,True,True
+mixed,false-safe given unsafe,0.0,0.05,True,True
+mixed,mean margin relative to uniform,3.2524257996560033,1.25,True,False
+mixed,safe-withholding increase vs uniform,0.14018691588785048,0.1,True,False
+noise_jump,empirical one-sided miss,0.0078125,0.12,True,True
+noise_jump,false-safe given unsafe,0.0,0.05,True,True
+noise_jump,mean margin relative to uniform,3.3310988352869595,1.25,True,False
+noise_jump,safe-withholding increase vs uniform,0.11775700934579439,0.1,True,False
+ar20,empirical one-sided miss,0.08125,0.12,True,True
+ar20,false-safe given unsafe,0.09523809523809523,0.05,True,False
+ar20,mean margin relative to uniform,3.040488351718934,1.25,True,False
+ar20,safe-withholding increase vs uniform,0.06728971962616823,0.1,True,True
+inertia_high,empirical one-sided miss,0.07,0.12,True,True
+inertia_high,false-safe given unsafe,0.0,0.05,False,False
+inertia_high,mean margin relative to uniform,3.3331995699659522,1.25,True,False
+inertia_high,safe-withholding increase vs uniform,0.12113402061855669,0.1,True,False
+cascade_fresh,empirical one-sided miss,0.0,0.12,True,True
+cascade_fresh,false-safe given unsafe,0.0,0.05,True,True
+cascade_fresh,mean margin relative to uniform,3.1709109698795994,1.25,True,False
+cascade_fresh,safe-withholding increase vs uniform,0.13745019920318724,0.1,True,False
+all_fresh,worst-case miss reduction,0.24875000000000003,0.02,True,True

@@ -1,0 +1,9 @@
+ChangedFactor,RBand,Status,GroupCount,Attempted
+D,1,below_minimum_gap,31,192
+D,1,true_tie,1,192
+D,2,below_minimum_gap,12,192
+D,2,primary_eligible,20,192
+H,1,primary_eligible,32,192
+H,2,primary_eligible,32,192
+Tg,1,primary_eligible,32,192
+Tg,2,primary_eligible,32,192

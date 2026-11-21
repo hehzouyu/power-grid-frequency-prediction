@@ -1,0 +1,57 @@
+{
+  "task": "R2/T2 noise stage",
+  "argv": [
+    "--impl",
+    "N01",
+    "--seed",
+    "39192514",
+    "--out-dir",
+    "repro/out/round2-noise/T2-single-N01"
+  ],
+  "plan": "impl N01",
+  "outDir": "repro/out/round2-noise/T2-single-N01",
+  "inputs": {
+    "trajectories": {
+      "path": "ieee39quality-trajectories.npz",
+      "key": "multi",
+      "shape": [
+        144,
+        1001
+      ],
+      "sha256": "92775a98d39f5a6daa5fbbc674225eeab5eb189c1f138d0260e6b4d8b5adae70"
+    },
+    "referencePu": 0.0020110590273670886,
+    "referenceJson": "protocol-results.json"
+  },
+  "environment": {
+    "python": "3.14.6",
+    "numpy": "2.4.6",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "doubleRunBitwiseIdentical": true,
+  "anchorR1Bitwise": {
+    "checked": true,
+    "baselineFile": "reports/round2/t2/baseline-observe.json",
+    "bitwiseIdentical": true
+  },
+  "implementations": [
+    {
+      "noiseImplId": "N01",
+      "k": 0,
+      "seed": 39192514,
+      "signalSha256": {
+        "clean": "92775a98d39f5a6daa5fbbc674225eeab5eb189c1f138d0260e6b4d8b5adae70",
+        "white40": "28d41c7fcce715386c349a491e6d39d111fa2e118e39b844ad56e41557252512",
+        "white20": "edf1e43930296a37cac352dc8f1de3a2e34773fa0a964bcf1e8e40c0ac5f24c9",
+        "correlated20": "174b7217b88f25ea9727b8946a012ab7d27851ed7b466d53999f79c1eb43581e",
+        "white30": "dfc523101bcb0b73053e17447c3657741478a333c9802436b6d39d562934cb9f",
+        "noise_jump": "edf1e43930296a37cac352dc8f1de3a2e34773fa0a964bcf1e8e40c0ac5f24c9"
+      },
+      "doubleRunBitwiseIdentical": true
+    }
+  ],
+  "outputs": {
+    "noiseImplementationsCsv": "noise-implementations.csv"
+  },
+  "elapsedSeconds": 0.046
+}

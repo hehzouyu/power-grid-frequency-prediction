@@ -1,0 +1,17 @@
+DesignID,Block,LoadScale,Pattern,StepFraction,Status,Error,LoadBuses,MeasurementBuses,NadirDeviation_pu
+2101,exploratory_transition,1.052,new_a,0.116,ok,,3;4;29;7,1;20;39,-0.004806396928572321
+2103,exploratory_transition,1.052,new_a,0.125,failed,time-domain simulation failed at t=2.486778 s: Time step reduced to zero. Convergence is not likely.,,,
+2105,exploratory_transition,1.052,new_b,0.116,ok,,8;15;27;25,1;20;39,-0.0047110171573157
+2107,exploratory_transition,1.052,new_b,0.125,failed,time-domain simulation failed at t=2.906848 s: Time step reduced to zero. Convergence is not likely.,,,
+2109,exploratory_transition,1.058,new_a,0.116,failed,time-domain simulation failed at t=3.202641 s: Time step reduced to zero. Convergence is not likely.,,,
+2111,exploratory_transition,1.058,new_a,0.125,failed,time-domain simulation failed at t=2.313137 s: Time step reduced to zero. Convergence is not likely.,,,
+2113,exploratory_transition,1.058,new_b,0.116,ok,,8;15;27;25,1;20;39,-0.0047541866792364385
+2115,exploratory_transition,1.058,new_b,0.125,failed,time-domain simulation failed at t=2.777892 s: Time step reduced to zero. Convergence is not likely.,,,
+2117,exploratory_transition,1.067,new_a,0.116,failed,time-domain simulation failed at t=2.787107 s: Time step reduced to zero. Convergence is not likely.,,,
+2119,exploratory_transition,1.067,new_a,0.125,failed,time-domain simulation failed at t=2.034917 s: Time step reduced to zero. Convergence is not likely.,,,
+2121,exploratory_transition,1.067,new_b,0.116,ok,,8;15;27;25,1;20;39,-0.004838841666131466
+2123,exploratory_transition,1.067,new_b,0.125,failed,time-domain simulation failed at t=2.565194 s: Time step reduced to zero. Convergence is not likely.,,,
+2125,exploratory_transition,1.075,new_a,0.116,failed,time-domain simulation failed at t=2.459715 s: Time step reduced to zero. Convergence is not likely.,,,
+2127,exploratory_transition,1.075,new_a,0.125,failed,time-domain simulation failed at t=1.845546 s: Time step reduced to zero. Convergence is not likely.,,,
+2129,exploratory_transition,1.075,new_b,0.116,failed,time-domain simulation failed at t=3.314529 s: Time step reduced to zero. Convergence is not likely.,,,
+2131,exploratory_transition,1.075,new_b,0.125,failed,time-domain simulation failed at t=2.332036 s: Time step reduced to zero. Convergence is not likely.,,,

@@ -2,6 +2,22 @@
 
 Short-window frequency-nadir prediction and rolling underfrequency warning under varying measurement quality. This archive accompanies the verified November 2026 manuscript (v4).
 
+## 源码与样本目录
+
+| 目录 | 内容 |
+| --- | --- |
+| [Project/](Project/) | 早期 MATLAB 仿真、VMD、回归基线、扩展和测试，含早期 MAT 样本 |
+| [repro/](repro/) | 封版论文各研究线的 MATLAB、Python 和 PowerShell 入口 |
+| [repro/out/revision/](repro/out/revision/) | 原固定截止轨迹、特征、场景索引、逐场景预测和配置 |
+| [repro/out/](repro/out/) | 近端点配对、ECGR、固定门控、风险、原滚动和多机数值压力试验等的样本及账本 |
+| [滚动 ECGR 冻结档案](NewWorkspace/2026-11-21-ECGR滚动接入-v1/) | 场景、逐窗与逐事件记录、冻结模型、校准阈值、协议和复算入口 |
+| [audit/](audit/) | 审计脚本、数值复算表、诊断规则及追溯索引 |
+| [reports/](reports/) | 样本划分和实验协议 |
+
+MAT、NPZ 和逐事件记录来自数值仿真。早期 MATLAB 样本与论文正式样本按原目录区分。保留正式数据原始文件名和相对路径，以便检查冻结哈希。
+
+从仓库根目录运行 python repro/verify_public_samples.py 可只读验证关键文件、滚动接入的八项冻结哈希和主要工作点计数。此命令不会重新仿真、训练或写入样本。历史完整运行入口参见 [固定截止](repro/README-revision.md) 和 [滚动](repro/README-rolling.md) 说明。旧稿编译、部分完整复跑和历史审计入口仍引用原项目的本地中间产物及软件环境。源文件发布不代表已验证所有历史命令可在新机器完整重跑。
+
 ## 论文与复算
 
 | 文件 | 内容 |

@@ -1,0 +1,83 @@
+{
+  "task": "R1 / T6 quadratic under the T8 alarm rule",
+  "protocolExtension": "T6 artefact has test-only predictions and the model is trained on the calibration set, so thresholds are calibrated on 5-fold out-of-fold calibration predictions (seed 42); test predictions are the T6 artefact values.",
+  "python": "3.14.6",
+  "numpy": "2.4.6",
+  "sklearn": "1.9.0",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "inputs": {
+    "repro\\out\\rolling\\ieee39quality-split-v1.csv": "82d3d3cfecc49457095fa7418d257f4ce7875904b1b64077de28dbf99dfbe5d7",
+    "repro\\out\\rolling\\ieee39quality-design.csv": "adefa9da83e87b35420ef5c33e6e6db83e623da34436de1dd769fd3804f5025f",
+    "repro\\out\\rolling\\ieee39quality-trajectories.npz": "323709e67133ffe48d5318e793ebd849c72b2f125c0203b4bd2ceda2f2d337b1",
+    "repro\\out\\revision\\trajectories.mat": "319f5140d5058ed98a78c22e84fff583650dec551dd134686c5202dd7fecb262",
+    "repro\\out\\rolling\\t6-quadratic-v1\\t6-quadratic-predictions.csv": "c618a2c1b5999182f8dd8f8bb496bb00366a23107c54df0bd65df21aed1cac11",
+    "repro\\out\\rolling\\residual-pilot-events.csv": "03f3a0a5a89a1cd3e939363f6bc3b7dcdad049640c462328d7e68ae281827b81"
+  },
+  "fidelity": {
+    "t6MaxAbsDiff_pu": 4.9960036108132044e-15,
+    "tolerance": 1e-09
+  },
+  "counts": {
+    "events": 432,
+    "risk": 126,
+    "nonRisk": 306,
+    "calibrationNegatives": 55
+  },
+  "crosscheckExistingAlarms": [
+    {
+      "Model": "persistence",
+      "Hits": 102,
+      "Risk": 126,
+      "FAR": 0.11764705882352941
+    },
+    {
+      "Model": "residual",
+      "Hits": 73,
+      "Risk": 126,
+      "FAR": 0.13725490196078433
+    }
+  ],
+  "matchedFAR": {
+    "persistence": {
+      "referenceFAR": 0.11764705882352941,
+      "quadraticHitsAtSameFAR": 99.0
+    },
+    "residual": {
+      "referenceFAR": 0.13725490196078433,
+      "quadraticHitsAtSameFAR": 99.11111111111111
+    }
+  },
+  "pairedAtTarget0p10": [
+    {
+      "Pair": "quadratic vs persistence",
+      "Events": 432,
+      "Both": 89,
+      "QuadraticOnly": 11,
+      "OtherOnly": 13,
+      "Neither": 319,
+      "QuadraticHits": 100,
+      "OtherHits": 102
+    },
+    {
+      "Pair": "quadratic vs residual",
+      "Events": 432,
+      "Both": 66,
+      "QuadraticOnly": 34,
+      "OtherOnly": 7,
+      "Neither": 325,
+      "QuadraticHits": 100,
+      "OtherHits": 73
+    }
+  ],
+  "protected": {
+    "changed": [],
+    "checked": 22
+  },
+  "outputs": {
+    "quadratic-alarm-events.csv": "f89851fa68a6f350e9291d1b4ccf7066fc57edac371f7aebb354a81622add00a",
+    "quadratic-alarm-summary.csv": "63fad97fc60aee90f8877fe348f5443a5af4ef844e881154ee90afbe5bb1c148",
+    "quadratic-alarm-cuts.csv": "95231a4a051d9972ec748bd7cb4eeceda5563490503cb41dbcf5b4c9809d4bdf",
+    "quadratic-alarm-far-curve.csv": "3270ad3926ba91a85d2e1f5ac9efa30931eb1eba5e14dfc278dbb056df4706af",
+    "quadratic-alarm-paired.csv": "5275f5b3e67ba256126d229033f5b28f73cd6271c11e0bd557fc1f38e9adc633"
+  }
+}

@@ -1,0 +1,13 @@
+Scenario,Method,UnsafeN,IndependentEventUpper95
+archive_cascade,guarded_scale,105,0.02812762400367641
+archive_cascade,symmetric90,105,0.02812762400367641
+archive_single,guarded_scale,77,0.038158510711545524
+archive_single,symmetric90,77,0.038158510711545524
+cascade_fresh,guarded_scale,138,0.02147427757293663
+cascade_fresh,symmetric90,138,0.02147427757293663
+inertia_high,guarded_scale,12,0.22092219194555585
+inertia_high,symmetric90,12,0.22092219194555585
+mixed,guarded_scale,105,0.02812762400367641
+mixed,symmetric90,105,0.02812762400367641
+noise_jump,guarded_scale,105,0.02812762400367641
+noise_jump,symmetric90,105,0.02812762400367641

@@ -1,0 +1,4 @@
+DesignID,Step_s,Group,Status,LastAccepted_s,Outcome,CrossingAfterEvent_s,MinVoltage_pu,COIMaxError_pu,MinVoltageError_pu,ControlPassed,Error
+2101,0.0025,controls,ok,21.0,complete_no_crossing,,0.7802721316815482,8.172821362706362e-05,9.263956273208862e-06,False,
+2113,0.0025,controls,ok,21.0,complete_no_crossing,,0.8107794089383223,8.229159765138494e-05,2.179687416670184e-06,False,
+2121,0.0025,controls,ok,21.0,complete_no_crossing,,0.7913033496157369,8.308645261012604e-05,8.214667538419818e-06,False,

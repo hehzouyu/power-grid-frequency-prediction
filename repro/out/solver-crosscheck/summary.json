@@ -1,0 +1,31 @@
+{
+  "cases": 12,
+  "prior_completion": {
+    "round4": {
+      "failed_cases": 3,
+      "controls_all_complete": 3,
+      "all_methods_observed_crossing": 3,
+      "any_method_observed_crossing": 3,
+      "all_methods_stopped": 1
+    },
+    "round5/transition": {
+      "failed_cases": 3,
+      "controls_all_complete": 3,
+      "all_methods_observed_crossing": 0,
+      "any_method_observed_crossing": 0,
+      "all_methods_stopped": 3
+    }
+  },
+  "only_backeuler_at_10ms": [
+    1054,
+    1109
+  ],
+  "backeuler_completion_by_ms": {
+    "5": [
+      1109
+    ],
+    "2.5": [
+      1109
+    ]
+  }
+}

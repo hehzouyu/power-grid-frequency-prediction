@@ -1,0 +1,4 @@
+Model,TargetFAR,Hits,Risk,HitRate,FAR,Source
+persistence,0.1,102,126,0.809524,0.117647,residual-pilot-events.csv recomputed in this run
+residual,0.1,73,126,0.579365,0.137255,residual-pilot-events.csv recomputed in this run
+quadratic,0.1,100,126,0.793651,0.163399,"this run, OOF-calibrated, T6 test predictions"

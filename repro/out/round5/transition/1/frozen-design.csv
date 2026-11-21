@@ -1,0 +1,17 @@
+DesignID,Block,LoadScale,Pattern,StepFraction
+2102,exploratory_transition,1.052,new_a,0.121
+2104,exploratory_transition,1.052,new_a,0.128
+2106,exploratory_transition,1.052,new_b,0.121
+2108,exploratory_transition,1.052,new_b,0.128
+2110,exploratory_transition,1.058,new_a,0.121
+2112,exploratory_transition,1.058,new_a,0.128
+2114,exploratory_transition,1.058,new_b,0.121
+2116,exploratory_transition,1.058,new_b,0.128
+2118,exploratory_transition,1.067,new_a,0.121
+2120,exploratory_transition,1.067,new_a,0.128
+2122,exploratory_transition,1.067,new_b,0.121
+2124,exploratory_transition,1.067,new_b,0.128
+2126,exploratory_transition,1.075,new_a,0.121
+2128,exploratory_transition,1.075,new_a,0.128
+2130,exploratory_transition,1.075,new_b,0.121
+2132,exploratory_transition,1.075,new_b,0.128

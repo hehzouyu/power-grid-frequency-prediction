@@ -1,0 +1,5 @@
+Block,VersusPersistence,Metric,Difference,Low95,High95
+exploratory_transition,quadratic,Timely,,,
+exploratory_transition,quadratic,FAR,-0.3125,-0.5,-0.125
+exploratory_transition,residual,Timely,,,
+exploratory_transition,residual,FAR,-0.375,-0.5,-0.125

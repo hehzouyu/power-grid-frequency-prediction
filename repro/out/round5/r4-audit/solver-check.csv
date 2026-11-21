@@ -1,0 +1,52 @@
+DesignID,R4Status,LoadScale,Pattern,StepFraction,IntegrationStep_s,Status,NadirDeviation_pu,Error
+1053,ok,1.061,known_a,0.1375705227141676,0.02,ok,-0.005598557004576454,
+1053,ok,1.061,known_a,0.1375705227141676,0.01,ok,-0.005598561906085098,
+1053,ok,1.061,known_a,0.1375705227141676,0.005,ok,-0.005598592251577661,
+1054,failed,1.061,known_a,0.140869857426434,0.02,failed,,time-domain simulation failed at t=4.814545 s: Time step reduced to zero. Convergence is not likely.
+1054,failed,1.061,known_a,0.140869857426434,0.01,failed,,time-domain simulation failed at t=4.815307 s: Time step reduced to zero. Convergence is not likely.
+1054,failed,1.061,known_a,0.140869857426434,0.005,failed,,time-domain simulation failed at t=4.814924 s: Time step reduced to zero. Convergence is not likely.
+1061,failed,1.061,known_b,0.1401422555700938,0.02,failed,,time-domain simulation failed at t=3.581498 s: Time step reduced to zero. Convergence is not likely.
+1061,failed,1.061,known_b,0.1401422555700938,0.01,failed,,time-domain simulation failed at t=3.584844 s: Time step reduced to zero. Convergence is not likely.
+1061,failed,1.061,known_b,0.1401422555700938,0.005,failed,,time-domain simulation failed at t=3.585640 s: Time step reduced to zero. Convergence is not likely.
+1062,ok,1.061,known_b,0.1332662655031113,0.02,ok,-0.00535680597291599,
+1062,ok,1.061,known_b,0.1332662655031113,0.01,ok,-0.0053568698380270785,
+1062,ok,1.061,known_b,0.1332662655031113,0.005,ok,-0.0053568879578926865,
+1076,failed,1.067,known_b,0.1385859384890764,0.02,failed,,time-domain simulation failed at t=3.500800 s: Time step reduced to zero. Convergence is not likely.
+1076,failed,1.067,known_b,0.1385859384890764,0.01,failed,,time-domain simulation failed at t=3.503959 s: Time step reduced to zero. Convergence is not likely.
+1076,failed,1.067,known_b,0.1385859384890764,0.005,failed,,time-domain simulation failed at t=3.504581 s: Time step reduced to zero. Convergence is not likely.
+1077,ok,1.067,known_b,0.1362154756159504,0.02,ok,-0.005570184168723125,
+1077,ok,1.067,known_b,0.1362154756159504,0.01,ok,-0.005570234722377276,
+1077,ok,1.067,known_b,0.1362154756159504,0.005,ok,-0.005570272194875492,
+1080,failed,1.067,known_b,0.1407894470853087,0.02,failed,,time-domain simulation failed at t=3.098642 s: Time step reduced to zero. Convergence is not likely.
+1080,failed,1.067,known_b,0.1407894470853087,0.01,failed,,time-domain simulation failed at t=3.100030 s: Time step reduced to zero. Convergence is not likely.
+1080,failed,1.067,known_b,0.1407894470853087,0.005,failed,,time-domain simulation failed at t=3.100885 s: Time step reduced to zero. Convergence is not likely.
+1085,failed,1.07,known_a,0.1400524523148148,0.02,failed,,time-domain simulation failed at t=4.382956 s: Time step reduced to zero. Convergence is not likely.
+1085,failed,1.07,known_a,0.1400524523148148,0.01,failed,,time-domain simulation failed at t=4.384874 s: Time step reduced to zero. Convergence is not likely.
+1085,failed,1.07,known_a,0.1400524523148148,0.005,failed,,time-domain simulation failed at t=4.385353 s: Time step reduced to zero. Convergence is not likely.
+1087,ok,1.07,known_a,0.1359876419956577,0.02,ok,-0.005575093059160374,
+1087,ok,1.07,known_a,0.1359876419956577,0.01,ok,-0.005575091429427692,
+1087,ok,1.07,known_a,0.1359876419956577,0.005,ok,-0.0055751214122865544,
+1092,failed,1.07,known_b,0.1375258105928679,0.02,failed,,time-domain simulation failed at t=3.573321 s: Time step reduced to zero. Convergence is not likely.
+1092,failed,1.07,known_b,0.1375258105928679,0.01,failed,,time-domain simulation failed at t=3.574793 s: Time step reduced to zero. Convergence is not likely.
+1092,failed,1.07,known_b,0.1375258105928679,0.005,failed,,time-domain simulation failed at t=3.575757 s: Time step reduced to zero. Convergence is not likely.
+1094,ok,1.07,known_b,0.1327251101515576,0.02,ok,-0.005397060389367936,
+1094,ok,1.07,known_b,0.1327251101515576,0.01,ok,-0.005397122905671736,
+1094,ok,1.07,known_b,0.1327251101515576,0.005,ok,-0.0053971104253063285,
+1108,failed,1.073,known_b,0.1405961927661184,0.02,failed,,time-domain simulation failed at t=2.879938 s: Time step reduced to zero. Convergence is not likely.
+1108,failed,1.073,known_b,0.1405961927661184,0.01,failed,,time-domain simulation failed at t=2.881496 s: Time step reduced to zero. Convergence is not likely.
+1108,failed,1.073,known_b,0.1405961927661184,0.005,failed,,time-domain simulation failed at t=2.882377 s: Time step reduced to zero. Convergence is not likely.
+1109,failed,1.073,known_b,0.136314428801727,0.02,failed,,time-domain simulation failed at t=4.011804 s: Time step reduced to zero. Convergence is not likely.
+1109,failed,1.073,known_b,0.136314428801727,0.01,failed,,time-domain simulation failed at t=4.009557 s: Time step reduced to zero. Convergence is not likely.
+1109,failed,1.073,known_b,0.136314428801727,0.005,failed,,time-domain simulation failed at t=4.010875 s: Time step reduced to zero. Convergence is not likely.
+1110,ok,1.073,known_b,0.1358039248903276,0.02,ok,-0.005639220577199455,
+1110,ok,1.073,known_b,0.1358039248903276,0.01,ok,-0.005639318189148201,
+1110,ok,1.073,known_b,0.1358039248903276,0.005,ok,-0.005639341731033198,
+1112,failed,1.073,known_b,0.1394985497574901,0.02,failed,,time-domain simulation failed at t=2.987774 s: Time step reduced to zero. Convergence is not likely.
+1112,failed,1.073,known_b,0.1394985497574901,0.01,failed,,time-domain simulation failed at t=2.989434 s: Time step reduced to zero. Convergence is not likely.
+1112,failed,1.073,known_b,0.1394985497574901,0.005,failed,,time-domain simulation failed at t=2.990044 s: Time step reduced to zero. Convergence is not likely.
+1124,failed,1.075,known_b,0.1394256206939443,0.02,failed,,time-domain simulation failed at t=2.906075 s: Time step reduced to zero. Convergence is not likely.
+1124,failed,1.075,known_b,0.1394256206939443,0.01,failed,,time-domain simulation failed at t=2.908158 s: Time step reduced to zero. Convergence is not likely.
+1124,failed,1.075,known_b,0.1394256206939443,0.005,failed,,time-domain simulation failed at t=2.908928 s: Time step reduced to zero. Convergence is not likely.
+1127,ok,1.075,known_b,0.134155073437304,0.02,ok,-0.005532417008023649,
+1127,ok,1.075,known_b,0.134155073437304,0.01,ok,-0.005532465791925345,
+1127,ok,1.075,known_b,0.134155073437304,0.005,ok,-0.005532450880181061,

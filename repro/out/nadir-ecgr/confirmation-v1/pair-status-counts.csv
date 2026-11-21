@@ -1,0 +1,9 @@
+RBand,ChangedFactor,Status,Count
+1,D,below_minimum_gap,42
+1,D,true_tie,6
+1,H,primary_eligible,48
+1,Tg,primary_eligible,48
+2,D,below_minimum_gap,18
+2,D,primary_eligible,30
+2,H,primary_eligible,48
+2,Tg,primary_eligible,48

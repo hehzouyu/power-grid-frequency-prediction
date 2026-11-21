@@ -1,0 +1,17 @@
+﻿模块,核心结果或口径,正式目录repro/out下的来源,发布包附件,原生成脚本
+固定截止原实验,严格后缀标签及三个时序组／窗口比较／外推和噪声,"revision/trajectories.mat; revision/predictions.csv; nadir-shape/window-predictions.csv; nadir-shape/boundary-decomposition.csv",evidence/nadir/原稿数字追溯.csv,"repro/run_revision.m; repro/analyze_nadir_shape.py"
+原独立近端点,192对／148幅值样本；干净差值MAE改变量,nadir-pair-tests/independent-v1/pair-predictions.csv,evidence/nadir/pair-evidence,repro/run_nadir_pair_test.ps1
+ECGR,4.44与5.67 mHz；30 dB尾部未通过,nadir-ecgr/confirmation-v1/pair-predictions.csv,evidence/nadir/quality-evidence/ecgr,"repro/nadir_ecgr.m; repro/nadir_ecgr.py; repro/verify_and_plot_nadir_ecgr.py"
+门控,单事件和差值MAE；20项验收通过；突变误选,nadir-quality/confirm/predictions.csv及pair-predictions.csv,evidence/nadir/quality-evidence/quality,"repro/nadir_quality.m; repro/nadir_quality.py; repro/verify_plot_nadir_quality.py"
+固定截止双侧区间,覆盖与宽度／两级调频下的漏覆盖,nadir-intervals/intervals.csv,evidence/nadir/evidence/nadir-intervals,repro/analyze_nadir_intervals.py
+滚动聚合,272与189命中；首越限分母；联合覆盖1444/1600；噪声和时间偏差,"rolling/events.csv; rolling/observations.csv; rolling/protocol-results.json",evidence/rolling/evidence/rolling,repro/run_rolling_warning.py
+滚动分级阈值,聚合和IEEE 39及时命中与实际虚警,"rolling/quality-events.csv; rolling/quality-paired.csv",evidence/rolling/evidence/rolling,repro/analyze_quality_warning.py
+IEEE 39正式压力,高负荷和未见位置的计数／收敛与诊断,"round4/events.csv; round5/events.csv; independent-time-check/summary.csv",evidence/rolling/evidence,repro/score_round4.py及score_round5.py
+多机前期压力,分布式负荷阶跃及噪声校准／固定场景噪声复现／早期负荷与位置留出,"rolling/distributed-events.csv; rolling/focused-events.csv; round2/multi-noise/per-seed-summary.csv; round3/sealed/paired.csv",evidence/rolling/early-stress,"repro/analyze_distributed_warning.py; repro/analyze_focused_warning.py; repro/score_round3.py; repro/paper_round3_section.py"
+固定截止单侧下界负面结果,10/21通过；AR(1)错误判安全10/105,"nadir-risk/lower-bounds.csv; nadir-risk/acceptance.csv",evidence/risk,"repro/nadir_risk.m; repro/nadir_risk.py; repro/verify_plot_nadir_risk.py"
+ECGR滚动接入,主要和次要告警指标、逐窗选择及预设验收,本轮独立聚合重新生成,evidence/rolling-ecgr/event-metrics.csv；paired-effects.csv；acceptance.csv,run_experiment.py；recompute.py
+新增滚动主和次要工作点,2400物理事件、12000组合、绝对次数与95%区间,"evidence/rolling-ecgr/{test-event-scores.csv.gz,test-window-predictions.csv.gz,cutoffs.csv,protocol.json}",复算表/绝对结果与配对区间联合表.csv,audit_results.m
+滚动同虚警事后诊断,两档插值、阈值互换和对称分解,evidence/rolling-ecgr/test-window-predictions.csv.gz 和原滚动逐决策预测归档,复算表/同实际虚警事后诊断.csv；干净条件阈值交换.csv；干净条件对称分解.csv,audit_results.m；事后诊断规则.json
+原滚动命中结构,291越限；早/晚、交集、提前量和虚警,evidence/rolling/evidence/rolling 的逐事件归档,复算表/原滚动命中集合.csv,audit_results.m
+滚动决策窗,实际样本数、冻结参数、逐窗选择率和19–20 s核对,"evidence/rolling-ecgr/{run_experiment.py, window-models.joblib, test-scenarios.csv, calibration-scenarios.csv}",复算表/逐窗选择比例.csv；标签19至20秒核对.csv,prepare_audit.py；audit_results.m
+固定截止口径复核,ECGR及二次逐配对差值、门控分条件均值、原配对样本数及四类验收,evidence/nadir/quality-evidence 与 evidence/nadir/pair-evidence 的逐场景、逐配对预测,复算表/固定截止证据复算.csv,audit_fixed.m

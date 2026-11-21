@@ -1,0 +1,11 @@
+{
+  "noise_seed": 39195021,
+  "physical_events": 4,
+  "physical_risk_events": 0,
+  "sources_sha256": {
+    "out\\round3\\sealed\\thresholds.csv": "3bc0fc2bf081b871f009a0d4289d2f712e91b9a67b0aa02bdce0d1bbe438db3d",
+    "out\\revision\\trajectories.mat": "319f5140d5058ed98a78c22e84fff583650dec551dd134686c5202dd7fecb262",
+    "out\\round5\\transition\\0\\frozen-design.csv": "1578fc36f30082fef141bb7a0bb4f2dff3213c89fec5151d45033715327a0e39",
+    "out\\round5\\transition\\1\\frozen-design.csv": "b587f88b5dc98bcebe9c3b87a822a9f2aa9f30255f2459a87a87eca10374be8b"
+  }
+}

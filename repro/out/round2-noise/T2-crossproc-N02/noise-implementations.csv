@@ -1,0 +1,2 @@
+noiseImplId,k,seed,variedBy,scenarios,conditions,estimatesSha256,qualitySha256,clean_low,clean_high,white40_low,white40_high,white20_low,white20_high,correlated20_low,correlated20_high,white30_low,white30_high,noise_jump_low,noise_jump_high
+N02,1,39192515,observationNoise,144,6,8ca339392f8e6a32559172dc90a97c7f32b7e347da47e3242e11eec74fec4902,b786856cfc8a7bacbf771c03f5ac3c02c8d9abb5957676d8e471002878285130,144,0,144,0,0,144,0,144,79,65,144,0

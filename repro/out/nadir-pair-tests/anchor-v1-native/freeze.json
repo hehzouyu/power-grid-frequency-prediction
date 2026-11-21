@@ -1,0 +1,29 @@
+{
+  "protocol_sha256": "7f9cb24f3da243ee5915ff0412a4c670e93c0f788e8a25536d7a521a6f048b44",
+  "models_sha256": "f9e0a084e1bd2095a5db236ef1edbefb84a783529df907be8204339aaa9c341e",
+  "source_sha256": {
+    "repro\\nadir_pair_protocol.json": "7f9cb24f3da243ee5915ff0412a4c670e93c0f788e8a25536d7a521a6f048b44",
+    "repro\\nadir_pair_test.m": "8f7e7af51e8522484cd0562ed5fb510fdb514383dcbb1c8ad280ed5da0a84e02",
+    "repro\\nadir_pair_predict.py": "c0826a297d020aed4b3a5b66b98b194c19bfcecf73faeadd8a6fe0029fff53bd",
+    "repro\\run_nadir_pair_test.ps1": "536eb97c080055b666fa93fc433186cc46fb6959e47e52fd3117a342beada0c4",
+    "repro\\analyze_revision.py": "7d7e374d7e5a58ce86d4b2fa525c76ae8c21e499d9b094cfe38b5ea1c1d0a8f7",
+    "repro\\out\\revision\\grid-index.csv": "c448d93dc94c3ba32d980afa329f434c7816bdec3bf86ecdb60a8f1462277543",
+    "repro\\out\\revision\\features.mat": "437f33e4e730af9e606451074cf1f69f8ef000c929072b5879472ebb71c64470",
+    "repro\\out\\revision\\predictions.csv": "01eeef3c061b9b984b84791d4dabd62443cb3ca59bef3a11bfbd46c2dd9ae6d7",
+    "repro\\out\\revision\\trajectories.mat": "319f5140d5058ed98a78c22e84fff583650dec551dd134686c5202dd7fecb262",
+    "repro\\out\\revision\\continuous-index.csv": "699a36a93b65540d184556b193ac525bcdf4f68629d18bc86593215e80879c70",
+    "Project\\core\\simulate_freq.m": "65fea1c0a01838713fa917c0060c029c1cf9b87e6b4232e454642bde26e20fd1",
+    "Project\\core\\swing_equation.m": "82e38aa2d0076ccf22d7dd51f64c9c86cbb96e0edb6eab2e6e790a93c0f116c5",
+    "Project\\core\\pfr_model.m": "185e43e4e5191f5f3b4d74f067b694c7a250f9b85f27794c3e8601b0ce59c8d5",
+    "Project\\utils\\calc_nadir.m": "82f31567ffa4d7fd0492277c42f14a8907901cb1882b4ee92965aa9e49930acd",
+    "Project\\config\\sim_config.m": "993b34b8876eb68a990544fc60de441371c74caf82d88652e5bed500246d23ed",
+    "Project\\config\\sys_config.m": "6476a9ad2373dc4cd76a09dc0f88150a09ebcfdb94b7dbf2adc7f0e44e55d60a"
+  },
+  "python": "3.14.6",
+  "scikit_learn": "1.9.0",
+  "numpy": "2.4.6",
+  "pandas": "3.0.3",
+  "grid_train": 692,
+  "grid_validation": 230,
+  "grid_historical_test": 232
+}

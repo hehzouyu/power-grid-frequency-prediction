@@ -1,0 +1,288 @@
+{
+  "task": "R1 / T1 -- T6 quadratic model under the T8 alarm rule",
+  "generatedBy": "repro/out/round2/quadratic-alarm/run_quadratic_alarm.py",
+  "command": "python.exe run_quadratic_alarm.py --out-dir repro/out/round2/quadratic-alarm",
+  "protocolExtension": "T6 artefact stores test-only predictions and the quadratic model is trained on the calibration set, so thresholds are calibrated on 5-fold out-of-fold calibration predictions (shuffle, seed 42); test predictions are the T6 artefact values.",
+  "environment": {
+    "python": "3.14.6",
+    "numpy": "2.4.6",
+    "sklearn": "1.9.0",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "inputs": {
+    "repro\\out\\rolling\\ieee39quality-split-v1.csv": "82d3d3cfecc49457095fa7418d257f4ce7875904b1b64077de28dbf99dfbe5d7",
+    "repro\\out\\rolling\\ieee39quality-design.csv": "adefa9da83e87b35420ef5c33e6e6db83e623da34436de1dd769fd3804f5025f",
+    "repro\\out\\rolling\\ieee39quality-trajectories.npz": "323709e67133ffe48d5318e793ebd849c72b2f125c0203b4bd2ceda2f2d337b1",
+    "repro\\out\\revision\\trajectories.mat": "319f5140d5058ed98a78c22e84fff583650dec551dd134686c5202dd7fecb262",
+    "repro\\out\\rolling\\t6-quadratic-v1\\t6-quadratic-predictions.csv": "c618a2c1b5999182f8dd8f8bb496bb00366a23107c54df0bd65df21aed1cac11",
+    "repro\\out\\rolling\\residual-pilot-events.csv": "03f3a0a5a89a1cd3e939363f6bc3b7dcdad049640c462328d7e68ae281827b81"
+  },
+  "seed": {
+    "oof": 42,
+    "gbr": 42,
+    "observe": 39192514
+  },
+  "fidelity": {
+    "t6MaxAbsDiff_pu": 4.9960036108132044e-15,
+    "tolerance": 1e-09
+  },
+  "counts": {
+    "events": 432,
+    "risk": 126,
+    "nonRisk": 306,
+    "calibrationNegatives": 55
+  },
+  "summary": [
+    {
+      "Model": "quadratic",
+      "TargetFAR": 0.05,
+      "Events": 432,
+      "Risk": 126,
+      "Hits": 95,
+      "HitRate": 0.753968253968254,
+      "Late": 0,
+      "Miss": 31,
+      "False": 31,
+      "TrueNegative": 275,
+      "FAR": 0.10130718954248366,
+      "LeadMedian_ms": 1800.0
+    },
+    {
+      "Model": "quadratic",
+      "TargetFAR": 0.1,
+      "Events": 432,
+      "Risk": 126,
+      "Hits": 100,
+      "HitRate": 0.7936507936507936,
+      "Late": 0,
+      "Miss": 26,
+      "False": 50,
+      "TrueNegative": 256,
+      "FAR": 0.16339869281045752,
+      "LeadMedian_ms": 1820.0
+    },
+    {
+      "Model": "quadratic",
+      "TargetFAR": 0.2,
+      "Events": 432,
+      "Risk": 126,
+      "Hits": 115,
+      "HitRate": 0.9126984126984127,
+      "Late": 0,
+      "Miss": 11,
+      "False": 94,
+      "TrueNegative": 212,
+      "FAR": 0.30718954248366015,
+      "LeadMedian_ms": 1840.0
+    }
+  ],
+  "crosscheckExistingAlarms": [
+    {
+      "Model": "persistence",
+      "Hits": 102,
+      "Risk": 126,
+      "HitRate": 0.8095238095238095,
+      "FAR": 0.11764705882352941
+    },
+    {
+      "Model": "residual",
+      "Hits": 73,
+      "Risk": 126,
+      "HitRate": 0.5793650793650794,
+      "FAR": 0.13725490196078433
+    }
+  ],
+  "matchedFAR": {
+    "persistence": {
+      "referenceFAR": 0.11764705882352941,
+      "quadraticHitsAtSameFAR": 99.0
+    },
+    "residual": {
+      "referenceFAR": 0.13725490196078433,
+      "quadraticHitsAtSameFAR": 99.11111111111111
+    }
+  },
+  "pairedAtTarget0p10": [
+    {
+      "Pair": "quadratic vs persistence",
+      "Events": 432,
+      "Both": 89,
+      "QuadraticOnly": 11,
+      "OtherOnly": 13,
+      "Neither": 319,
+      "QuadraticHits": 100,
+      "OtherHits": 102
+    },
+    {
+      "Pair": "quadratic vs residual",
+      "Events": 432,
+      "Both": 66,
+      "QuadraticOnly": 34,
+      "OtherOnly": 7,
+      "Neither": 325,
+      "QuadraticHits": 100,
+      "OtherHits": 73
+    }
+  ],
+  "outputs": {
+    "quadratic-alarm-events.csv": "f89851fa68a6f350e9291d1b4ccf7066fc57edac371f7aebb354a81622add00a",
+    "quadratic-alarm-summary.csv": "22d3ce20f31ffc9d9d14433da770ecac2db7c1463c4008fa38d1852bbd508ed3",
+    "quadratic-alarm-cuts.csv": "ca9eb91f0cc79544383221ee6dafc8d2f8d0e7c51e10c912094e8df3511c0ca6",
+    "quadratic-alarm-far-curve.csv": "3270ad3926ba91a85d2e1f5ac9efa30931eb1eba5e14dfc278dbb056df4706af",
+    "quadratic-alarm-paired.csv": "5275f5b3e67ba256126d229033f5b28f73cd6271c11e0bd557fc1f38e9adc633",
+    "quadratic-alarm-vs-baselines.csv": "fd8a46ba0c61e861b2e5f0bd3e12b73c4338ddc38ca774ad7f1f2720b2e1ae90"
+  },
+  "doubleRun": {
+    "identical": true,
+    "files": {
+      "quadratic-alarm-events.csv": {
+        "run1": "f89851fa68a6f350e9291d1b4ccf7066fc57edac371f7aebb354a81622add00a",
+        "run2": "f89851fa68a6f350e9291d1b4ccf7066fc57edac371f7aebb354a81622add00a",
+        "identical": true
+      },
+      "quadratic-alarm-summary.csv": {
+        "run1": "22d3ce20f31ffc9d9d14433da770ecac2db7c1463c4008fa38d1852bbd508ed3",
+        "run2": "22d3ce20f31ffc9d9d14433da770ecac2db7c1463c4008fa38d1852bbd508ed3",
+        "identical": true
+      },
+      "quadratic-alarm-cuts.csv": {
+        "run1": "ca9eb91f0cc79544383221ee6dafc8d2f8d0e7c51e10c912094e8df3511c0ca6",
+        "run2": "ca9eb91f0cc79544383221ee6dafc8d2f8d0e7c51e10c912094e8df3511c0ca6",
+        "identical": true
+      },
+      "quadratic-alarm-far-curve.csv": {
+        "run1": "3270ad3926ba91a85d2e1f5ac9efa30931eb1eba5e14dfc278dbb056df4706af",
+        "run2": "3270ad3926ba91a85d2e1f5ac9efa30931eb1eba5e14dfc278dbb056df4706af",
+        "identical": true
+      },
+      "quadratic-alarm-paired.csv": {
+        "run1": "5275f5b3e67ba256126d229033f5b28f73cd6271c11e0bd557fc1f38e9adc633",
+        "run2": "5275f5b3e67ba256126d229033f5b28f73cd6271c11e0bd557fc1f38e9adc633",
+        "identical": true
+      },
+      "quadratic-alarm-vs-baselines.csv": {
+        "run1": "fd8a46ba0c61e861b2e5f0bd3e12b73c4338ddc38ca774ad7f1f2720b2e1ae90",
+        "run2": "fd8a46ba0c61e861b2e5f0bd3e12b73c4338ddc38ca774ad7f1f2720b2e1ae90",
+        "identical": true
+      }
+    },
+    "runs": [
+      {
+        "label": "run1",
+        "outDir": ".",
+        "command": "python.exe run_quadratic_alarm.py --out-dir repro/out/round2/quadratic-alarm",
+        "outputs": {
+          "quadratic-alarm-events.csv": {
+            "run1": "f89851fa68a6f350e9291d1b4ccf7066fc57edac371f7aebb354a81622add00a",
+            "run2": "f89851fa68a6f350e9291d1b4ccf7066fc57edac371f7aebb354a81622add00a",
+            "identical": true
+          },
+          "quadratic-alarm-summary.csv": {
+            "run1": "22d3ce20f31ffc9d9d14433da770ecac2db7c1463c4008fa38d1852bbd508ed3",
+            "run2": "22d3ce20f31ffc9d9d14433da770ecac2db7c1463c4008fa38d1852bbd508ed3",
+            "identical": true
+          },
+          "quadratic-alarm-cuts.csv": {
+            "run1": "ca9eb91f0cc79544383221ee6dafc8d2f8d0e7c51e10c912094e8df3511c0ca6",
+            "run2": "ca9eb91f0cc79544383221ee6dafc8d2f8d0e7c51e10c912094e8df3511c0ca6",
+            "identical": true
+          },
+          "quadratic-alarm-far-curve.csv": {
+            "run1": "3270ad3926ba91a85d2e1f5ac9efa30931eb1eba5e14dfc278dbb056df4706af",
+            "run2": "3270ad3926ba91a85d2e1f5ac9efa30931eb1eba5e14dfc278dbb056df4706af",
+            "identical": true
+          },
+          "quadratic-alarm-paired.csv": {
+            "run1": "5275f5b3e67ba256126d229033f5b28f73cd6271c11e0bd557fc1f38e9adc633",
+            "run2": "5275f5b3e67ba256126d229033f5b28f73cd6271c11e0bd557fc1f38e9adc633",
+            "identical": true
+          },
+          "quadratic-alarm-vs-baselines.csv": {
+            "run1": "fd8a46ba0c61e861b2e5f0bd3e12b73c4338ddc38ca774ad7f1f2720b2e1ae90",
+            "run2": "fd8a46ba0c61e861b2e5f0bd3e12b73c4338ddc38ca774ad7f1f2720b2e1ae90",
+            "identical": true
+          }
+        },
+        "runRecordSha256": "cf969c651727e650393fba116a8fe76e6f51375a6837ff39172883ea32003f30"
+      },
+      {
+        "label": "run2",
+        "outDir": "_rerun",
+        "command": "python.exe run_quadratic_alarm.py --out-dir repro/out/round2/quadratic-alarm/_rerun",
+        "outputs": {
+          "quadratic-alarm-events.csv": "f89851fa68a6f350e9291d1b4ccf7066fc57edac371f7aebb354a81622add00a",
+          "quadratic-alarm-summary.csv": "22d3ce20f31ffc9d9d14433da770ecac2db7c1463c4008fa38d1852bbd508ed3",
+          "quadratic-alarm-cuts.csv": "ca9eb91f0cc79544383221ee6dafc8d2f8d0e7c51e10c912094e8df3511c0ca6",
+          "quadratic-alarm-far-curve.csv": "3270ad3926ba91a85d2e1f5ac9efa30931eb1eba5e14dfc278dbb056df4706af",
+          "quadratic-alarm-paired.csv": "5275f5b3e67ba256126d229033f5b28f73cd6271c11e0bd557fc1f38e9adc633",
+          "quadratic-alarm-vs-baselines.csv": "fd8a46ba0c61e861b2e5f0bd3e12b73c4338ddc38ca774ad7f1f2720b2e1ae90"
+        },
+        "runRecordSha256": "5bcce85576850e4c4f5f04b58226b94bde4d1f3969adff3d771ab28a93d9169e"
+      }
+    ]
+  },
+  "runs": [
+    {
+      "label": "run1",
+      "outDir": ".",
+      "command": "python.exe run_quadratic_alarm.py --out-dir repro/out/round2/quadratic-alarm",
+      "outputs": {
+        "quadratic-alarm-events.csv": "f89851fa68a6f350e9291d1b4ccf7066fc57edac371f7aebb354a81622add00a",
+        "quadratic-alarm-summary.csv": "22d3ce20f31ffc9d9d14433da770ecac2db7c1463c4008fa38d1852bbd508ed3",
+        "quadratic-alarm-cuts.csv": "ca9eb91f0cc79544383221ee6dafc8d2f8d0e7c51e10c912094e8df3511c0ca6",
+        "quadratic-alarm-far-curve.csv": "3270ad3926ba91a85d2e1f5ac9efa30931eb1eba5e14dfc278dbb056df4706af",
+        "quadratic-alarm-paired.csv": "5275f5b3e67ba256126d229033f5b28f73cd6271c11e0bd557fc1f38e9adc633",
+        "quadratic-alarm-vs-baselines.csv": "fd8a46ba0c61e861b2e5f0bd3e12b73c4338ddc38ca774ad7f1f2720b2e1ae90"
+      }
+    },
+    {
+      "label": "run2",
+      "outDir": "_rerun",
+      "command": "python.exe run_quadratic_alarm.py --out-dir repro/out/round2/quadratic-alarm/_rerun",
+      "outputs": {
+        "quadratic-alarm-events.csv": "f89851fa68a6f350e9291d1b4ccf7066fc57edac371f7aebb354a81622add00a",
+        "quadratic-alarm-summary.csv": "22d3ce20f31ffc9d9d14433da770ecac2db7c1463c4008fa38d1852bbd508ed3",
+        "quadratic-alarm-cuts.csv": "ca9eb91f0cc79544383221ee6dafc8d2f8d0e7c51e10c912094e8df3511c0ca6",
+        "quadratic-alarm-far-curve.csv": "3270ad3926ba91a85d2e1f5ac9efa30931eb1eba5e14dfc278dbb056df4706af",
+        "quadratic-alarm-paired.csv": "5275f5b3e67ba256126d229033f5b28f73cd6271c11e0bd557fc1f38e9adc633",
+        "quadratic-alarm-vs-baselines.csv": "fd8a46ba0c61e861b2e5f0bd3e12b73c4338ddc38ca774ad7f1f2720b2e1ae90"
+      }
+    }
+  ],
+  "selfCheck": "selfcheck.json",
+  "selfCheckSha256": "c90b5c6f18c48f9c9c08fc74b6b0cc5f65e58e00d00f50868862e79d346e49b1",
+  "selfCheckAllPassed": true,
+  "preexistingArtefacts": {
+    "byteIdentical": [
+      "quadratic-alarm-events.csv",
+      "quadratic-alarm-far-curve.csv",
+      "quadratic-alarm-paired.csv"
+    ],
+    "numericEqualSchemaChanged": [
+      "quadratic-alarm-summary.csv",
+      "quadratic-alarm-cuts.csv"
+    ]
+  },
+  "notes": [
+    "Test predictions are the T6 artefact values; thresholds are calibrated on 5-fold out-of-fold calibration predictions (protocol extension, documented).",
+    "Alarm rule, score definition, threshold quantile, quality tiering and the four-state outcome labels are copied verbatim from the T8 implementation.",
+    "A3 evidence: run1 (.) and run2 (_rerun) are byte-identical for all six CSVs.",
+    "This directory contained a concurrent run's five CSVs when work started; they are preserved under _preexisting_concurrent/ for provenance."
+  ],
+  "protectedDuringRun": {
+    "changed": [],
+    "checked": 22
+  },
+  "protected": {
+    "criterion": "A4",
+    "checked": 22,
+    "changedDuringTask": [],
+    "changedVsT4Baseline": [
+      "reports/DSH-project-handoff.md"
+    ],
+    "taskStart": "2026-11-19T19:19:56+08:00",
+    "comparison": "sha256 + size + mtime at millisecond precision",
+    "note": "changedVsT4Baseline lists the divergence from the T4 snapshot; every entry there has an mtime older than taskStart and is never referenced by this task's scripts, so it predates this task.",
+    "detail": "selfcheck.json -> a4Protected"
+  }
+}

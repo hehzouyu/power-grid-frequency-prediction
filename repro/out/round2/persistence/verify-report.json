@@ -1,0 +1,93 @@
+{
+  "checks": [
+    {
+      "name": "A1.rows",
+      "ok": true,
+      "detail": "wide rows=432 expected 432 = 72 test x 6 conditions"
+    },
+    {
+      "name": "A1.scenarios",
+      "ok": true,
+      "detail": "unique scenarios=72"
+    },
+    {
+      "name": "A1.conditions",
+      "ok": true,
+      "detail": "per-scenario counts=[6], conditions=['clean', 'correlated20', 'noise_jump', 'white20', 'white30', 'white40']"
+    },
+    {
+      "name": "A1.role",
+      "ok": true,
+      "detail": "test ids=72, overlap with calibration=0"
+    },
+    {
+      "name": "A1.long",
+      "ok": true,
+      "detail": "long rows=1728 = 432 x 4 windows"
+    },
+    {
+      "name": "A1.semantics",
+      "ok": true,
+      "detail": "max|Pred - observed[window_end]| = 9.996e-17 pu (<1e-12; CSV round-trip only), persistence = last observed sample"
+    },
+    {
+      "name": "A1.truth",
+      "ok": true,
+      "detail": "max|Actual - min(truth after window)| = 9.975e-17 pu"
+    },
+    {
+      "name": "A2.rerun",
+      "ok": true,
+      "detail": "csv sha256 identical across two fresh dirs: 7b0d226b26acc0fc..."
+    },
+    {
+      "name": "A2.meta",
+      "ok": true,
+      "detail": "run-record.csv sha256 matches the file on disk"
+    },
+    {
+      "name": "A3.no_leak",
+      "ok": true,
+      "detail": "permuting truth rows leaves all 6 prediction columns unchanged (max diff 0.0e+00)"
+    },
+    {
+      "name": "A3.zero_params",
+      "ok": true,
+      "detail": "declared fittedParameters=0, testLabelsUsedForTuning=false, no sklearn estimator in generator"
+    },
+    {
+      "name": "A3.record",
+      "ok": true,
+      "detail": "command+seed+environment present; seed keys=['observationNoise', 'residualBootstrapUnused', 'scenarios']; python=3.14.6"
+    },
+    {
+      "name": "A4.path",
+      "ok": true,
+      "detail": "outDir=repro\\out\\round2\\persistence, files=['ieee39quality-test-persistence-predictions.csv', 'ieee39quality-test-persistence-windows.csv', 'run-record.json'], protectedHits=0"
+    }
+  ],
+  "allPassed": true,
+  "stats": {
+    "rmse_Hz": 0.15288880685091905,
+    "mae_Hz": 0.15050275855584905,
+    "p95_Hz": 0.19413709716401298,
+    "bias_Hz": 0.15050275855584905,
+    "riskEvents": 21,
+    "Pred_200ms": {
+      "rmse": 0.1924,
+      "mae": 0.1897
+    },
+    "Pred_300ms": {
+      "rmse": 0.1793,
+      "mae": 0.1768
+    },
+    "Pred_400ms": {
+      "rmse": 0.1649,
+      "mae": 0.1624
+    },
+    "Pred_500ms": {
+      "rmse": 0.1535,
+      "mae": 0.1512
+    }
+  }
+}

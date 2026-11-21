@@ -1,0 +1,7 @@
+Pattern,Model,PhysicalEvents,PhysicalRisk,RiskVariants,NonriskVariants,Hits,FalseAlarms,Timely,FAR,TimelyLow,TimelyHigh,FARLow,FARHigh,Late,LeadMedian_ms,LeadP5_ms
+new_a,persistence,8,0,0,32,0,1,,0.03125,,,0.0,0.09375,0,,
+new_a,quadratic,8,0,0,32,0,2,,0.0625,,,0.0,0.15625,0,,
+new_a,residual,8,0,0,32,0,1,,0.03125,,,0.0,0.09375,0,,
+new_b,persistence,8,0,0,32,0,0,,0.0,,,0.0,0.0,0,,
+new_b,quadratic,8,0,0,32,0,1,,0.03125,,,0.0,0.09375,0,,
+new_b,residual,8,0,0,32,0,2,,0.0625,,,0.0,0.125,0,,
