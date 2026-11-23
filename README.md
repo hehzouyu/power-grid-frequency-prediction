@@ -1,6 +1,6 @@
-# 量测质量变化下的电力系统短窗频率预测与滚动低频预警
+# 端点约束下的短窗形状信息及其对最低频率预测与低频预警的作用
 
-Short-window frequency-nadir prediction and rolling underfrequency warning under varying measurement quality. This archive accompanies the verified November 2026 manuscript (v4).
+2026 年 11 月 23 日科学修订版。正文 24 页，补充材料 31 页。可编辑 TeX 和图件见 [manuscript/](manuscript/)。[修订对照与证据边界](manuscript/修订对照与证据边界.md) 列出本版修改、确认结果和回顾性检验。
 
 ## 源码与样本目录
 
@@ -22,9 +22,9 @@ MAT、NPZ 和逐事件记录来自数值仿真。早期 MATLAB 样本与论文�
 
 | 文件 | 内容 |
 | --- | --- |
-| [主稿](paper.pdf) · [补充材料](supplement.pdf) | 封版论文和附表 |
+| [主稿](paper.pdf) · [补充材料](supplement.pdf) | 当前科学修订版正文与附表 |
 | [LaTeX 源码](latex-source.zip) | 主稿、补充材料和全部图件。使用 XeLaTeX，先编译 frequency-project-supplement.tex 再编译 frequency-project.tex |
-| [代码及复算表](code-and-recomputed-tables.zip) | MATLAB 和 Python 研究代码，证据审计脚本、复算 CSV、数字追溯索引和文献核验表 |
+| [代码及复算表](code-and-recomputed-tables.zip) | 前版归档的 MATLAB 和 Python 研究代码，证据审计脚本、复算 CSV、数字追溯索引和文献核验表 |
 | [固定截止证据](evidence-nadir.zip) | 近端点配对、ECGR、质量门控及其他固定截止预测记录 |
 | [原滚动预警证据](evidence-rolling.zip) | 聚合仿真和 IEEE 数值压力检验账本 |
 | [ECGR 滚动接入证据](evidence-rolling-ecgr.zip) | 逐窗、逐事件预测，冻结配置、告警阈值及验收 |
