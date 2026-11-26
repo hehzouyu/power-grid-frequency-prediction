@@ -1,0 +1,5 @@
+location,estimate,low95,high95,seed,draws,frame,scheme
+section7,85.12820512820512,76.75707799145299,92.98651175213674,60421,2000,65 B; 96 C,independent within-stratum draws; B minus C
+table5,85.12820512820512,76.92307692307692,92.82051282051282,60421,2000,65 B,within B only
+tables6-7,85.12820512820512,76.4102564102564,92.38155515370704,60421,2000,320 test designs,common design IDs; recompute B denominator
+supplement-r2-interaction,85.12820512820512,76.26463763138312,92.7508484343984,60421,2000,320 test designs,common design IDs; recompute B and C denominators

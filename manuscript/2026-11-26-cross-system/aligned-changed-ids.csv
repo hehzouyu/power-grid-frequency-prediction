@@ -1,0 +1,8 @@
+design_id,variant,method,stratum,first_alarm_ms_25,first_alarm_ms_125,lead_25,lead_125,lead_changed,alarm_changed,first_alarm_ms_changed,triggered_changed,signature_changed,score_Hz_changed,margin_Hz_changed,b_ms_changed,at_alarm_signature_25,at_alarm_score_Hz_25,at_alarm_margin_Hz_25,at_alarm_signature_125,at_alarm_score_Hz_125,at_alarm_margin_Hz_125
+8,white,full,safe,inf,inf,,,False,False,False,False,True,True,True,False,,,,,,
+9,AR1,full,safe,500.0,500.0,,,False,False,False,False,True,True,True,False,e74a67d7ef9991add37e,49.75213780874683,-0.0011972929884365158,81df91fadc3a9eeb46be,49.752277458314495,-0.0010576434207720808
+17,clean,full,safe,200.0,200.0,,,False,False,False,False,True,True,True,False,69d34b805c917b319e08,49.75290847951258,-0.00048379291893496656,194532c4cf85161ea81c,49.752336938030275,-0.0010553344012365073
+81,white,full,safe,500.0,500.0,,,False,False,False,False,True,True,True,False,3e562d20aca9a0798dc6,49.75175789965802,-0.001577202077250206,3e562d20aca9a0798dc6,49.75175789965802,-0.001577202077250206
+152,clean,full,safe,500.0,500.0,,,False,False,False,False,True,True,True,False,78589952471f06254ba1,49.75091767930187,-0.0019031064584709156,78589952471f06254ba1,49.75091767930187,-0.0019031064584709156
+282,white,full,safe,400.0,400.0,,,False,False,False,False,True,True,True,False,0fea87d8d6057b510c88,49.751811058422476,-0.0015240433127914343,0fea87d8d6057b510c88,49.751811058422476,-0.0015240433127914343
+313,white,full,B,200.0,200.0,380.0,380.0,False,False,False,False,True,True,True,False,ee461a0389da5bd7cb80,49.74424924030017,-0.009085861435096376,ee461a0389da5bd7cb80,49.74424924030017,-0.009085861435096376

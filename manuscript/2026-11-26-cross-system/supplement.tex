@@ -1,0 +1,1022 @@
+% Supplement to the matched-information cross-system study
+\documentclass[10pt]{article}
+\usepackage[margin=22mm]{geometry}\usepackage{caption}\usepackage{amsmath,amssymb,booktabs,longtable,array,graphicx,microtype,hyperref}
+\hypersetup{hidelinks}\setlength{\emergencystretch}{2em}
+\renewcommand{\thetable}{S\arabic{table}}
+\title{Supplementary material\\\large Decision deadlines, measurement noise and representation across simulated power systems}
+\author{}\date{}
+\begin{document}\maketitle\vspace{-2.5em}
+\noindent Sections 1--8 cover aggregate confirmation and original network transfer. Sections 9--13 document recovery and the network deadline study. Sections 14--15 evaluate the historical numerical clock. Section 16 describes the independently fitted IEEE 39 policies and training envelope. Sections 17--18 give their measurement-specific operating points and the reproduction commands.
+\section{Observation, labels and strict first alarms}
+Time zero denotes the disturbance. A 20-ms clock supplies the prefix $y_0,\ldots,y_w$ with $w\in\{10,15,20,25\}$. The response starts at sample $w+1$. The archived 1,200-row aggregate training grid ends 19 s after the disturbance. The newly simulated records end 20 s after it. On all 1,200 parameter vectors a common-integrator check found identical minima for the two horizons at all four cutoffs. The final sample was never the minimum in the original training grid. The first crossing of the unperturbed event truth below 0.995 pu defines risk, regardless of where its minimum lies. This includes events whose crossing occurs before any alarm could have 200 ms of lead. The risk definition is held fixed for amplitude prediction, warnings and transfer.
+
+The quality scale is $a=\max(0.005,\sqrt{\mathrm{mean}[(y-\bar y_{\rm pre})^2]})$ in 50-Hz-equivalent units. For the same 50 pre-disturbance samples and current window, $Q=\max\{\mathrm{sd}_0(y_{\rm pre}),\sqrt{\mathrm{mean}[(\Delta^3y)^2]/20}\}/a$, where $\mathrm{sd}_0$ uses the population denominator. Bins are $Q\le0.0025$, $0.0025<Q\le0.016$, and $Q>0.016$. The endpoint predictor receives the last deviation and the shared bin-dependent threshold, the full-window predictor receives the entire visible window and that same binning rule. Separate models have separate numerical references and thresholds.
+
+For each safe development variant, take the lowest score among windows that visited a bin. Pool these minima and select order statistic $\lfloor0.10n\rfloor+1$ as the bin reference. A bin with no visits falls back to all development safe minima. Subtract that bin reference from each score. On safe calibration variants, take the lowest adjusted score across the four windows and use the same order rule for a single global cutoff. At inference compare in binary double precision by strict inequality. Ties can reduce the empirical alarm fraction below the nominal target. Reported thresholds saved as text are never read back for decisions. Persistence uses the last observed frequency; quadratic features concatenate its deviation with the linear and quadratic coefficients on normalised time.
+
+For each physical event and measurement variant define $a$ as the first triggering decision time, using infinity if none triggers. For a crossing time $b$, the hit is $\mathbf1[b<\infty,\ b-a\ge200~\mathrm{ms}]$; for a safe event the false alarm is $\mathbf1[a<\infty]$. Each physical event, including every variant, is the resampling unit. All comparisons use 2,000 paired draws. Results estimate uncertainty conditional on the fitted models, calibration sets and empirical perturbation distribution. No family-wise guarantee is attached to the exploratory strata.
+
+\section{Source data and evidence boundaries}
+The source grid contains 1,200 combinations. New aggregate parameters are sampled independently and uniformly over $H\in[2,6]$ s, $D\in[0.5,2]$, $R\in[0.04,0.06]$, $T_g\in[0.2,1]$ s and $d\in[0.02,0.08]$ pu. Integration uses fourth-order Runge--Kutta at 5 ms. Exact five-parameter keys were checked against previous training, development, calibration and confirmation archives. Histories include shared-model experiments that cannot supply an independent physical system. Development and calibration were reused across studies. Only the event seeds for the prospective comparison were fresh. The confirmation seeds for parameters, noise and resampling are 421117, 421118 and 421119.
+
+\paragraph{Historical fixed-cutoff and warning experiments.}
+On monotone clean trajectories the net window drop and its mean slope are functions of the endpoint. Segment slopes, segment fits, quadratic terms and variational-mode-decomposition energies were compared in the original fixed-cutoff study. On the 232 clean grid-test events with a post-cutoff nadir, the boosted endpoint tree had RMSE 35.4 mHz. Adding quadratic terms, segment differences, fitted segment slopes or mode energies gave 11.2, 11.7, 11.8 and 18.0 mHz, respectively. This single-event error comparison motivated matching the endpoints across events. Splitting events by the timing of their nadir was an evaluation stratification; it was unavailable to online predictors. The matched-pair comparison in the main paper uses archive member predictions and re-extracted true suffix minima. Two candidate members can share the same reference event; paired resampling respects that dependence. The full clean waveform and the endpoint plus all chord residuals are one-to-one equivalent. ECGR compresses the residual by fitting endpoint-constrained basis functions under a working covariance and shrinkage.
+
+The original representation gate switched from ECGR to quadratic to endpoint as $Q$ increased. Its adverse 30-dB fixed-estimator tail and the failed false-alarm protection in the original rolling 10\% comparison remain part of the evidence.
+
+The previous five-condition confirmation yielded 1,220/2,025 effective hits and 1,025/9,975 false alarms for the quality-stratified full window, versus 787 and 961 for quality-stratified persistence. The differences were $+21.38$ [16.57,25.92] and $+0.64$ [$-0.24$,1.53] pp. The full-window contrast with a trained endpoint tree was added after viewing that confirmation: $+29.23$ [26.49,32.15] pp in effective hits. The gate was $-6.57$ [$-9.31,-3.91$] pp below the stratified full window. An even earlier five-condition comparison of the gate with ordinary persistence yielded $+16.21$ [12.28,20.17] pp in hits and $-1.08$ [$-2.05,-0.09$] pp in false alarms. In that earlier batch, the post hoc unstratified full-window minus gate hit contrast was $+2.84$ [$-0.30$,5.87] pp. These batches have different denominators and experimental roles.
+
+The previous matched-test-false-alarm comparison of gate versus ordinary persistence used test labels to interpolate a 10\% false-alarm point. At 200 ms it yielded $+21.41$ pp in the aggregate experiment and $-47.14$ pp on 118 completed high-load IEEE 39-bus trajectories. Transferred aggregate thresholds produced no alarms there. Ten failed runs remained of unknown risk. Those older network trajectories overlap previously examined designs. They are retrospective evidence with a different disturbance distribution from the new transfer tests.
+
+\paragraph{Limits of the archived warning and interval evidence.}
+The original rolling-versus-fixed comparison gained 98 timely detections among early crossings and lost 15 among later crossings. A separate fixed-cutoff one-sided bound passed 10 of 21 historical acceptance checks. Under 20-dB correlated noise, the envelope incorrectly declared 10 of 105 unsafe events safe. These outcomes address opportunity and conservative amplitude bounds, respectively; neither measures the new full-window versus endpoint contrast.
+
+\section{Residual estimation and historical representation tests}
+Write $r=Lf$ where row $i$ of $L\in\mathbb R^{(n-2)\times n}$ subtracts the endpoint chord from interior observation $i$. Let $B\in\mathbb R^{(n-2)\times2}$ contain the symmetric and antisymmetric columns defined in the main text. With $S=(I+T)/2$, $T_{ij}=0.65^{|i-j|}$ for the $n$ observation errors, factor $LSL^\top=CC^\top$ using a lower triangular Cholesky factor. The shared endpoint errors therefore enter the covariance of the residuals. Set $z=C^{-1}r$ and $Z=C^{-1}B$. With the two-coefficient least-squares fit $\tilde\beta$, define $s^2=\|z-Z\tilde\beta\|^2/(n-4)$. The estimate is
+\[
+ \hat\beta=\arg\min_{\beta\in\mathbb R^2}\left\{\|z-Z\beta\|^2+4(s^2/v)\beta_2^2\right\}.
+\]
+Here $v$ is the frozen training mean of squared unpenalised cubic coefficients with a $10^{-8}$ Hz$^2$ floor. The multiplier 4 was selected in historical validation. At 0.50 s, $n=26$, giving 24 residuals and 22 residual degrees of freedom. For shorter rolling windows the same basis and working covariance are resized on the normalised time grid. The scale $s^2$ can include omitted physical dynamics. The coefficients describe finite-window shape rather than uniquely identifying governor parameters.
+
+For $Q\le0.0025$ the original gate uses the frozen ECGR tree; above that boundary through $0.016$ it uses the quadratic tree; above $0.016$ it uses the trained endpoint tree. The gate compares the selected score with its own global cutoff. The quality-stratified raw, quadratic, persistence and endpoint policies instead retain their scoring representation and centre the score within its current bin before testing a separately calibrated global cutoff.
+
+\begin{table}[htbp]\centering\small
+\caption{Retrospective component diagnostic (archived pair-components ledger). Errors are mHz for 222 eligible pairs from 96 reference scenes, one clean realisation or ten white-noise realisations per pair. Direction accuracy uses all 288 pairs per realisation. The 2,880 noisy direction judgments per representation are 288 pairs times ten realisations. The fresh test separately yields 2,880 first-alarm records (240 designs times three variants times four policies). Each ledger has a different unit.}\label{tab:abl}
+\begin{tabular}{llrrr}\toprule Condition & Representation & MAE & P95 & Direction correct\\\midrule
+Clean & ECGR & 4.44 & 11.20 & 234/288 \\
+Clean & Without whitening & 4.61 & 12.67 & 231/288 \\
+Clean & Without cubic & 4.29 & 12.37 & 247/288 \\
+Clean & Without shrinkage & 4.37 & 10.79 & 235/288 \\
+Clean & Quadratic & 5.67 & 14.89 & 246/288 \\
+Clean & Full window & 9.93 & 23.83 & 146/288 \\
+White 30 dB & ECGR & 13.96 & 39.57 & 1967/2880 \\
+White 30 dB & Without whitening & 19.64 & 54.04 & 1820/2880 \\
+White 30 dB & Without cubic & 14.00 & 39.92 & 1975/2880 \\
+White 30 dB & Without shrinkage & 16.11 & 43.25 & 1882/2880 \\
+White 30 dB & Quadratic & 13.71 & 39.09 & 1944/2880 \\
+White 30 dB & Full window & 13.94 & 38.00 & 1732/2880 \\
+\bottomrule\end{tabular}\end{table}
+In the original fixed-cutoff ECGR confirmation, the clean paired MAE difference from quadratic was $-1.23$ [$-1.68,-0.75$] mHz. At 30 dB the endpoint P95 was 34.33 mHz, the prespecified upper tolerance was 36.04 mHz, and ECGR reached 39.57 mHz. A separate fixed-cutoff gate study used 128 individual events and 220 eligible pairs. Under its specified mixture, gating reduced individual-event MAE from 23.93 to 19.25 mHz relative to the fixed endpoint. These comparisons neither validate a four-window warning rule nor isolate the cubic coefficient.
+
+The historical five-condition experiments mixed clean, 40-, 30- and 20-dB white noise and 30-dB AR(1) variants equally; jumps were separate. Noise magnitude there depended on the simulated event amplitude. In the earlier confirmation the gate and ordinary persistence recorded 1,083 and 758 hits among 2,005 risk variants and 994 and 1,102 false alarms among 9,995 safe variants. In the subsequent five-condition batch, overweighting stronger white and correlated noise raised the upper false-alarm cost of the stratified full window versus stratified persistence to 2.30 pp, exceeding the 2-pp guard. These archival operating points have different populations and noise laws from the three-condition confirmation.
+
+\section{Numerical development and target sampling}
+ANDES 2.0.0 uses its distributed dynamic workbooks. The Kundur model uses four GENROU machines with TGOV1 governors and EXDC2 exciters. The IEEE 39-bus case contains ten GENROU machines, TGOV1N governors and IEEEX1 exciters. Static MATPOWER bus cases by themselves do not supply these differential states. Built-in switching actions are disabled. Loads retain constant-power active and reactive components. For each event the initial demand scale is drawn uniformly from 0.975 to 1.025. At 1 s, a constant increment in active and reactive demand is applied. The active increment is the specified fraction of total scaled active demand. Its reactive increment preserves the ratio of the affected load(s). The Kundur patterns step either of the two loads. The 39-bus patterns step four loads at descending load ranks (1,4,7,10) or (2,5,8,11), distributing the increment by active demand. Each pattern is equally likely. Patterns were sampled for controlled numerical coverage, without an estimate of real-world prevalence.
+
+\begin{center}\captionof{table}{Target disturbance ranges from the transfer protocol, fixed after 100 pilot designs per system. Each range applies to physical designs before the three measurement variants are generated.}\begin{tabular}{lll}\toprule Formal design & Pattern 1 fraction & Pattern 2 fraction\\\midrule
+Kundur & 0.036--0.053 & 0.040--0.069\\
+IEEE 39 & 0.108--0.133 & 0.110--0.142\\\bottomrule\end{tabular}\end{center}
+The two cases use meters (1,6,10) and (1,20,39), respectively. Positive online inertia weights are the ANDES system-base machine start-up times. The predictor uses the measured bus channels, while the outcome uses the weighted mean of machine rotor speeds. True pre-event COI and meter deviations were checked against $10^{-4}$ pu. The 1,051-point recording spans 0--21 s absolute time, with 50 genuine pre-event samples. The prior solver value is selected at each nominal sampling time with a $10^{-9}$ s round-off tolerance; the last accepted state can be nearly 20 ms old. Sensor, detector and actuator latency are outside this design.
+
+At the initial extreme injection, one of two cases on each network failed (0.18 on Kundur and 0.15 on IEEE 39). Both are logged. Smaller and moderate development injections were then run on both systems with 20-ms implicit trapezoid, 10-ms implicit trapezoid and 10-ms backward Euler. Across eight pairwise checks, all crossing labels agreed, crossing-time differences were zero, the largest change in COI nadir was $1.28\times10^{-5}$ pu and the largest prefix meter difference was $2.28\times10^{-4}$ pu. These checks cover a small number of trajectories. The 100-design unscored pilots included 18 incomplete Kundur and 23 incomplete IEEE 39 runs. Formal ranges were narrowed independently by site after these pilots; this conditions the scientific population and does not repair the failed pilot trajectories.
+
+As an additional numerical diagnostic, we selected the first completed positive pilot design by index on each system. The IEEE 39 crossing moved by one 20-ms sample under the refined methods. The Kundur design crossed at 2.58 s with both 20-ms and 10-ms trapezoid but at 2.70 s with 10-ms backward Euler. This 120-ms change exceeded the 60-ms development tolerance. The nadir lay close to 0.995 pu. At 5-ms integration steps the two methods crossed at 2.58 and 2.62 s; at 2.5-ms steps they crossed at 2.56 and 2.60 s. Both retained the risk label, and all four alarm windows remained eligible in this event. These results document integration sensitivity near the level crossing. They cannot substitute for rerunning every formal design at the smaller step.
+
+\begingroup\small\setlength{\tabcolsep}{3.8pt}
+\begin{longtable}{llrrrrr}
+\caption{Solver ledger. No risk class is assigned to incomplete runs. Per-design logs; counts are physical designs before measurement overlays. Pilot is development only.}\\
+\toprule System & Split & Planned & Complete & Risk & Safe & Unknown \\\midrule\endfirsthead
+\toprule System & Split & Planned & Complete & Risk & Safe & Unknown \\\midrule\endhead
+Kundur & pilot & 100 & 82 & 28 & 54 & 18 \\
+Kundur & train & 240 & 202 & 67 & 135 & 38 \\
+Kundur & dev & 120 & 105 & 36 & 69 & 15 \\
+Kundur & cal & 180 & 162 & 56 & 106 & 18 \\
+Kundur & test & 600 & 520 & 200 & 320 & 80 \\
+IEEE 39 & pilot & 100 & 77 & 17 & 60 & 23 \\
+IEEE 39 & train & 240 & 230 & 39 & 191 & 10 \\
+IEEE 39 & dev & 120 & 118 & 30 & 88 & 2 \\
+IEEE 39 & cal & 180 & 177 & 29 & 148 & 3 \\
+IEEE 39 & test & 600 & 587 & 112 & 475 & 13 \\
+\bottomrule\end{longtable}\endgroup
+A numbered design is never replaced after failure. The original transfer analysis uses the successful rows for trajectory metrics. Worst-case bounds below allow any unknown case to have either outcome and a maximal paired contrast. These are identification bounds, separate from sampling intervals among solved cases.
+
+\section{Frozen thresholds and complete operating points}
+T0 uses the source binary thresholds, T1 replaces only the global cutoff. T2 uses the same capacity on target training events with all three noise variants, while preserving the source bin references. T3 changes only how the bin references and corresponding global cutoff are calibrated relative to T2. Across methods the endpoint and waveform regressors always receive the same suffix targets. Persistence has no supervised parameters. ECGR is confined to the source comparison.
+\begingroup\small\setlength{\tabcolsep}{3.8pt}
+\begin{longtable}{lllrrr}
+\caption{Aggregate absolute operating points. Lead is the median among effective hits (ms). Count ledger; 405 risk and 1,995 safe physical events. Mixed rows count three variants per event; strata count one. Only the mixed window--endpoint contrast is primary.}\\
+\toprule Level & Noise & Score & Effective hits & False alarms & Lead \\\midrule\endfirsthead
+\toprule Level & Noise & Score & Effective hits & False alarms & Lead \\\midrule\endhead
+A & Mixed & Endpoint & 313/1215 & 552/5985 & 340 \\
+A & Mixed & Window & 740/1215 & 623/5985 & 340 \\
+A & Mixed & Persist. & 428/1215 & 512/5985 & 260 \\
+A & Mixed & Quadratic & 737/1215 & 666/5985 & 440 \\
+A & Mixed & Orig. gate & 645/1215 & 565/5985 & 360 \\
+A & Clean & Endpoint & 95/405 & 179/1995 & 360 \\
+A & Clean & Window & 251/405 & 196/1995 & 340 \\
+A & Clean & Persist. & 146/405 & 172/1995 & 260 \\
+A & Clean & Quadratic & 367/405 & 192/1995 & 460 \\
+A & Clean & Orig. gate & 343/405 & 70/1995 & 400 \\
+A & White & Endpoint & 111/405 & 182/1995 & 320 \\
+A & White & Window & 255/405 & 210/1995 & 360 \\
+A & White & Persist. & 140/405 & 176/1995 & 260 \\
+A & White & Quadratic & 177/405 & 227/1995 & 420 \\
+A & White & Orig. gate & 151/405 & 248/1995 & 320 \\
+A & AR(1) & Endpoint & 107/405 & 191/1995 & 340 \\
+A & AR(1) & Window & 234/405 & 217/1995 & 340 \\
+A & AR(1) & Persist. & 142/405 & 164/1995 & 260 \\
+A & AR(1) & Quadratic & 193/405 & 247/1995 & 400 \\
+A & AR(1) & Orig. gate & 151/405 & 247/1995 & 340 \\
+\bottomrule\end{longtable}\endgroup
+\begingroup\small\setlength{\tabcolsep}{3.8pt}
+\begin{longtable}{lllrrr}
+\caption{Kundur absolute operating points. Lead is the median among effective hits (ms). Count ledger; 200 risk and 320 safe physical events. Mixed rows count three variants per event; strata count one. Only the mixed T3 window--endpoint contrast is primary for this network.}\\
+\toprule Level & Noise & Score & Effective hits & False alarms & Lead \\\midrule\endfirsthead
+\toprule Level & Noise & Score & Effective hits & False alarms & Lead \\\midrule\endhead
+T0 & Mixed & Endpoint & 0/600 & 0/960 & -- \\
+T0 & Mixed & Window & 0/600 & 0/960 & -- \\
+T0 & Mixed & Persist. & 0/600 & 0/960 & -- \\
+T0 & Mixed & Quadratic & 0/600 & 0/960 & -- \\
+T0 & Clean & Endpoint & 0/200 & 0/320 & -- \\
+T0 & Clean & Window & 0/200 & 0/320 & -- \\
+T0 & Clean & Persist. & 0/200 & 0/320 & -- \\
+T0 & Clean & Quadratic & 0/200 & 0/320 & -- \\
+T0 & White & Endpoint & 0/200 & 0/320 & -- \\
+T0 & White & Window & 0/200 & 0/320 & -- \\
+T0 & White & Persist. & 0/200 & 0/320 & -- \\
+T0 & White & Quadratic & 0/200 & 0/320 & -- \\
+T0 & AR(1) & Endpoint & 0/200 & 0/320 & -- \\
+T0 & AR(1) & Window & 0/200 & 0/320 & -- \\
+T0 & AR(1) & Persist. & 0/200 & 0/320 & -- \\
+T0 & AR(1) & Quadratic & 0/200 & 0/320 & -- \\
+T1 & Mixed & Endpoint & 555/600 & 81/960 & 1440 \\
+T1 & Mixed & Window & 551/600 & 112/960 & 1280 \\
+T1 & Mixed & Persist. & 567/600 & 119/960 & 1200 \\
+T1 & Mixed & Quadratic & 550/600 & 73/960 & 1280 \\
+T1 & Clean & Endpoint & 184/200 & 24/320 & 1480 \\
+T1 & Clean & Window & 192/200 & 27/320 & 1300 \\
+T1 & Clean & Persist. & 191/200 & 38/320 & 1200 \\
+T1 & Clean & Quadratic & 184/200 & 24/320 & 1280 \\
+T1 & White & Endpoint & 186/200 & 28/320 & 1400 \\
+T1 & White & Window & 177/200 & 41/320 & 1240 \\
+T1 & White & Persist. & 188/200 & 45/320 & 1200 \\
+T1 & White & Quadratic & 184/200 & 24/320 & 1280 \\
+T1 & AR(1) & Endpoint & 185/200 & 29/320 & 1420 \\
+T1 & AR(1) & Window & 182/200 & 44/320 & 1280 \\
+T1 & AR(1) & Persist. & 188/200 & 36/320 & 1200 \\
+T1 & AR(1) & Quadratic & 182/200 & 25/320 & 1280 \\
+T2 & Mixed & Endpoint & 560/600 & 144/960 & 1480 \\
+T2 & Mixed & Window & 575/600 & 115/960 & 1480 \\
+T2 & Mixed & Persist. & 567/600 & 119/960 & 1200 \\
+T2 & Mixed & Quadratic & 579/600 & 136/960 & 1500 \\
+T2 & Clean & Endpoint & 185/200 & 16/320 & 1480 \\
+T2 & Clean & Window & 197/200 & 16/320 & 1500 \\
+T2 & Clean & Persist. & 191/200 & 38/320 & 1200 \\
+T2 & Clean & Quadratic & 200/200 & 18/320 & 1500 \\
+T2 & White & Endpoint & 188/200 & 68/320 & 1480 \\
+T2 & White & Window & 190/200 & 45/320 & 1480 \\
+T2 & White & Persist. & 188/200 & 45/320 & 1200 \\
+T2 & White & Quadratic & 190/200 & 61/320 & 1480 \\
+T2 & AR(1) & Endpoint & 187/200 & 60/320 & 1480 \\
+T2 & AR(1) & Window & 188/200 & 54/320 & 1480 \\
+T2 & AR(1) & Persist. & 188/200 & 36/320 & 1200 \\
+T2 & AR(1) & Quadratic & 189/200 & 57/320 & 1480 \\
+T3 & Mixed & Endpoint & 560/600 & 144/960 & 1480 \\
+T3 & Mixed & Window & 575/600 & 115/960 & 1480 \\
+T3 & Mixed & Persist. & 567/600 & 119/960 & 1200 \\
+T3 & Mixed & Quadratic & 579/600 & 136/960 & 1500 \\
+T3 & Clean & Endpoint & 185/200 & 16/320 & 1480 \\
+T3 & Clean & Window & 197/200 & 16/320 & 1500 \\
+T3 & Clean & Persist. & 191/200 & 38/320 & 1200 \\
+T3 & Clean & Quadratic & 200/200 & 18/320 & 1500 \\
+T3 & White & Endpoint & 188/200 & 68/320 & 1480 \\
+T3 & White & Window & 190/200 & 45/320 & 1480 \\
+T3 & White & Persist. & 188/200 & 45/320 & 1200 \\
+T3 & White & Quadratic & 190/200 & 61/320 & 1480 \\
+T3 & AR(1) & Endpoint & 187/200 & 60/320 & 1480 \\
+T3 & AR(1) & Window & 188/200 & 54/320 & 1480 \\
+T3 & AR(1) & Persist. & 188/200 & 36/320 & 1200 \\
+T3 & AR(1) & Quadratic & 189/200 & 57/320 & 1480 \\
+\bottomrule\end{longtable}\endgroup
+\begingroup\small\setlength{\tabcolsep}{3.8pt}
+\begin{longtable}{lllrrr}
+\caption{IEEE 39 absolute operating points. Lead is the median among effective hits (ms). Count ledger; 112 risk and 475 safe physical events. Mixed rows count three variants per event; strata count one. Only the mixed T3 window--endpoint contrast is primary for this network.}\\
+\toprule Level & Noise & Score & Effective hits & False alarms & Lead \\\midrule\endfirsthead
+\toprule Level & Noise & Score & Effective hits & False alarms & Lead \\\midrule\endhead
+T0 & Mixed & Endpoint & 0/336 & 0/1425 & -- \\
+T0 & Mixed & Window & 0/336 & 0/1425 & -- \\
+T0 & Mixed & Persist. & 0/336 & 0/1425 & -- \\
+T0 & Mixed & Quadratic & 0/336 & 0/1425 & -- \\
+T0 & Clean & Endpoint & 0/112 & 0/475 & -- \\
+T0 & Clean & Window & 0/112 & 0/475 & -- \\
+T0 & Clean & Persist. & 0/112 & 0/475 & -- \\
+T0 & Clean & Quadratic & 0/112 & 0/475 & -- \\
+T0 & White & Endpoint & 0/112 & 0/475 & -- \\
+T0 & White & Window & 0/112 & 0/475 & -- \\
+T0 & White & Persist. & 0/112 & 0/475 & -- \\
+T0 & White & Quadratic & 0/112 & 0/475 & -- \\
+T0 & AR(1) & Endpoint & 0/112 & 0/475 & -- \\
+T0 & AR(1) & Window & 0/112 & 0/475 & -- \\
+T0 & AR(1) & Persist. & 0/112 & 0/475 & -- \\
+T0 & AR(1) & Quadratic & 0/112 & 0/475 & -- \\
+T1 & Mixed & Endpoint & 13/336 & 113/1425 & 2240 \\
+T1 & Mixed & Window & 169/336 & 98/1425 & 1640 \\
+T1 & Mixed & Persist. & 158/336 & 111/1425 & 1560 \\
+T1 & Mixed & Quadratic & 101/336 & 129/1425 & 1560 \\
+T1 & Clean & Endpoint & 0/112 & 44/475 & -- \\
+T1 & Clean & Window & 78/112 & 17/475 & 1640 \\
+T1 & Clean & Persist. & 11/112 & 25/475 & 1940 \\
+T1 & Clean & Quadratic & 101/112 & 129/475 & 1560 \\
+T1 & White & Endpoint & 6/112 & 23/475 & 2210 \\
+T1 & White & Window & 52/112 & 38/475 & 1590 \\
+T1 & White & Persist. & 73/112 & 41/475 & 1520 \\
+T1 & White & Quadratic & 0/112 & 0/475 & -- \\
+T1 & AR(1) & Endpoint & 7/112 & 46/475 & 2240 \\
+T1 & AR(1) & Window & 39/112 & 43/475 & 1660 \\
+T1 & AR(1) & Persist. & 74/112 & 45/475 & 1560 \\
+T1 & AR(1) & Quadratic & 0/112 & 0/475 & -- \\
+T2 & Mixed & Endpoint & 152/336 & 98/1425 & 1580 \\
+T2 & Mixed & Window & 312/336 & 103/1425 & 1840 \\
+T2 & Mixed & Persist. & 158/336 & 111/1425 & 1560 \\
+T2 & Mixed & Quadratic & 101/336 & 128/1425 & 1660 \\
+T2 & Clean & Endpoint & 38/112 & 16/475 & 1610 \\
+T2 & Clean & Window & 111/112 & 15/475 & 1900 \\
+T2 & Clean & Persist. & 11/112 & 25/475 & 1940 \\
+T2 & Clean & Quadratic & 101/112 & 128/475 & 1660 \\
+T2 & White & Endpoint & 56/112 & 40/475 & 1600 \\
+T2 & White & Window & 101/112 & 30/475 & 1820 \\
+T2 & White & Persist. & 73/112 & 41/475 & 1520 \\
+T2 & White & Quadratic & 0/112 & 0/475 & -- \\
+T2 & AR(1) & Endpoint & 58/112 & 42/475 & 1560 \\
+T2 & AR(1) & Window & 100/112 & 58/475 & 1830 \\
+T2 & AR(1) & Persist. & 74/112 & 45/475 & 1560 \\
+T2 & AR(1) & Quadratic & 0/112 & 0/475 & -- \\
+T3 & Mixed & Endpoint & 217/336 & 98/1425 & 1620 \\
+T3 & Mixed & Window & 315/336 & 112/1425 & 1860 \\
+T3 & Mixed & Persist. & 251/336 & 120/1425 & 1540 \\
+T3 & Mixed & Quadratic & 311/336 & 129/1425 & 1840 \\
+T3 & Clean & Endpoint & 106/112 & 18/475 & 1650 \\
+T3 & Clean & Window & 112/112 & 16/475 & 1900 \\
+T3 & Clean & Persist. & 112/112 & 40/475 & 1600 \\
+T3 & Clean & Quadratic & 104/112 & 3/475 & 1870 \\
+T3 & White & Endpoint & 54/112 & 39/475 & 1580 \\
+T3 & White & Window & 103/112 & 33/475 & 1840 \\
+T3 & White & Persist. & 67/112 & 38/475 & 1480 \\
+T3 & White & Quadratic & 103/112 & 57/475 & 1840 \\
+T3 & AR(1) & Endpoint & 57/112 & 41/475 & 1560 \\
+T3 & AR(1) & Window & 100/112 & 63/475 & 1830 \\
+T3 & AR(1) & Persist. & 72/112 & 42/475 & 1550 \\
+T3 & AR(1) & Quadratic & 104/112 & 69/475 & 1830 \\
+\bottomrule\end{longtable}\endgroup
+\section{Differences relative to the endpoint and persistence}
+Machine-readable files also report comparisons with the full window. Below, each pair of columns reports a hit-rate difference and false-alarm-rate difference, each with a physical-event clustered 95\% interval. The zero difference of any strategy with itself follows directly from the shared event ledger. All percentages use every variant of the corresponding risk class.
+\begingroup\small\setlength{\tabcolsep}{3.8pt}
+\begin{longtable}{lllrr}
+\caption{Aggregate, relative to Endpoint. Differences in percentage points. Paired ledger; 405 risk and 1,995 safe physical events. Mixed rows count three variants per event; strata count one. Only the mixed window--endpoint contrast is primary.}\\
+\toprule Level & Noise & Score & Effective hit difference [95\%] & False alarm difference [95\%] \\\midrule\endfirsthead
+\toprule Level & Noise & Score & Effective hit difference [95\%] & False alarm difference [95\%] \\\midrule\endhead
+A & Mixed & Window & 35.14 [31.54, 38.57] & 1.19 [0.39, 1.99] \\
+A & Mixed & Persist. & 9.47 [4.66, 14.23] & -0.67 [-1.60, 0.24] \\
+A & Mixed & Quadratic & 34.90 [30.82, 39.02] & 1.90 [0.82, 2.94] \\
+A & Clean & Window & 38.52 [33.50, 43.14] & 0.85 [-0.25, 2.00] \\
+A & Clean & Persist. & 12.59 [6.70, 18.16] & -0.35 [-1.63, 0.86] \\
+A & Clean & Quadratic & 67.16 [62.67, 71.87] & 0.65 [-0.70, 2.03] \\
+A & White & Window & 35.56 [30.17, 40.80] & 1.40 [0.10, 2.80] \\
+A & White & Persist. & 7.16 [1.31, 12.83] & -0.30 [-1.44, 0.91] \\
+A & White & Quadratic & 16.30 [9.92, 22.21] & 2.26 [0.60, 3.95] \\
+A & AR(1) & Window & 31.36 [26.09, 36.80] & 1.30 [-0.10, 2.75] \\
+A & AR(1) & Persist. & 8.64 [3.15, 14.13] & -1.35 [-2.61, -0.15] \\
+A & AR(1) & Quadratic & 21.23 [15.49, 27.59] & 2.81 [1.09, 4.42] \\
+\bottomrule\end{longtable}\endgroup
+\begingroup\small\setlength{\tabcolsep}{3.8pt}
+\begin{longtable}{lllrr}
+\caption{Aggregate, relative to persistence. Differences in percentage points. Paired ledger; 405 risk and 1,995 safe physical events. Mixed rows count three variants per event; strata count one. Only the mixed window--endpoint contrast is primary.}\\
+\toprule Level & Noise & Score & Effective hit difference [95\%] & False alarm difference [95\%] \\\midrule\endfirsthead
+\toprule Level & Noise & Score & Effective hit difference [95\%] & False alarm difference [95\%] \\\midrule\endhead
+A & Mixed & Endpoint & -9.47 [-14.23, -4.66] & 0.67 [-0.24, 1.60] \\
+A & Mixed & Window & 25.68 [20.45, 30.89] & 1.85 [0.80, 2.90] \\
+A & Mixed & Quadratic & 25.43 [20.80, 30.08] & 2.57 [1.35, 3.83] \\
+A & Clean & Endpoint & -12.59 [-18.16, -6.70] & 0.35 [-0.86, 1.63] \\
+A & Clean & Window & 25.93 [19.58, 31.97] & 1.20 [-0.30, 2.71] \\
+A & Clean & Quadratic & 54.57 [49.88, 59.50] & 1.00 [-0.25, 2.29] \\
+A & White & Endpoint & -7.16 [-12.83, -1.31] & 0.30 [-0.91, 1.44] \\
+A & White & Window & 28.40 [22.15, 34.46] & 1.70 [0.41, 3.06] \\
+A & White & Quadratic & 9.14 [2.51, 15.47] & 2.56 [0.90, 4.35] \\
+A & AR(1) & Endpoint & -8.64 [-14.13, -3.15] & 1.35 [0.15, 2.61] \\
+A & AR(1) & Window & 22.72 [16.94, 28.61] & 2.66 [1.24, 4.02] \\
+A & AR(1) & Quadratic & 12.59 [6.55, 19.11] & 4.16 [2.46, 5.82] \\
+\bottomrule\end{longtable}\endgroup
+\begingroup\small\setlength{\tabcolsep}{3.8pt}
+\begin{longtable}{lllrr}
+\caption{Kundur, relative to Endpoint. Differences in percentage points. Paired ledger; 200 risk and 320 safe physical events. Mixed rows count three variants per event; strata count one. Only the mixed T3 window--endpoint contrast is primary for this network.}\\
+\toprule Level & Noise & Score & Effective hit difference [95\%] & False alarm difference [95\%] \\\midrule\endfirsthead
+\toprule Level & Noise & Score & Effective hit difference [95\%] & False alarm difference [95\%] \\\midrule\endhead
+T0 & Mixed & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Mixed & Persist. & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Mixed & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Clean & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Clean & Persist. & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Clean & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & White & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & White & Persist. & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & White & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & AR(1) & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & AR(1) & Persist. & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & AR(1) & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T1 & Mixed & Window & -0.67 [-4.15, 2.66] & 3.23 [0.22, 6.34] \\
+T1 & Mixed & Persist. & 2.00 [0.54, 3.53] & 3.96 [2.51, 5.48] \\
+T1 & Mixed & Quadratic & -0.83 [-1.60, -0.17] & -0.83 [-1.41, -0.31] \\
+T1 & Clean & Window & 4.00 [-0.98, 8.77] & 0.94 [-3.50, 5.30] \\
+T1 & Clean & Persist. & 3.50 [1.03, 6.38] & 4.38 [2.24, 6.70] \\
+T1 & Clean & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T1 & White & Window & -4.50 [-8.79, -0.50] & 4.06 [0.00, 8.36] \\
+T1 & White & Persist. & 1.00 [-1.21, 3.39] & 5.31 [2.74, 8.20] \\
+T1 & White & Quadratic & -1.00 [-2.49, 0.00] & -1.25 [-2.55, -0.30] \\
+T1 & AR(1) & Window & -1.50 [-5.21, 2.37] & 4.69 [0.92, 8.42] \\
+T1 & AR(1) & Persist. & 1.50 [-0.51, 3.81] & 2.19 [0.00, 4.50] \\
+T1 & AR(1) & Quadratic & -1.50 [-3.37, 0.00] & -1.25 [-2.54, -0.30] \\
+T2 & Mixed & Window & 2.50 [1.10, 3.98] & -3.02 [-4.99, -1.20] \\
+T2 & Mixed & Persist. & 1.17 [-0.34, 2.95] & -2.60 [-4.76, -0.42] \\
+T2 & Mixed & Quadratic & 3.17 [1.62, 4.92] & -0.83 [-2.48, 0.76] \\
+T2 & Clean & Window & 6.00 [2.52, 9.57] & 0.00 [-1.26, 1.25] \\
+T2 & Clean & Persist. & 3.00 [0.95, 5.68] & 6.88 [4.32, 9.63] \\
+T2 & Clean & Quadratic & 7.50 [3.96, 11.30] & 0.62 [0.00, 1.57] \\
+T2 & White & Window & 1.00 [-1.17, 3.48] & -7.19 [-11.20, -3.58] \\
+T2 & White & Persist. & 0.00 [-2.43, 2.38] & -7.19 [-11.51, -2.93] \\
+T2 & White & Quadratic & 1.00 [0.00, 2.66] & -2.19 [-5.66, 1.23] \\
+T2 & AR(1) & Window & 0.50 [-1.04, 2.16] & -1.88 [-5.21, 1.53] \\
+T2 & AR(1) & Persist. & 0.50 [-2.07, 3.25] & -7.50 [-11.08, -3.72] \\
+T2 & AR(1) & Quadratic & 1.00 [-0.54, 3.12] & -0.94 [-3.64, 1.83] \\
+T3 & Mixed & Window & 2.50 [1.10, 3.98] & -3.02 [-4.99, -1.20] \\
+T3 & Mixed & Persist. & 1.17 [-0.34, 2.95] & -2.60 [-4.76, -0.42] \\
+T3 & Mixed & Quadratic & 3.17 [1.62, 4.92] & -0.83 [-2.48, 0.76] \\
+T3 & Clean & Window & 6.00 [2.52, 9.57] & 0.00 [-1.26, 1.25] \\
+T3 & Clean & Persist. & 3.00 [0.95, 5.68] & 6.88 [4.32, 9.63] \\
+T3 & Clean & Quadratic & 7.50 [3.96, 11.30] & 0.62 [0.00, 1.57] \\
+T3 & White & Window & 1.00 [-1.17, 3.48] & -7.19 [-11.20, -3.58] \\
+T3 & White & Persist. & 0.00 [-2.43, 2.38] & -7.19 [-11.51, -2.93] \\
+T3 & White & Quadratic & 1.00 [0.00, 2.66] & -2.19 [-5.66, 1.23] \\
+T3 & AR(1) & Window & 0.50 [-1.04, 2.16] & -1.88 [-5.21, 1.53] \\
+T3 & AR(1) & Persist. & 0.50 [-2.07, 3.25] & -7.50 [-11.08, -3.72] \\
+T3 & AR(1) & Quadratic & 1.00 [-0.54, 3.12] & -0.94 [-3.64, 1.83] \\
+\bottomrule\end{longtable}\endgroup
+\begingroup\small\setlength{\tabcolsep}{3.8pt}
+\begin{longtable}{lllrr}
+\caption{Kundur, relative to persistence. Differences in percentage points. Paired ledger; 200 risk and 320 safe physical events. Mixed rows count three variants per event; strata count one. Only the mixed T3 window--endpoint contrast is primary for this network.}\\
+\toprule Level & Noise & Score & Effective hit difference [95\%] & False alarm difference [95\%] \\\midrule\endfirsthead
+\toprule Level & Noise & Score & Effective hit difference [95\%] & False alarm difference [95\%] \\\midrule\endhead
+T0 & Mixed & Endpoint & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Mixed & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Mixed & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Clean & Endpoint & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Clean & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Clean & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & White & Endpoint & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & White & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & White & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & AR(1) & Endpoint & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & AR(1) & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & AR(1) & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T1 & Mixed & Endpoint & -2.00 [-3.53, -0.54] & -3.96 [-5.48, -2.51] \\
+T1 & Mixed & Window & -2.67 [-5.75, 0.34] & -0.73 [-3.66, 2.28] \\
+T1 & Mixed & Quadratic & -2.83 [-4.39, -1.48] & -4.79 [-6.34, -3.30] \\
+T1 & Clean & Endpoint & -3.50 [-6.38, -1.03] & -4.38 [-6.70, -2.24] \\
+T1 & Clean & Window & 0.50 [-3.52, 4.49] & -3.44 [-8.35, 1.47] \\
+T1 & Clean & Quadratic & -3.50 [-6.38, -1.03] & -4.38 [-6.70, -2.24] \\
+T1 & White & Endpoint & -1.00 [-3.39, 1.21] & -5.31 [-8.20, -2.74] \\
+T1 & White & Window & -5.50 [-9.37, -1.99] & -1.25 [-5.30, 2.95] \\
+T1 & White & Quadratic & -2.00 [-4.02, -0.47] & -6.56 [-9.32, -3.98] \\
+T1 & AR(1) & Endpoint & -1.50 [-3.81, 0.51] & -2.19 [-4.50, 0.00] \\
+T1 & AR(1) & Window & -3.00 [-7.16, 1.04] & 2.50 [-1.24, 6.30] \\
+T1 & AR(1) & Quadratic & -3.00 [-5.60, -0.96] & -3.44 [-5.48, -1.57] \\
+T2 & Mixed & Endpoint & -1.17 [-2.95, 0.34] & 2.60 [0.42, 4.76] \\
+T2 & Mixed & Window & 1.33 [-0.20, 2.92] & -0.42 [-2.32, 1.45] \\
+T2 & Mixed & Quadratic & 2.00 [0.51, 3.67] & 1.77 [-0.11, 3.66] \\
+T2 & Clean & Endpoint & -3.00 [-5.68, -0.95] & -6.88 [-9.63, -4.32] \\
+T2 & Clean & Window & 3.00 [-0.47, 6.30] & -6.88 [-9.64, -4.11] \\
+T2 & Clean & Quadratic & 4.50 [1.97, 7.44] & -6.25 [-9.02, -3.56] \\
+T2 & White & Endpoint & 0.00 [-2.38, 2.43] & 7.19 [2.93, 11.51] \\
+T2 & White & Window & 1.00 [-1.63, 4.05] & 0.00 [-3.88, 3.62] \\
+T2 & White & Quadratic & 1.00 [-1.55, 3.88] & 5.00 [1.55, 8.51] \\
+T2 & AR(1) & Endpoint & -0.50 [-3.25, 2.07] & 7.50 [3.72, 11.08] \\
+T2 & AR(1) & Window & 0.00 [-3.26, 3.02] & 5.62 [2.20, 9.38] \\
+T2 & AR(1) & Quadratic & 0.50 [-2.07, 3.09] & 6.56 [3.11, 10.08] \\
+T3 & Mixed & Endpoint & -1.17 [-2.95, 0.34] & 2.60 [0.42, 4.76] \\
+T3 & Mixed & Window & 1.33 [-0.20, 2.92] & -0.42 [-2.32, 1.45] \\
+T3 & Mixed & Quadratic & 2.00 [0.51, 3.67] & 1.77 [-0.11, 3.66] \\
+T3 & Clean & Endpoint & -3.00 [-5.68, -0.95] & -6.88 [-9.63, -4.32] \\
+T3 & Clean & Window & 3.00 [-0.47, 6.30] & -6.88 [-9.64, -4.11] \\
+T3 & Clean & Quadratic & 4.50 [1.97, 7.44] & -6.25 [-9.02, -3.56] \\
+T3 & White & Endpoint & 0.00 [-2.38, 2.43] & 7.19 [2.93, 11.51] \\
+T3 & White & Window & 1.00 [-1.63, 4.05] & 0.00 [-3.88, 3.62] \\
+T3 & White & Quadratic & 1.00 [-1.55, 3.88] & 5.00 [1.55, 8.51] \\
+T3 & AR(1) & Endpoint & -0.50 [-3.25, 2.07] & 7.50 [3.72, 11.08] \\
+T3 & AR(1) & Window & 0.00 [-3.26, 3.02] & 5.62 [2.20, 9.38] \\
+T3 & AR(1) & Quadratic & 0.50 [-2.07, 3.09] & 6.56 [3.11, 10.08] \\
+\bottomrule\end{longtable}\endgroup
+\begingroup\small\setlength{\tabcolsep}{3.8pt}
+\begin{longtable}{lllrr}
+\caption{IEEE 39, relative to Endpoint. Differences in percentage points. Paired ledger; 112 risk and 475 safe physical events. Mixed rows count three variants per event; strata count one. Only the mixed T3 window--endpoint contrast is primary for this network.}\\
+\toprule Level & Noise & Score & Effective hit difference [95\%] & False alarm difference [95\%] \\\midrule\endfirsthead
+\toprule Level & Noise & Score & Effective hit difference [95\%] & False alarm difference [95\%] \\\midrule\endhead
+T0 & Mixed & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Mixed & Persist. & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Mixed & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Clean & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Clean & Persist. & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Clean & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & White & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & White & Persist. & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & White & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & AR(1) & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & AR(1) & Persist. & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & AR(1) & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T1 & Mixed & Window & 46.43 [38.74, 53.50] & -1.05 [-3.53, 1.67] \\
+T1 & Mixed & Persist. & 43.15 [39.01, 47.30] & -0.14 [-1.85, 1.55] \\
+T1 & Mixed & Quadratic & 26.19 [21.67, 30.08] & 1.12 [-1.33, 3.53] \\
+T1 & Clean & Window & 69.64 [60.58, 77.44] & -5.68 [-8.72, -2.45] \\
+T1 & Clean & Persist. & 9.82 [4.59, 15.86] & -4.00 [-6.31, -1.71] \\
+T1 & Clean & Quadratic & 90.18 [84.14, 95.41] & 17.89 [12.61, 23.11] \\
+T1 & White & Window & 41.07 [29.82, 51.62] & 3.16 [0.00, 6.31] \\
+T1 & White & Persist. & 59.82 [50.45, 68.52] & 3.79 [1.30, 6.34] \\
+T1 & White & Quadratic & -5.36 [-9.91, -1.74] & -4.84 [-6.89, -3.14] \\
+T1 & AR(1) & Window & 28.57 [18.10, 39.02] & -0.63 [-4.43, 3.22] \\
+T1 & AR(1) & Persist. & 59.82 [49.49, 69.37] & -0.21 [-3.37, 3.21] \\
+T1 & AR(1) & Quadratic & -6.25 [-11.00, -2.11] & -9.68 [-12.33, -7.05] \\
+T2 & Mixed & Window & 47.62 [41.13, 53.81] & 0.35 [-1.79, 2.40] \\
+T2 & Mixed & Persist. & 1.79 [-3.47, 7.37] & 0.91 [-0.49, 2.41] \\
+T2 & Mixed & Quadratic & -15.18 [-21.90, -8.94] & 2.11 [-0.07, 4.05] \\
+T2 & Clean & Window & 65.18 [55.76, 74.31] & -0.21 [-2.36, 2.07] \\
+T2 & Clean & Persist. & -24.11 [-33.33, -14.29] & 1.89 [0.00, 3.93] \\
+T2 & Clean & Quadratic & 56.25 [44.18, 67.10] & 23.58 [19.10, 28.12] \\
+T2 & White & Window & 40.18 [30.20, 50.00] & -2.11 [-5.11, 0.89] \\
+T2 & White & Persist. & 15.18 [6.31, 24.18] & 0.21 [-2.11, 2.76] \\
+T2 & White & Quadratic & -50.00 [-59.07, -40.37] & -8.42 [-10.90, -5.96] \\
+T2 & AR(1) & Window & 37.50 [27.81, 47.30] & 3.37 [-0.21, 6.89] \\
+T2 & AR(1) & Persist. & 14.29 [6.88, 21.89] & 0.63 [-2.14, 3.21] \\
+T2 & AR(1) & Quadratic & -51.79 [-61.23, -42.53] & -8.84 [-11.46, -6.41] \\
+T3 & Mixed & Window & 29.17 [23.96, 34.41] & 0.98 [-1.17, 3.05] \\
+T3 & Mixed & Persist. & 10.12 [6.01, 14.52] & 1.54 [-0.14, 3.22] \\
+T3 & Mixed & Quadratic & 27.98 [22.27, 33.33] & 2.18 [0.14, 4.19] \\
+T3 & Clean & Window & 5.36 [1.71, 9.91] & -0.42 [-2.56, 1.87] \\
+T3 & Clean & Persist. & 5.36 [1.71, 9.91] & 4.63 [1.92, 7.56] \\
+T3 & Clean & Quadratic & -1.79 [-6.90, 3.08] & -3.16 [-4.88, -1.56] \\
+T3 & White & Window & 43.75 [33.77, 53.55] & -1.26 [-4.10, 1.72] \\
+T3 & White & Persist. & 11.61 [3.45, 20.18] & -0.21 [-2.53, 2.21] \\
+T3 & White & Quadratic & 43.75 [33.33, 54.22] & 3.79 [0.42, 7.24] \\
+T3 & AR(1) & Window & 38.39 [28.69, 48.16] & 4.63 [1.08, 8.04] \\
+T3 & AR(1) & Persist. & 13.39 [6.10, 20.94] & 0.21 [-2.46, 2.77] \\
+T3 & AR(1) & Quadratic & 41.96 [32.38, 51.34] & 5.89 [2.28, 9.40] \\
+\bottomrule\end{longtable}\endgroup
+\begingroup\small\setlength{\tabcolsep}{3.8pt}
+\begin{longtable}{lllrr}
+\caption{IEEE 39, relative to persistence. Differences in percentage points. Paired ledger; 112 risk and 475 safe physical events. Mixed rows count three variants per event; strata count one. Only the mixed T3 window--endpoint contrast is primary for this network.}\\
+\toprule Level & Noise & Score & Effective hit difference [95\%] & False alarm difference [95\%] \\\midrule\endfirsthead
+\toprule Level & Noise & Score & Effective hit difference [95\%] & False alarm difference [95\%] \\\midrule\endhead
+T0 & Mixed & Endpoint & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Mixed & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Mixed & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Clean & Endpoint & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Clean & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & Clean & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & White & Endpoint & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & White & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & White & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & AR(1) & Endpoint & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & AR(1) & Window & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T0 & AR(1) & Quadratic & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+T1 & Mixed & Endpoint & -43.15 [-47.30, -39.01] & 0.14 [-1.55, 1.85] \\
+T1 & Mixed & Window & 3.27 [-5.77, 11.76] & -0.91 [-3.34, 1.46] \\
+T1 & Mixed & Quadratic & -16.96 [-22.81, -11.48] & 1.26 [-1.20, 3.58] \\
+T1 & Clean & Endpoint & -9.82 [-15.86, -4.59] & 4.00 [1.71, 6.31] \\
+T1 & Clean & Window & 59.82 [46.85, 70.92] & -1.68 [-4.41, 1.04] \\
+T1 & Clean & Quadratic & 80.36 [68.28, 90.82] & 21.89 [17.00, 26.84] \\
+T1 & White & Endpoint & -59.82 [-68.52, -50.45] & -3.79 [-6.34, -1.30] \\
+T1 & White & Window & -18.75 [-31.30, -7.32] & -0.63 [-3.94, 2.62] \\
+T1 & White & Quadratic & -65.18 [-73.89, -56.11] & -8.63 [-11.21, -6.24] \\
+T1 & AR(1) & Endpoint & -59.82 [-69.37, -49.49] & 0.21 [-3.21, 3.37] \\
+T1 & AR(1) & Window & -31.25 [-42.48, -20.00] & -0.42 [-3.79, 2.97] \\
+T1 & AR(1) & Quadratic & -66.07 [-74.48, -57.40] & -9.47 [-12.22, -6.92] \\
+T2 & Mixed & Endpoint & -1.79 [-7.37, 3.47] & -0.91 [-2.41, 0.49] \\
+T2 & Mixed & Window & 45.83 [40.17, 51.08] & -0.56 [-2.73, 1.55] \\
+T2 & Mixed & Quadratic & -16.96 [-22.81, -11.48] & 1.19 [-1.26, 3.46] \\
+T2 & Clean & Endpoint & 24.11 [14.29, 33.33] & -1.89 [-3.93, 0.00] \\
+T2 & Clean & Window & 89.29 [82.61, 95.02] & -2.11 [-4.71, 0.41] \\
+T2 & Clean & Quadratic & 80.36 [68.28, 90.82] & 21.68 [16.98, 26.60] \\
+T2 & White & Endpoint & -15.18 [-24.18, -6.31] & -0.21 [-2.76, 2.11] \\
+T2 & White & Window & 25.00 [15.72, 34.20] & -2.32 [-5.57, 0.63] \\
+T2 & White & Quadratic & -65.18 [-73.89, -56.11] & -8.63 [-11.21, -6.24] \\
+T2 & AR(1) & Endpoint & -14.29 [-21.89, -6.88] & -0.63 [-3.21, 2.14] \\
+T2 & AR(1) & Window & 23.21 [14.09, 32.89] & 2.74 [-0.62, 6.05] \\
+T2 & AR(1) & Quadratic & -66.07 [-74.48, -57.40] & -9.47 [-12.22, -6.92] \\
+T3 & Mixed & Endpoint & -10.12 [-14.52, -6.01] & -1.54 [-3.22, 0.14] \\
+T3 & Mixed & Window & 19.05 [14.14, 23.89] & -0.56 [-2.34, 1.17] \\
+T3 & Mixed & Quadratic & 17.86 [12.32, 23.25] & 0.63 [-1.33, 2.50] \\
+T3 & Clean & Endpoint & -5.36 [-9.91, -1.71] & -4.63 [-7.56, -1.92] \\
+T3 & Clean & Window & 0.00 [0.00, 0.00] & -5.05 [-7.10, -3.19] \\
+T3 & Clean & Quadratic & -7.14 [-12.14, -2.74] & -7.79 [-10.34, -5.42] \\
+T3 & White & Endpoint & -11.61 [-20.18, -3.45] & 0.21 [-2.21, 2.53] \\
+T3 & White & Window & 32.14 [22.46, 41.63] & -1.05 [-4.15, 1.90] \\
+T3 & White & Quadratic & 32.14 [21.10, 42.16] & 4.00 [0.43, 7.42] \\
+T3 & AR(1) & Endpoint & -13.39 [-20.94, -6.10] & -0.21 [-2.77, 2.46] \\
+T3 & AR(1) & Window & 25.00 [16.05, 34.80] & 4.42 [1.23, 7.75] \\
+T3 & AR(1) & Quadratic & 28.57 [20.00, 37.93] & 5.68 [2.45, 8.90] \\
+\bottomrule\end{longtable}\endgroup
+\section{Opportunity, ranking and missing outcomes}
+The opportunity fraction is the share of risk events whose first crossing is at least 400 ms after the disturbance (the earliest possible alarm plus 200 ms). For a descriptive deadline-aware AUC, a risk variant contributes the minimum adjusted score over windows that could meet the deadline and a safe variant the minimum over all windows. An unreachable risk variant is ordered last. Ties receive half credit. This diagnostic uses test labels; no operating threshold in the paper is fitted to it.
+\begingroup\small\setlength{\tabcolsep}{3.8pt}
+\begin{longtable}{llrrrrr}
+\caption{Deadline-aware scoring diagnostics. Opportunity is a percentage of risk events; remaining columns are AUC. Ranking diagnostic ledger, conditional on all solved events. Three variants per event; AUC uses test labels.}\\
+\toprule System & Level & Opportunity & Endpoint & Window & Persistence & Quadratic \\\midrule\endfirsthead
+\toprule System & Level & Opportunity & Endpoint & Window & Persistence & Quadratic \\\midrule\endhead
+Aggregate & A & 90.9 & 0.756 & 0.836 & 0.773 & 0.810 \\
+Kundur & T0 & 100.0 & 0.981 & 0.962 & 0.983 & 0.982 \\
+Kundur & T1 & 100.0 & 0.981 & 0.962 & 0.983 & 0.982 \\
+Kundur & T2 & 100.0 & 0.971 & 0.981 & 0.983 & 0.978 \\
+Kundur & T3 & 100.0 & 0.971 & 0.981 & 0.983 & 0.978 \\
+IEEE 39 & T0 & 100.0 & 0.685 & 0.884 & 0.688 & 0.808 \\
+IEEE 39 & T1 & 100.0 & 0.685 & 0.884 & 0.688 & 0.808 \\
+IEEE 39 & T2 & 100.0 & 0.882 & 0.978 & 0.688 & 0.880 \\
+IEEE 39 & T3 & 100.0 & 0.916 & 0.979 & 0.932 & 0.973 \\
+\bottomrule\end{longtable}\endgroup
+\begingroup\small\setlength{\tabcolsep}{3.8pt}
+\begin{longtable}{llrr}
+\caption{Worst-case T3 identification bounds for full window minus endpoint, in percentage points. The November 2026 numerical recovery identified outcomes for 530/600 Kundur and 600/600 IEEE 39 designs. Each design has three variants; unknown designs may take either risk status and any paired outcome.}\label{tab:recovered-worst}\\
+\toprule System & Metric & Lower (pp) & Upper (pp) \\\midrule\endfirsthead
+\toprule System & Metric & Lower (pp) & Upper (pp) \\\midrule\endhead
+Kundur & effective & -23.99 & 27.68 \\
+Kundur & false alarm & -19.63 & 15.46 \\
+IEEE 39 & effective & 26.40 & 26.40 \\
+IEEE 39 & false alarm & 0.98 & 0.98 \\
+\bottomrule\end{longtable}\endgroup
+\section{Reproduction of the original study}
+The fused preview is rebuilt offline with \texttt{build.py} in \texttt{NewWorkspace/SCI-fused-preview}; \texttt{provenance.py} maps the resulting tables, figures and numerical passages to the source ledgers. The script reads saved first alarms and crossing times. It never launches the simulator. The original study scripts and protocols remain in the sibling \texttt{SCI-cross-system} directory. Its two complete design ledgers are \texttt{kundur-all-designs.csv} and \texttt{ieee39-all-designs.csv}; unsuccessful designs retain unknown risk. Historical fixed-cutoff and five-condition sources are identified separately in the accompanying map.
+\section{Numerical recovery of the original series}
+We applied the original 20-ms trapezoidal integration and two 5-ms integrations (trapezoidal and backward Euler) to every failed training, development, calibration and test design. All attempts are retained. A sampled COI crossing before termination establishes risk. Only an entire 20-s post-disturbance trajectory can establish safety. If a complete safe trace conflicts with a known crossing, the outcome remains unknown. We prioritised complete traces and used the fixed fine-trapezoid, backward-Euler and original-step order within completion class. All recovered operating points use the original trained rules and binary thresholds. Known labels on a partial trajectory do not supply a full training nadir. Recovered safe development and calibration cases document selection in the original fit and were excluded from retuning. For the original successful events we recomputed noisy observations, scores and each first alarm from saved traces. Two successful designs per network were reintegrated on the original solver grid. The stored COI and measured waveforms matched exactly on those four designs. For the original aggregate test we regenerated all 2,400 events from the parameter seed through dynamics, measurement noise, trained scores and first alarms.
+
+\begin{table}[htbp]\centering\small
+\caption{Original failures and their updated labels. Counts are physical designs. The last three columns partition the original failures.}\label{tab:recover}
+\begin{tabular}{@{}lllllll@{}}\toprule
+Network & Split & Designs & Failed & Risk & Safe & Unknown \\\midrule
+Kundur & train & 240 & 38 & 0 & 2 & 36 \\
+Kundur & dev & 120 & 15 & 0 & 1 & 14 \\
+Kundur & cal & 180 & 18 & 0 & 1 & 17 \\
+Kundur & test & 600 & 80 & 1 & 9 & 70 \\
+IEEE 39 & train & 240 & 10 & 10 & 0 & 0 \\
+IEEE 39 & dev & 120 & 2 & 2 & 0 & 0 \\
+IEEE 39 & cal & 180 & 3 & 3 & 0 & 0 \\
+IEEE 39 & test & 600 & 13 & 13 & 0 & 0 \\
+\bottomrule\end{tabular}\end{table}
+Three new, shared noise versions were generated for each recovered test design using a deterministic event seed. The old successful designs retain their original realisations. Die-off of the numerical integrator after a known crossing can leave the nadir unknown even though the effective-hit outcome is already fixed. For each observed risk event the simulation reached the crossing, hence it also reached every decision which could have met the required lead.
+\begin{table}[htbp]\centering\small
+\caption{Updated planned-design identification bounds for the original T3 contrast. The prefix sensitivity additionally conditions on retained numerical prefixes and paired synthetic noise.}\label{tab:prefix}
+\begin{tabular}{@{}lllll@{}}\toprule
+Network & Metric & Unknown & Arbitrary (pp) & Prefix-based (pp) \\\midrule
+Kundur & risk & 70 & [-23.99, 27.68] & [-4.80, 9.26] \\
+Kundur & safe & 70 & [-19.63, 15.46] & [-5.68, 2.13] \\
+IEEE 39 & risk & 0 & [26.40, 26.40] & [26.40, 26.40] \\
+IEEE 39 & safe & 0 & [0.98, 0.98] & [0.98, 0.98] \\
+\bottomrule\end{tabular}\end{table}
+For an unrestricted completion, $n$ known risk designs contribute a total $d$ in event-average hit differences (three variants per design). With $u$ unknown designs the limits are $(d-u)/(n+u)$ and $(d+u)/(n+u)$. The same calculation uses known safe designs for the false-alarm contrast. For the additional prefix sensitivity, we allow every crossing time consistent with each retained prefix and take the union over solvers. A missing alarm window receives the unrestricted range. For each possible number of additional risks we add the smallest or largest feasible contributions, divide by the resulting denominator and take extrema over that number. This sensitivity concerns the fixed noise realisations. Neither pair of bounds is a confidence interval.
+
+\section{Sampling and evaluation on the new disturbance support}
+In the new experiments the step in active and reactive demand was distributed in proportion to the selected loads. All synchronous inertia constants were multiplied by the cell factor before power flow and integration. The numerical development grid had three initial load levels, three inertia factors and four disturbance fractions per network. From those trajectories we selected a representative cell for safety and each of the three crossing strata, preferentially with complete simulations. Within each prospective split we drew a cell uniformly and independently jittered its baseline load and step fraction by up to two percent. Crossing labels never enter that draw. The development-only design calculation targeted roughly 60 B events, 60 C events and 80 safe designs using pilot frequencies, with a test budget clipped to 300--720 per network. It selected 320 for each. With 60 independent paired differences bounded by one in magnitude, a worst-case normal half-width is about 25 percentage points. Accordingly this design can leave moderate interactions and small cost differences unresolved. No significance-based stopping or sample increase was used.
+
+Kundur cells (step fraction of demand, inertia multiplier) were (3.8\%, 0.6), (6.2\%, 0.35), (3.8\%, 0.35), (9\%, 0.35). Representative B crossings occurred at 460, 460 and 460 ms at 10-ms trapezoidal, 5-ms trapezoidal and 5-ms backward-Euler settings. IEEE 39 cells (step fraction of demand, inertia multiplier) were (10.5\%, 0.35), (14.5\%, 0.35), (14.5\%, 1), (24\%, 0.35). Representative B crossings occurred at 580, 560 and 560 ms at 10-ms trapezoidal, 5-ms trapezoidal and 5-ms backward-Euler settings. The IEEE 39 fine-step representative reached the crossing but did not reach the end of the full trajectory. The comparison supports the local timing classification of that design. It does not certify an accurate late nadir or step convergence for every test event.
+\begin{table}[htbp]\centering\small
+\caption{New split support by physical design. A known risk can have an incomplete trajectory. Only full-horizon training designs supply score targets. Only safe designs supply development references and calibration thresholds.}\label{tab:splitnew}
+\begin{tabular}{@{}llllllll@{}}\toprule
+Network & Split & A & B & C & Safe & Unknown & Full horizon \\\midrule
+Kundur & train & 25 & 53 & 33 & 47 & 22 & 125 \\
+Kundur & dev & 16 & 30 & 32 & 24 & 10 & 80 \\
+Kundur & cal & 32 & 56 & 47 & 57 & 28 & 148 \\
+Kundur & test & 38 & 84 & 75 & 82 & 41 & 221 \\
+IEEE 39 & train & 50 & 49 & 42 & 39 & 0 & 75 \\
+IEEE 39 & dev & 32 & 25 & 26 & 29 & 0 & 51 \\
+IEEE 39 & cal & 47 & 68 & 57 & 48 & 0 & 96 \\
+IEEE 39 & test & 85 & 65 & 96 & 74 & 0 & 153 \\
+\bottomrule\end{tabular}\end{table}
+There are three variants per design. Additive white and AR(1) noise have 3-mHz standard deviation on the 50-Hz-equivalent scale, with correlation 0.8 for AR(1). Each event and measurement realisation is shared across all representations. Boosted regressors use 100 depth-three stages per decision prefix. ECGR retains its archived representation constants, including its working covariance and shrinkage. The boosted predictor using these features is trained on the target system. The local original switch applies the archived $Q$ boundaries 0.0025 and 0.016 to those local experts. All six policies receive common access to $Q$ and the same bin-reference and global-quantile calibration algorithm. The original source-switch protocol used an uncentred score and is separately documented in the earlier tables.
+
+A training event with an incomplete horizon has no full suffix target, even if risk is already known. Lost high-severity training examples can therefore limit the local scorers. For a risk event with an incomplete test trace we record observed first alarms only. If a later alarm is unobserved, it occurs after the already observed crossing and cannot change an effective hit. Unknown risk stays outside the estimable conditional means and inside the identification analysis. A zero-width resampling interval can result when no paired discordance was observed. It does not certify population equality. Per-condition intervals are descriptive pointwise intervals with no multiplicity correction.
+Kundur had 38/197 structurally unwarnable known risks (19.29\%). Allowing all unknown designs to be risk gives conservative bounds [15.97, 33.19]\% on the A share of all risks. IEEE 39 had 85/246 structurally unwarnable known risks (34.55\%). Allowing all unknown designs to be risk gives conservative bounds [34.55, 34.55]\% on the A share of all risks. 
+\clearpage\section{Measurement and decision-time comparisons}
+\begingroup\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}lllllllll@{}}
+\caption{Kundur prospective local study. Counts are effective hits per risk variant (B, C) or alarms per safe variant (False). First is median observed first-alarm time among alarms, lead is median warning margin among effective hits, in ms. Each noise row includes one version per physical design. All A hits are structurally zero.}\label{tab:abskundur}\\
+\toprule Noise & Policy & B hits & First & Lead & C hits & First & Lead & False \\\midrule\endfirsthead
+\toprule Noise & Policy & B hits & First & Lead & C hits & First & Lead & False \\\midrule\endhead
+clean & Endpoint & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 13/82 \\
+clean & Persistence & 0/84 & 300 & -- & 75/75 & 400 & 500 & 17/82 \\
+clean & Quadratic & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 13/82 \\
+clean & Full window & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 4/82 \\
+clean & ECGR & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 6/82 \\
+clean & Original switch & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 13/82 \\
+white & Endpoint & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 3/82 \\
+white & Persistence & 0/84 & 300 & -- & 75/75 & 400 & 500 & 10/82 \\
+white & Quadratic & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 3/82 \\
+white & Full window & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 2/82 \\
+white & ECGR & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 7/82 \\
+white & Original switch & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 3/82 \\
+AR1 & Endpoint & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 7/82 \\
+AR1 & Persistence & 0/84 & 300 & -- & 75/75 & 400 & 500 & 10/82 \\
+AR1 & Quadratic & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 8/82 \\
+AR1 & Full window & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 13/82 \\
+AR1 & ECGR & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 9/82 \\
+AR1 & Original switch & 84/84 & 200 & 260 & 75/75 & 200 & 700 & 7/82 \\
+\bottomrule\end{longtable}\endgroup\begingroup\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}lllllllll@{}}
+\caption{IEEE 39 prospective local study. Counts are effective hits per risk variant (B, C) or alarms per safe variant (False). First is median observed first-alarm time among alarms, lead is median warning margin among effective hits, in ms. Each noise row includes one version per physical design. All A hits are structurally zero.}\label{tab:absieee39}\\
+\toprule Noise & Policy & B hits & First & Lead & C hits & First & Lead & False \\\midrule\endfirsthead
+\toprule Noise & Policy & B hits & First & Lead & C hits & First & Lead & False \\\midrule\endhead
+clean & Endpoint & 8/65 & 400 & 200 & 96/96 & 200 & 1520 & 10/74 \\
+clean & Persistence & 8/65 & 400 & 200 & 3/96 & 500 & 580 & 4/74 \\
+clean & Quadratic & 0/65 & 400 & -- & 96/96 & 200 & 1520 & 11/74 \\
+clean & Full window & 65/65 & 200 & 380 & 96/96 & 200 & 1520 & 12/74 \\
+clean & ECGR & 8/65 & 400 & 200 & 96/96 & 200 & 1520 & 11/74 \\
+clean & Original switch & 8/65 & 400 & 200 & 96/96 & 200 & 1520 & 12/74 \\
+white & Endpoint & 8/65 & 400 & 200 & 96/96 & 200 & 1520 & 7/74 \\
+white & Persistence & 8/65 & 400 & 200 & 2/96 & 500 & 570 & 5/74 \\
+white & Quadratic & 10/65 & 400 & 280 & 95/96 & 200 & 1520 & 5/74 \\
+white & Full window & 62/65 & 200 & 380 & 95/96 & 200 & 1520 & 6/74 \\
+white & ECGR & 14/65 & 400 & 360 & 95/96 & 200 & 1520 & 8/74 \\
+white & Original switch & 8/65 & 400 & 200 & 96/96 & 200 & 1520 & 7/74 \\
+AR1 & Endpoint & 8/65 & 400 & 200 & 94/96 & 200 & 1520 & 11/74 \\
+AR1 & Persistence & 8/65 & 400 & 200 & 2/96 & 500 & 580 & 8/74 \\
+AR1 & Quadratic & 9/65 & 400 & 360 & 93/96 & 200 & 1520 & 8/74 \\
+AR1 & Full window & 63/65 & 200 & 380 & 95/96 & 200 & 1520 & 9/74 \\
+AR1 & ECGR & 12/65 & 400 & 280 & 94/96 & 200 & 1520 & 11/74 \\
+AR1 & Original switch & 8/65 & 400 & 200 & 94/96 & 200 & 1520 & 11/74 \\
+\bottomrule\end{longtable}\endgroup\begingroup\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}llllll@{}}
+\caption{Full-window minus endpoint differences in percentage points with paired event-clustered 95\% intervals. B minus C resamples separately within the disjoint strata. The same safe controls supply the false-alarm cost. Each mixture weights three measurements equally per event.}\label{tab:interaction}\\
+\toprule Network & Noise & B gain & C gain & B minus C & Safety cost \\\midrule\endfirsthead
+\toprule Network & Noise & B gain & C gain & B minus C & Safety cost \\\midrule\endhead
+Kundur & clean & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & -10.98 [-19.51, -3.66] \\
+Kundur & white & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & -1.22 [-6.10, 3.66] \\
+Kundur & AR1 & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & 7.32 [-2.44, 17.07] \\
+Kundur & mixed & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & -1.63 [-6.10, 2.85] \\
+IEEE 39 & clean & 87.69 [78.46, 95.38] & 0.00 [0.00, 0.00] & 87.69 [78.46, 95.38] & 2.70 [-4.05, 9.46] \\
+IEEE 39 & white & 83.08 [73.85, 92.31] & -1.04 [-3.12, 0.00] & 84.12 [74.89, 93.35] & -1.35 [-9.46, 6.76] \\
+IEEE 39 & AR1 & 84.62 [75.38, 92.35] & 1.04 [0.00, 3.12] & 83.57 [73.80, 92.31] & -2.70 [-10.81, 6.76] \\
+IEEE 39 & mixed & 85.13 [76.92, 92.82] & 0.00 [-1.04, 1.04] & 85.13 [76.76, 92.99] & -0.45 [-4.97, 4.50] \\
+\bottomrule\end{longtable}\endgroup\begingroup\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}llllll@{}}
+\caption{Full window minus each alternative in pp [paired 95\% interval]. Comparator scoring, including the original switch, was fitted or calibrated locally. All rows are secondary.}\label{tab:methods}\\
+\toprule Network & Comparator & Noise & B gain & C gain & Safety cost \\\midrule\endfirsthead
+\toprule Network & Comparator & Noise & B gain & C gain & Safety cost \\\midrule\endhead
+Kundur & Persistence & clean & 100.00 [100.00, 100.00] & 0.00 [0.00, 0.00] & -15.85 [-24.39, -8.54] \\
+Kundur & Persistence & white & 100.00 [100.00, 100.00] & 0.00 [0.00, 0.00] & -9.76 [-15.85, -3.66] \\
+Kundur & Persistence & AR1 & 100.00 [100.00, 100.00] & 0.00 [0.00, 0.00] & 3.66 [-6.10, 13.41] \\
+Kundur & Quadratic & clean & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & -10.98 [-19.51, -3.66] \\
+Kundur & Quadratic & white & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & -1.22 [-6.10, 3.66] \\
+Kundur & Quadratic & AR1 & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & 6.10 [-2.44, 14.63] \\
+Kundur & ECGR & clean & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & -2.44 [-7.32, 2.44] \\
+Kundur & ECGR & white & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & -6.10 [-13.41, 1.22] \\
+Kundur & ECGR & AR1 & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & 4.88 [-4.88, 14.63] \\
+Kundur & Original switch & clean & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & -10.98 [-19.51, -3.66] \\
+Kundur & Original switch & white & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & -1.22 [-6.10, 3.66] \\
+Kundur & Original switch & AR1 & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & 7.32 [-2.44, 17.07] \\
+IEEE 39 & Persistence & clean & 87.69 [78.46, 95.38] & 96.88 [92.71, 100.00] & 10.81 [4.05, 17.60] \\
+IEEE 39 & Persistence & white & 83.08 [73.85, 92.31] & 96.88 [91.67, 100.00] & 1.35 [-6.76, 9.46] \\
+IEEE 39 & Persistence & AR1 & 84.62 [75.38, 92.35] & 96.88 [91.67, 100.00] & 1.35 [-8.11, 12.16] \\
+IEEE 39 & Quadratic & clean & 100.00 [100.00, 100.00] & 0.00 [0.00, 0.00] & 1.35 [0.00, 4.05] \\
+IEEE 39 & Quadratic & white & 80.00 [70.77, 89.23] & 0.00 [-3.12, 3.12] & 1.35 [-6.76, 10.81] \\
+IEEE 39 & Quadratic & AR1 & 83.08 [73.85, 92.31] & 2.08 [0.00, 5.21] & 1.35 [-8.11, 10.81] \\
+IEEE 39 & ECGR & clean & 87.69 [78.46, 95.38] & 0.00 [0.00, 0.00] & 1.35 [-2.70, 6.76] \\
+IEEE 39 & ECGR & white & 73.85 [63.08, 84.62] & 0.00 [-3.12, 3.12] & -2.70 [-10.81, 5.41] \\
+IEEE 39 & ECGR & AR1 & 78.46 [67.69, 87.69] & 1.04 [0.00, 3.12] & -2.70 [-12.16, 6.76] \\
+IEEE 39 & Original switch & clean & 87.69 [78.46, 95.38] & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+IEEE 39 & Original switch & white & 83.08 [73.85, 92.31] & -1.04 [-3.12, 0.00] & -1.35 [-9.46, 6.76] \\
+IEEE 39 & Original switch & AR1 & 84.62 [75.38, 92.35] & 1.04 [0.00, 3.12] & -2.70 [-10.81, 6.76] \\
+\bottomrule\end{longtable}\endgroup\begingroup\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}lllll@{}}
+\caption{Cumulative false-alarm cost on the same safe designs when only the indicated and earlier decisions may fire. Intervals use physical events. Safe events have no future crossing stratum.}\label{tab:safetime}\\
+\toprule Network & Last decision (ms) & Clean cost & White cost & AR(1) cost \\\midrule\endfirsthead
+\toprule Network & Last decision (ms) & Clean cost & White cost & AR(1) cost \\\midrule\endhead
+Kundur & 200 & 0.00 [0.00, 0.00] & -1.22 [-3.66, 0.00] & 6.10 [1.22, 12.20] \\
+Kundur & 300 & -2.44 [-6.10, 0.00] & -1.22 [-3.66, 0.00] & 8.54 [2.44, 14.63] \\
+Kundur & 400 & -2.44 [-6.10, 0.00] & -1.22 [-3.66, 0.00] & 8.54 [2.44, 14.63] \\
+Kundur & 500 & -10.98 [-18.29, -3.66] & -1.22 [-7.32, 4.88] & 7.32 [-2.44, 17.07] \\
+IEEE 39 & 200 & 14.86 [8.11, 22.97] & 2.70 [0.00, 6.76] & 6.76 [1.35, 13.51] \\
+IEEE 39 & 300 & 5.41 [1.35, 10.81] & 4.05 [0.00, 9.46] & 9.46 [2.70, 16.22] \\
+IEEE 39 & 400 & 4.05 [-1.35, 9.46] & 1.35 [-5.41, 8.11] & 8.11 [1.35, 14.86] \\
+IEEE 39 & 500 & 2.70 [-4.05, 9.46] & -1.35 [-9.46, 6.76] & -2.70 [-12.16, 5.41] \\
+\bottomrule\end{longtable}\endgroup\begin{table}[htbp]\centering\small
+\caption{Outer identification bounds (pp) allowing unobserved labels and outcomes on the new support. An unknown trace already observed through the last possible grid time for a stratum cannot belong to it. The A hit difference is structurally zero.}\label{tab:newbounds}
+\begin{tabular}{@{}llllll@{}}\toprule
+Network & Stratum & Known & Unresolved eligible & Lower & Upper \\\midrule
+Kundur & A & 38 & 41 & 0.00 & 0.00 \\
+Kundur & B & 84 & 41 & -32.80 & 32.80 \\
+Kundur & C & 75 & 41 & -35.34 & 35.34 \\
+Kundur & safe & 82 & 41 & -34.42 & 32.25 \\
+IEEE 39 & A & 85 & 0 & 0.00 & 0.00 \\
+IEEE 39 & B & 65 & 0 & 85.13 & 85.13 \\
+IEEE 39 & C & 96 & 0 & 0.00 & 0.00 \\
+IEEE 39 & safe & 74 & 0 & -0.45 & -0.45 \\
+\bottomrule\end{tabular}\end{table}
+\section{Opportunity, endpoint ambiguity and numerical sensitivity}
+\begin{table}[htbp]\centering\small
+\caption{Post hoc restriction of the final available decision on the same test events. Entries are full-window minus endpoint differences (pp) using the original four-window thresholds. The last column gives the paired within-event change and its interval.}\label{tab:horizons}
+\begin{tabular}{@{}lllllll@{}}\toprule
+Network & Group & 200 & 300 & 400 & 500 & 500 minus 200 \\\midrule
+Kundur & B & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 [0.00, 0.00] \\
+Kundur & C & 0.44 & 0.00 & 0.00 & 0.00 & -0.44 [-1.33, 0.00] \\
+Kundur & safe & 1.63 & 1.63 & 1.63 & -1.63 & -3.25 [-7.32, 0.41] \\
+IEEE 39 & B & 97.44 & 97.44 & 85.13 & 85.13 & -12.31 [-20.00, -4.62] \\
+IEEE 39 & C & 1.74 & 0.69 & -0.35 & 0.00 & -1.74 [-3.82, -0.35] \\
+IEEE 39 & safe & 8.11 & 6.31 & 4.50 & -0.45 & -8.56 [-13.51, -4.05] \\
+\bottomrule\end{tabular}\end{table}
+For the 200-ms decision only, a very early full-window alarm on IEEE 39 can gain hits while also imposing more false alarms than the endpoint at that same time. Later opportunities allow the endpoint to catch up on safe alarms. Looking only at the four-window final rate hides the time at which this cost is incurred.
+\begin{table}[htbp]\centering\small
+\caption{Expert selected by the original switch at the first decision. Each B or C physical event contributes three variants. These are window visits, not effective hits.}\label{tab:visits}
+\begin{tabular}{@{}llllll@{}}\toprule
+Network & Group & Variants & ECGR & Quadratic & Endpoint \\\midrule
+Kundur & B & 252 & 0 & 13 & 239 \\
+Kundur & C & 225 & 0 & 47 & 178 \\
+IEEE 39 & B & 195 & 0 & 0 & 195 \\
+IEEE 39 & C & 288 & 0 & 0 & 288 \\
+\bottomrule\end{tabular}\end{table}\begin{table}[htbp]\centering\small
+\caption{Exploratory endpoint neighbourhoods. Lower and upper columns give net full-window hits per number of designs below/at or above the development median of the 15-neighbour training suffix span. A zero denominator is an empty group. Radius is the median endpoint distance to neighbour 15, in mHz.}\label{tab:near}
+\begin{tabular}{@{}lllllll@{}}\toprule
+Network & Tier & Noise & Lower & Upper & Radius (L) & Radius (U) \\\midrule
+Kundur & B & clean & 0/0 & 0/84 & -- & 0.53 \\
+Kundur & B & white & 0/7 & 0/77 & 1.15 & 1.90 \\
+Kundur & B & AR1 & 0/0 & 0/84 & -- & 1.86 \\
+Kundur & C & clean & 0/44 & 0/31 & 0.41 & 0.53 \\
+Kundur & C & white & 0/39 & 0/36 & 2.18 & 2.11 \\
+Kundur & C & AR1 & 0/68 & 0/7 & 1.80 & 2.95 \\
+IEEE 39 & B & clean & 57/65 & 0/0 & 23.09 & -- \\
+IEEE 39 & B & white & 54/65 & 0/0 & 20.79 & -- \\
+IEEE 39 & B & AR1 & 55/65 & 0/0 & 21.87 & -- \\
+IEEE 39 & C & clean & 0/5 & 0/91 & 1.71 & 0.73 \\
+IEEE 39 & C & white & -1/3 & 0/93 & 3.03 & 2.38 \\
+IEEE 39 & C & AR1 & 1/2 & 0/94 & 1.36 & 2.33 \\
+\bottomrule\end{tabular}\end{table}
+The clean B observations of each network occupied only one neighbourhood-spread group. All clean IEEE 39 B designs fell in the lower-spread group, with a median 15-neighbour radius of 23.09 mHz. This design provides no within-system clean B comparison of high versus low endpoint ambiguity. Extrapolation outside dense training support and ceiling effects limit a mechanistic interpretation. The absolute chord-residual RMS is also supplied in the neighbourhood ledger.
+\begin{table}[htbp]\centering\small
+\caption{Post hoc step-size diagnostic. Select the first eight B, four C and four safe design IDs per network, then run both 5-ms schemes and retain all attempts. Net counts compare paired raw and endpoint hits (safe rows compare alarms) on jointly scorable designs. Original results retain the frozen 10-ms integration.}\label{tab:sens}
+\begin{tabular}{@{}llllllll@{}}\toprule
+Network & Tier & Integrator & Designs & Same tier & Full horizon & Old net & Fine net \\\midrule
+IEEE 39 & B & euler & 8 & 8 & 0 & 20 & 21 \\
+IEEE 39 & B & fine & 8 & 8 & 0 & 20 & 21 \\
+IEEE 39 & C & euler & 4 & 3 & 4 & 0 & 0 \\
+IEEE 39 & C & fine & 4 & 4 & 4 & 1 & -1 \\
+IEEE 39 & safe & euler & 4 & 4 & 4 & 0 & 0 \\
+IEEE 39 & safe & fine & 4 & 4 & 4 & 0 & 0 \\
+Kundur & B & euler & 8 & 8 & 6 & 0 & 0 \\
+Kundur & B & fine & 8 & 8 & 6 & 0 & 0 \\
+Kundur & C & euler & 4 & 4 & 4 & 0 & 0 \\
+Kundur & C & fine & 4 & 4 & 4 & 0 & 0 \\
+Kundur & safe & euler & 4 & 4 & 4 & 0 & 0 \\
+Kundur & safe & fine & 4 & 4 & 4 & 0 & 0 \\
+\bottomrule\end{tabular}\end{table}
+Kundur preserved B classification on 16/16 fine-step trials, including both integrators. 
+IEEE 39 preserved B classification on 16/16 fine-step trials, including both integrators. One IEEE 39 C design changed to safe under backward Euler. The net-count columns use only paired designs retaining their original stratum. Crossing agreement does not guarantee identical observed bus-frequency prefixes or first alarms. The per-design timing and waveform differences are provided in the step sensitivity file.
+
+\section{Reproducing the deadline study}
+Use \texttt{run.ps1 -Mode Replay} in the condition-strengthening directory to rebuild outcomes from the saved trajectories and frozen predictors. \texttt{-Mode Formal} also runs or resumes the numerical design. The simulation launcher uses the project ANDES environment. The score interfaces use the existing scikit-learn environment. Binary threshold arrays retain double precision and the strict inequality controls ties. The confirmation lock hashes the models, rules, training, development and calibration archives before the first new test design. Original training draws were not regenerated in full. The recovery and four successful reference integrations are distinct from replaying saved trajectories. Machine-readable tables provide every pair of methods, all measurement conditions, first-alarm records including censoring, effective leads and bound endpoints. The source map links both the historical and new tables to their data.
+\clearpage\section{Post hoc reintegration and training-support audit}
+The original comparison used the 10-ms trapezoidal scheme. After those results were known, we locked a fixed sensitivity frame covering all 320 IEEE 39 designs and the 41 unresolved Kundur designs. We ran both trapezoidal and backward Euler at 5 ms and trapezoidal at 2.5 ms on every selected design. The remaining Kundur designs retain their original integration. Three synthetic measurement versions reuse their original event-specific noise, all model weights and all binary thresholds. The crossing definition, 20-ms readout using only the previously accepted state and inclusive 200-ms lead requirement remain fixed. An incomplete design with an observed crossing supplies a risk label. An incomplete design without one remains unknown. An infinite first alarm means no trigger within the observed prefix. When a prefix ends early this is right-censored. Sampling intervals use 2,000 common bootstrap resamples of physical IDs with all three variants attached. Each resample recomputes its solver-dependent denominators. The percentile intervals condition on the fitted model and calibration set. Identification bounds instead allow unknown designs to take feasible outcomes.
+
+The older pair analyses have separate sampling units. In the quadratic versus endpoint study, each of 64 reference scenes produced three candidate pairs (192 total). Of these, 148 met the 2-mHz suffix-gap criterion after matching endpoints within 0.1 mHz. One true tie and 43 smaller differences were excluded. The gate confirmation had 96 references, 288 candidates and 220 eligible amplitude pairs (two ties, 66 below the gap). A separate ECGR study also had 96 references and 288 candidates, with 222 eligible amplitude pairs (six ties and 60 below the gap). Its direction diagnostic used all 288 candidates. Members of different pairs can share a reference trajectory. These denominators count pairs within their respective simulation batches.
+\begin{table}[htbp]\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Per-design outcomes, including incomplete integrations with observed crossings. The last two columns give identification bounds on the B hit increment (pp). For Kundur, known original designs outside the rerun frame remain in the counts.}\label{tab:r2ledger}
+\begin{tabular}{@{}lllllllllll@{}}
+\toprule System & Grid & Rerun & A & B & C & Safe & Unknown & Stopped & B arbitrary & B prefix \\\midrule
+ieee39 & 10 T & 0 & 85 & 65 & 96 & 74 & 0 & 167 & [85.13, 85.13] & [85.13, 85.13] \\
+ieee39 & 5 T & 320 & 85 & 65 & 96 & 74 & 0 & 167 & [91.79, 91.79] & [91.79, 91.79] \\
+ieee39 & 5 BE & 320 & 85 & 65 & 93 & 77 & 0 & 164 & [89.74, 89.74] & [89.74, 89.74] \\
+ieee39 & 2.5 T & 320 & 85 & 65 & 96 & 74 & 0 & 167 & [94.87, 94.87] & [94.87, 94.87] \\
+kundur & 10 T & 0 & 38 & 84 & 75 & 82 & 41 & 99 & [-32.80, 32.80] & [-1.18, 1.18] \\
+kundur & 5 T & 41 & 38 & 84 & 75 & 82 & 41 & 99 & [-32.80, 32.80] & [-1.18, 1.18] \\
+kundur & 5 BE & 41 & 38 & 84 & 75 & 82 & 41 & 99 & [-32.80, 32.80] & [-1.18, 1.18] \\
+kundur & 2.5 T & 41 & 38 & 84 & 75 & 82 & 41 & 99 & [-32.80, 32.80] & [-1.18, 1.18] \\
+\bottomrule\end{tabular}\end{table}\begin{table}[htbp]\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{IEEE 39. Paired change intervals reuse identical resampled IDs. Leads are medians among effective hits, in ms.}\label{tab:r2changes}
+\begin{tabular}{@{}lllll@{}}
+\toprule Grid & B gain, pp & Change from 10 T, pp & Window lead & Endpoint lead \\\midrule
+10 T & 85.13 [76.41, 92.38] & reference & 380 & 200 \\
+5 T & 91.79 [83.97, 97.40] & 6.67 [1.90, 12.31] & 360 & 200 \\
+5 BE & 89.74 [81.54, 96.20] & 4.62 [0.51, 9.72] & 360 & 200 \\
+2.5 T & 94.87 [88.56, 99.46] & 9.74 [3.76, 16.89] & 360 & 200 \\
+\bottomrule\end{tabular}\end{table}\begingroup\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}lllllllll@{}}
+\caption{ieee39 time-aligned effective hits in B and false alarms on safe variants. First count and rate in each pair are for the full window. Safety has no crossing stratum.}\label{tab:r2ieee39}\\
+\toprule Grid & Noise & ms & B W/E ($n$) & Rates (\%) & Diff. (pp) & Safe W/E ($n$) & Rates (\%) & Diff. (pp) \\\midrule\endfirsthead
+\toprule Grid & Noise & ms & B W/E ($n$) & Rates (\%) & Diff. (pp) & Safe W/E ($n$) & Rates (\%) & Diff. (pp) \\\midrule\endhead
+10 T & clean & 200 & 65/0 (65) & 100.00/0.00 & 100.00 [100.00, 100.00] & 11/0 (74) & 14.86/0.00 & 14.86 [6.85, 23.46] \\
+10 T & clean & 300 & 65/0 (65) & 100.00/0.00 & 100.00 [100.00, 100.00] & 11/7 (74) & 14.86/9.46 & 5.41 [1.22, 11.11] \\
+10 T & clean & 400 & 65/8 (65) & 100.00/12.31 & 87.69 [78.95, 95.00] & 11/8 (74) & 14.86/10.81 & 4.05 [-1.41, 10.39] \\
+10 T & clean & 500 & 65/8 (65) & 100.00/12.31 & 87.69 [78.95, 95.00] & 12/10 (74) & 16.22/13.51 & 2.70 [-3.57, 9.09] \\
+10 T & white & 200 & 62/0 (65) & 95.38/0.00 & 95.38 [89.71, 100.00] & 2/0 (74) & 2.70/0.00 & 2.70 [0.00, 6.85] \\
+10 T & white & 300 & 62/0 (65) & 95.38/0.00 & 95.38 [89.71, 100.00] & 3/0 (74) & 4.05/0.00 & 4.05 [0.00, 8.96] \\
+10 T & white & 400 & 62/8 (65) & 95.38/12.31 & 83.08 [72.84, 91.67] & 4/3 (74) & 5.41/4.05 & 1.35 [-5.71, 8.34] \\
+10 T & white & 500 & 62/8 (65) & 95.38/12.31 & 83.08 [72.84, 91.67] & 6/7 (74) & 8.11/9.46 & -1.35 [-9.30, 6.33] \\
+10 T & AR1 & 200 & 63/0 (65) & 96.92/0.00 & 96.92 [92.19, 100.00] & 6/1 (74) & 8.11/1.35 & 6.76 [1.45, 13.43] \\
+10 T & AR1 & 300 & 63/0 (65) & 96.92/0.00 & 96.92 [92.19, 100.00] & 8/1 (74) & 10.81/1.35 & 9.46 [3.17, 16.67] \\
+10 T & AR1 & 400 & 63/8 (65) & 96.92/12.31 & 84.62 [75.47, 92.59] & 9/3 (74) & 12.16/4.05 & 8.11 [1.26, 16.00] \\
+10 T & AR1 & 500 & 63/8 (65) & 96.92/12.31 & 84.62 [75.47, 92.59] & 9/11 (74) & 12.16/14.86 & -2.70 [-12.00, 6.95] \\
+10 T & mixed & 200 & 190/0 (195) & 97.44/0.00 & 97.44 [95.00, 99.46] & 19/1 (222) & 8.56/0.45 & 8.11 [4.57, 12.16] \\
+10 T & mixed & 300 & 190/0 (195) & 97.44/0.00 & 97.44 [95.00, 99.46] & 22/8 (222) & 9.91/3.60 & 6.31 [2.95, 10.42] \\
+10 T & mixed & 400 & 190/24 (195) & 97.44/12.31 & 85.13 [76.41, 92.38] & 24/14 (222) & 10.81/6.31 & 4.50 [0.44, 8.97] \\
+10 T & mixed & 500 & 190/24 (195) & 97.44/12.31 & 85.13 [76.41, 92.38] & 27/28 (222) & 12.16/12.61 & -0.45 [-5.02, 4.35] \\
+5 T & clean & 200 & 65/0 (65) & 100.00/0.00 & 100.00 [100.00, 100.00] & 2/7 (74) & 2.70/9.46 & -6.76 [-13.56, 0.00] \\
+5 T & clean & 300 & 65/0 (65) & 100.00/0.00 & 100.00 [100.00, 100.00] & 25/17 (74) & 33.78/22.97 & 10.81 [2.90, 19.12] \\
+5 T & clean & 400 & 65/5 (65) & 100.00/7.69 & 92.31 [84.72, 98.22] & 26/23 (74) & 35.14/31.08 & 4.05 [-1.43, 10.00] \\
+5 T & clean & 500 & 65/5 (65) & 100.00/7.69 & 92.31 [84.72, 98.22] & 26/25 (74) & 35.14/33.78 & 1.35 [-2.90, 6.17] \\
+5 T & white & 200 & 64/0 (65) & 98.46/0.00 & 98.46 [94.83, 100.00] & 4/0 (74) & 5.41/0.00 & 5.41 [1.22, 11.25] \\
+5 T & white & 300 & 64/0 (65) & 98.46/0.00 & 98.46 [94.83, 100.00] & 6/0 (74) & 8.11/0.00 & 8.11 [2.60, 14.93] \\
+5 T & white & 400 & 64/5 (65) & 98.46/7.69 & 90.77 [82.46, 96.88] & 10/8 (74) & 13.51/10.81 & 2.70 [-6.90, 12.00] \\
+5 T & white & 500 & 64/5 (65) & 98.46/7.69 & 90.77 [82.46, 96.88] & 14/12 (74) & 18.92/16.22 & 2.70 [-5.71, 11.11] \\
+5 T & AR1 & 200 & 65/0 (65) & 100.00/0.00 & 100.00 [100.00, 100.00] & 16/0 (74) & 21.62/0.00 & 21.62 [12.68, 31.82] \\
+5 T & AR1 & 300 & 65/0 (65) & 100.00/0.00 & 100.00 [100.00, 100.00] & 17/0 (74) & 22.97/0.00 & 22.97 [13.70, 32.89] \\
+5 T & AR1 & 400 & 65/5 (65) & 100.00/7.69 & 92.31 [84.72, 98.22] & 20/3 (74) & 27.03/4.05 & 22.97 [13.25, 33.33] \\
+5 T & AR1 & 500 & 65/5 (65) & 100.00/7.69 & 92.31 [84.72, 98.22] & 23/10 (74) & 31.08/13.51 & 17.57 [5.71, 30.38] \\
+5 T & mixed & 200 & 194/0 (195) & 99.49/0.00 & 99.49 [98.28, 100.00] & 22/7 (222) & 9.91/3.15 & 6.76 [3.07, 10.50] \\
+5 T & mixed & 300 & 194/0 (195) & 99.49/0.00 & 99.49 [98.28, 100.00] & 48/17 (222) & 21.62/7.66 & 13.96 [9.31, 19.37] \\
+5 T & mixed & 400 & 194/15 (195) & 99.49/7.69 & 91.79 [83.97, 97.40] & 56/34 (222) & 25.23/15.32 & 9.91 [4.61, 15.56] \\
+5 T & mixed & 500 & 194/15 (195) & 99.49/7.69 & 91.79 [83.97, 97.40] & 63/47 (222) & 28.38/21.17 & 7.21 [2.11, 12.50] \\
+5 BE & clean & 200 & 65/0 (65) & 100.00/0.00 & 100.00 [100.00, 100.00] & 1/8 (77) & 1.30/10.39 & -9.09 [-16.67, -1.54] \\
+5 BE & clean & 300 & 65/0 (65) & 100.00/0.00 & 100.00 [100.00, 100.00] & 23/16 (77) & 29.87/20.78 & 9.09 [1.27, 17.81] \\
+5 BE & clean & 400 & 65/6 (65) & 100.00/9.23 & 90.77 [82.43, 97.06] & 31/26 (77) & 40.26/33.77 & 6.49 [0.00, 13.52] \\
+5 BE & clean & 500 & 65/6 (65) & 100.00/9.23 & 90.77 [82.43, 97.06] & 31/27 (77) & 40.26/35.06 & 5.19 [-1.16, 11.67] \\
+5 BE & white & 200 & 63/0 (65) & 96.92/0.00 & 96.92 [92.19, 100.00] & 5/0 (77) & 6.49/0.00 & 6.49 [1.35, 12.50] \\
+5 BE & white & 300 & 63/0 (65) & 96.92/0.00 & 96.92 [92.19, 100.00] & 8/0 (77) & 10.39/0.00 & 10.39 [4.05, 17.33] \\
+5 BE & white & 400 & 63/6 (65) & 96.92/9.23 & 87.69 [78.26, 95.16] & 12/11 (77) & 15.58/14.29 & 1.30 [-8.82, 10.45] \\
+5 BE & white & 500 & 63/6 (65) & 96.92/9.23 & 87.69 [78.26, 95.16] & 15/14 (77) & 19.48/18.18 & 1.30 [-8.22, 10.96] \\
+5 BE & AR1 & 200 & 65/0 (65) & 100.00/0.00 & 100.00 [100.00, 100.00] & 11/0 (77) & 14.29/0.00 & 14.29 [6.85, 22.67] \\
+5 BE & AR1 & 300 & 65/0 (65) & 100.00/0.00 & 100.00 [100.00, 100.00] & 12/0 (77) & 15.58/0.00 & 15.58 [7.86, 24.33] \\
+5 BE & AR1 & 400 & 65/6 (65) & 100.00/9.23 & 90.77 [82.43, 97.06] & 18/5 (77) & 23.38/6.49 & 16.88 [7.69, 27.14] \\
+5 BE & AR1 & 500 & 65/6 (65) & 100.00/9.23 & 90.77 [82.43, 97.06] & 21/16 (77) & 27.27/20.78 & 6.49 [-4.11, 18.06] \\
+5 BE & mixed & 200 & 193/0 (195) & 98.97/0.00 & 98.97 [97.40, 100.00] & 17/8 (231) & 7.36/3.46 & 3.90 [0.51, 7.31] \\
+5 BE & mixed & 300 & 193/0 (195) & 98.97/0.00 & 98.97 [97.40, 100.00] & 43/16 (231) & 18.61/6.93 & 11.69 [7.20, 16.41] \\
+5 BE & mixed & 400 & 193/18 (195) & 98.97/9.23 & 89.74 [81.54, 96.20] & 61/42 (231) & 26.41/18.18 & 8.23 [2.81, 13.85] \\
+5 BE & mixed & 500 & 193/18 (195) & 98.97/9.23 & 89.74 [81.54, 96.20] & 67/57 (231) & 29.00/24.68 & 4.33 [-0.94, 9.88] \\
+2.5 T & clean & 200 & 65/0 (65) & 100.00/0.00 & 100.00 [100.00, 100.00] & 0/12 (74) & 0.00/16.22 & -16.22 [-25.00, -8.14] \\
+2.5 T & clean & 300 & 65/0 (65) & 100.00/0.00 & 100.00 [100.00, 100.00] & 36/22 (74) & 48.65/29.73 & 18.92 [8.33, 29.76] \\
+2.5 T & clean & 400 & 65/3 (65) & 100.00/4.62 & 95.38 [89.06, 100.00] & 37/31 (74) & 50.00/41.89 & 8.11 [-1.39, 18.08] \\
+2.5 T & clean & 500 & 65/3 (65) & 100.00/4.62 & 95.38 [89.06, 100.00] & 40/33 (74) & 54.05/44.59 & 9.46 [2.35, 17.91] \\
+2.5 T & white & 200 & 64/0 (65) & 98.46/0.00 & 98.46 [94.83, 100.00] & 11/0 (74) & 14.86/0.00 & 14.86 [7.41, 23.29] \\
+2.5 T & white & 300 & 64/0 (65) & 98.46/0.00 & 98.46 [94.83, 100.00] & 14/0 (74) & 18.92/0.00 & 18.92 [10.77, 28.38] \\
+2.5 T & white & 400 & 64/3 (65) & 98.46/4.62 & 93.85 [87.04, 98.55] & 21/12 (74) & 28.38/16.22 & 12.16 [1.20, 24.00] \\
+2.5 T & white & 500 & 64/3 (65) & 98.46/4.62 & 93.85 [87.04, 98.55] & 28/16 (74) & 37.84/21.62 & 16.22 [4.35, 28.17] \\
+2.5 T & AR1 & 200 & 65/0 (65) & 100.00/0.00 & 100.00 [100.00, 100.00] & 16/0 (74) & 21.62/0.00 & 21.62 [12.50, 31.25] \\
+2.5 T & AR1 & 300 & 65/0 (65) & 100.00/0.00 & 100.00 [100.00, 100.00] & 22/0 (74) & 29.73/0.00 & 29.73 [19.12, 40.54] \\
+2.5 T & AR1 & 400 & 65/3 (65) & 100.00/4.62 & 95.38 [89.06, 100.00] & 27/9 (74) & 36.49/12.16 & 24.32 [12.68, 36.36] \\
+2.5 T & AR1 & 500 & 65/3 (65) & 100.00/4.62 & 95.38 [89.06, 100.00] & 34/16 (74) & 45.95/21.62 & 24.32 [11.26, 37.71] \\
+2.5 T & mixed & 200 & 194/0 (195) & 99.49/0.00 & 99.49 [98.28, 100.00] & 27/12 (222) & 12.16/5.41 & 6.76 [2.44, 11.40] \\
+2.5 T & mixed & 300 & 194/0 (195) & 99.49/0.00 & 99.49 [98.28, 100.00] & 72/22 (222) & 32.43/9.91 & 22.52 [17.17, 28.27] \\
+2.5 T & mixed & 400 & 194/9 (195) & 99.49/4.62 & 94.87 [88.56, 99.46] & 85/52 (222) & 38.29/23.42 & 14.86 [8.82, 20.95] \\
+2.5 T & mixed & 500 & 194/9 (195) & 99.49/4.62 & 94.87 [88.56, 99.46] & 102/65 (222) & 45.95/29.28 & 16.67 [10.93, 22.78] \\
+\bottomrule\end{longtable}\endgroup\begingroup\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}lllllllll@{}}
+\caption{kundur time-aligned effective hits in B and false alarms on safe variants. First count and rate in each pair are for the full window. The 41 originally unknown designs were reintegrated. The other 279 are carried forward at each setting.}\label{tab:r2kundur}\\
+\toprule Grid & Noise & ms & B W/E ($n$) & Rates (\%) & Diff. (pp) & Safe W/E ($n$) & Rates (\%) & Diff. (pp) \\\midrule\endfirsthead
+\toprule Grid & Noise & ms & B W/E ($n$) & Rates (\%) & Diff. (pp) & Safe W/E ($n$) & Rates (\%) & Diff. (pp) \\\midrule\endhead
+10 T & clean & 200 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/0 (82) & 0.00/0.00 & 0.00 [0.00, 0.00] \\
+10 T & clean & 300 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/2 (82) & 0.00/2.44 & -2.44 [-6.38, 0.00] \\
+10 T & clean & 400 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/2 (82) & 0.00/2.44 & -2.44 [-6.38, 0.00] \\
+10 T & clean & 500 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 4/13 (82) & 4.88/15.85 & -10.98 [-18.95, -3.66] \\
+10 T & white & 200 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/1 (82) & 0.00/1.22 & -1.22 [-4.30, 0.00] \\
+10 T & white & 300 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/1 (82) & 0.00/1.22 & -1.22 [-4.30, 0.00] \\
+10 T & white & 400 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/1 (82) & 0.00/1.22 & -1.22 [-4.30, 0.00] \\
+10 T & white & 500 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 2/3 (82) & 2.44/3.66 & -1.22 [-6.94, 3.85] \\
+10 T & AR1 & 200 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 7/2 (82) & 8.54/2.44 & 6.10 [1.28, 11.70] \\
+10 T & AR1 & 300 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/2 (82) & 10.98/2.44 & 8.54 [3.12, 15.19] \\
+10 T & AR1 & 400 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/2 (82) & 10.98/2.44 & 8.54 [3.12, 15.19] \\
+10 T & AR1 & 500 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 13/7 (82) & 15.85/8.54 & 7.32 [-2.30, 16.46] \\
+10 T & mixed & 200 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 7/3 (246) & 2.85/1.22 & 1.63 [-0.35, 3.60] \\
+10 T & mixed & 300 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/5 (246) & 3.66/2.03 & 1.63 [-0.84, 4.11] \\
+10 T & mixed & 400 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/5 (246) & 3.66/2.03 & 1.63 [-0.84, 4.11] \\
+10 T & mixed & 500 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 19/23 (246) & 7.72/9.35 & -1.63 [-6.10, 2.63] \\
+5 T & clean & 200 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/0 (82) & 0.00/0.00 & 0.00 [0.00, 0.00] \\
+5 T & clean & 300 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/2 (82) & 0.00/2.44 & -2.44 [-6.38, 0.00] \\
+5 T & clean & 400 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/2 (82) & 0.00/2.44 & -2.44 [-6.38, 0.00] \\
+5 T & clean & 500 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 4/13 (82) & 4.88/15.85 & -10.98 [-18.95, -3.66] \\
+5 T & white & 200 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/1 (82) & 0.00/1.22 & -1.22 [-4.30, 0.00] \\
+5 T & white & 300 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/1 (82) & 0.00/1.22 & -1.22 [-4.30, 0.00] \\
+5 T & white & 400 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/1 (82) & 0.00/1.22 & -1.22 [-4.30, 0.00] \\
+5 T & white & 500 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 2/3 (82) & 2.44/3.66 & -1.22 [-6.94, 3.85] \\
+5 T & AR1 & 200 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 7/2 (82) & 8.54/2.44 & 6.10 [1.28, 11.70] \\
+5 T & AR1 & 300 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/2 (82) & 10.98/2.44 & 8.54 [3.12, 15.19] \\
+5 T & AR1 & 400 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/2 (82) & 10.98/2.44 & 8.54 [3.12, 15.19] \\
+5 T & AR1 & 500 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 13/7 (82) & 15.85/8.54 & 7.32 [-2.30, 16.46] \\
+5 T & mixed & 200 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 7/3 (246) & 2.85/1.22 & 1.63 [-0.35, 3.60] \\
+5 T & mixed & 300 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/5 (246) & 3.66/2.03 & 1.63 [-0.84, 4.11] \\
+5 T & mixed & 400 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/5 (246) & 3.66/2.03 & 1.63 [-0.84, 4.11] \\
+5 T & mixed & 500 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 19/23 (246) & 7.72/9.35 & -1.63 [-6.10, 2.63] \\
+5 BE & clean & 200 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/0 (82) & 0.00/0.00 & 0.00 [0.00, 0.00] \\
+5 BE & clean & 300 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/2 (82) & 0.00/2.44 & -2.44 [-6.38, 0.00] \\
+5 BE & clean & 400 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/2 (82) & 0.00/2.44 & -2.44 [-6.38, 0.00] \\
+5 BE & clean & 500 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 4/13 (82) & 4.88/15.85 & -10.98 [-18.95, -3.66] \\
+5 BE & white & 200 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/1 (82) & 0.00/1.22 & -1.22 [-4.30, 0.00] \\
+5 BE & white & 300 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/1 (82) & 0.00/1.22 & -1.22 [-4.30, 0.00] \\
+5 BE & white & 400 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/1 (82) & 0.00/1.22 & -1.22 [-4.30, 0.00] \\
+5 BE & white & 500 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 2/3 (82) & 2.44/3.66 & -1.22 [-6.94, 3.85] \\
+5 BE & AR1 & 200 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 7/2 (82) & 8.54/2.44 & 6.10 [1.28, 11.70] \\
+5 BE & AR1 & 300 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/2 (82) & 10.98/2.44 & 8.54 [3.12, 15.19] \\
+5 BE & AR1 & 400 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/2 (82) & 10.98/2.44 & 8.54 [3.12, 15.19] \\
+5 BE & AR1 & 500 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 13/7 (82) & 15.85/8.54 & 7.32 [-2.30, 16.46] \\
+5 BE & mixed & 200 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 7/3 (246) & 2.85/1.22 & 1.63 [-0.35, 3.60] \\
+5 BE & mixed & 300 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/5 (246) & 3.66/2.03 & 1.63 [-0.84, 4.11] \\
+5 BE & mixed & 400 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/5 (246) & 3.66/2.03 & 1.63 [-0.84, 4.11] \\
+5 BE & mixed & 500 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 19/23 (246) & 7.72/9.35 & -1.63 [-6.10, 2.63] \\
+2.5 T & clean & 200 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/0 (82) & 0.00/0.00 & 0.00 [0.00, 0.00] \\
+2.5 T & clean & 300 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/2 (82) & 0.00/2.44 & -2.44 [-6.38, 0.00] \\
+2.5 T & clean & 400 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/2 (82) & 0.00/2.44 & -2.44 [-6.38, 0.00] \\
+2.5 T & clean & 500 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 4/13 (82) & 4.88/15.85 & -10.98 [-18.95, -3.66] \\
+2.5 T & white & 200 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/1 (82) & 0.00/1.22 & -1.22 [-4.30, 0.00] \\
+2.5 T & white & 300 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/1 (82) & 0.00/1.22 & -1.22 [-4.30, 0.00] \\
+2.5 T & white & 400 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 0/1 (82) & 0.00/1.22 & -1.22 [-4.30, 0.00] \\
+2.5 T & white & 500 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 2/3 (82) & 2.44/3.66 & -1.22 [-6.94, 3.85] \\
+2.5 T & AR1 & 200 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 7/2 (82) & 8.54/2.44 & 6.10 [1.28, 11.70] \\
+2.5 T & AR1 & 300 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/2 (82) & 10.98/2.44 & 8.54 [3.12, 15.19] \\
+2.5 T & AR1 & 400 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/2 (82) & 10.98/2.44 & 8.54 [3.12, 15.19] \\
+2.5 T & AR1 & 500 & 84/84 (84) & 100.00/100.00 & 0.00 [0.00, 0.00] & 13/7 (82) & 15.85/8.54 & 7.32 [-2.30, 16.46] \\
+2.5 T & mixed & 200 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 7/3 (246) & 2.85/1.22 & 1.63 [-0.35, 3.60] \\
+2.5 T & mixed & 300 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/5 (246) & 3.66/2.03 & 1.63 [-0.84, 4.11] \\
+2.5 T & mixed & 400 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 9/5 (246) & 3.66/2.03 & 1.63 [-0.84, 4.11] \\
+2.5 T & mixed & 500 & 252/252 (252) & 100.00/100.00 & 0.00 [0.00, 0.00] & 19/23 (246) & 7.72/9.35 & -1.63 [-6.10, 2.63] \\
+\bottomrule\end{longtable}\endgroup
+\begin{table}[htbp]\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{IEEE 39. Changed tiers count physical designs across the test frame. Boundary counts are timely B variants. Medians use all effective B hits for the indicated policy and grid (ms). W is full window and E is endpoint.}\label{tab:r2boundary}
+\begin{tabular}{@{}llllllll@{}}
+\toprule Grid & Changed tier & W at 200 & E at 200 & W 200--220 & E 200--220 & W median & E median \\\midrule
+10 T & 0 & 0 & 24 & 0 & 24 & 380.00 & 200.00 \\
+5 T & 0 & 0 & 15 & 0 & 15 & 360.00 & 200.00 \\
+5 BE & 3 & 0 & 18 & 0 & 18 & 360.00 & 200.00 \\
+2.5 T & 0 & 0 & 9 & 0 & 9 & 360.00 & 200.00 \\
+\bottomrule\end{tabular}\end{table}
+Resampling all 320 IEEE 39 designs with common weights across solvers gave the following B-minus-C hit contrasts and intervals (pp): 10 T 85.13 [76.26, 92.75], 5 T 92.84 [85.25, 98.74], 5 BE 89.74 [81.54, 96.20], 2.5 T 95.22 [88.89, 99.75] (main Tables 6 and 7 use the same resamples for their B-stratum hit intervals, while the intervals here also reflect variation in the C-stratum gain). The machine-readable timing-components table cross-applies each B design's original and rechecked crossing times and first alarms. These conditional contrasts depend on the selected physical parameter support. A change in its value may reflect crossing-time changes, shifted first alarms, or a change of cohort membership. The companion transition ledger separates these mechanisms by ID.
+Across the full IEEE 39 frame, the numbers of changed crossing strata were 0, 3, 0 for 5-ms trapezoidal, 5-ms backward Euler and 2.5-ms trapezoidal integration, respectively. 
+Of the 41 originally unknown Kundur designs, 41, 41, 41 remained unknown, respectively. No two solver runs count as independent physical events. A prefix-based bound conditions on available readings, fixed noise and that solver; it is separate from the arbitrary outcome bound and from sampling uncertainty. The other 279 Kundur designs were carried forward for the population sensitivity and were not reintegrated here.
+\paragraph{Feature support and scoring.}
+At each decision we compared B inputs against all three versions of every complete training event. For each feature we report the empirical range and the fraction outside it. Nearest-neighbour distances use the training-coordinate mean and standard deviation, a 3-mHz floor on the scale, and division by the square root of the feature dimension. Distances describe geometric separation. The clean first-decision median distances were 2.48 for the window and 1.78 for the endpoint in their respective feature spaces. Across the three noise laws the full window produced 7, 65 and 57 distinct first-decision scores, compared with one in each condition for the endpoint. All 65 B test designs lacked complete suffix targets at the original step. The timing contrast therefore cannot be used to infer B-stratum nadir accuracy.
+
+\paragraph{Reproduction.}
+The r2 archive contains the post hoc protocol and hashes, original and rechecked per-design trajectories and numerical logs, all policy first alarms, signed margins for each endpoint and window score, exact boundary frequencies, stratum changes, method-specific working points, paired changes, and prefix-based missing-data bounds. The repository entry point separates saved-trajectory scoring from numerical reintegration. No r2 result was used to refit a tree, threshold or quality reference.
+
+
+\section{Numerical clock, score transitions and support shift}
+The post hoc audit first regenerated the main timing table and five supplementary tables from the archived trajectories, repeated the frozen score calculations and checked the 1,083 reintegration logs against the physical design parameters. A network and design ID together identify a physical event. Trapezoidal runs at 1.25 ms add a single prespecified refinement on all 320 IEEE 39 designs. The separate readout correction steers the next solver step to land on the next 20-ms tick. All runs retain partial trajectories, use the same noise draws by design and nominal tick, and require a complete trajectory for a safe label.
+On all 320 original-clock 1.25-ms integrations, keeping the native trajectory and COI labels fixed while interpolating only the three meter signals changed the full-window false-alarm count from 113 to 121 and the endpoint count from 62 to 63 (222 safe variants). This isolates an observation-time contribution on identical numerical solutions. The difference between two separately integrated solutions can additionally reflect numerical state changes. The transition files contain all six unordered pairs among the four historical settings. Each row gives the observable waveform, changed feature indices, signatures of the leaves visited by the ensemble, nearest split on the traversed paths, raw score, bin-specific offset and signed alarm margin. A negative margin is an alarm. A counterfactual exchange of scores or offsets describes the threshold inequality at the first discordant decision. Distances to tree splits are in feature units, and closeness to a split alone does not establish that it caused a decision change.
+In the four settings the full window was always timely on 189/195 B variants and timely at least once on 194/195. Corresponding endpoint counts were 9 and 24; it eventually alarmed on all 195 in every setting. Among the 222 variants safe in all four, the full window gave 21 always false alarms and 106 at least once, compared with 20 and 82 for the endpoint. These counts track the same physical designs repeatedly. The deployed policies and thresholds are unchanged.
+Across the aligned 2.5- and 1.25-ms runs, none of the 834 paired entries changed first-alarm time, trigger status or effective lead for the two trees on B and safe variants. Seven full-window records changed leaf signature, score and margin on at least one decision. Two of these differed at their common first-alarm time. All single-window trigger bits agreed. The per-window and per-policy files list every ID. The archive distinguishes trajectory replay, direct integration with nominal previous-step readout, and integration aligned to the observation grid. The historical numerical series keeps models and thresholds fixed. The independently fitted support-control experiment below uses fresh trajectories in every split. At 200 ms none of the 195 B inputs lay inside all fitted coordinate ranges for either representation. The full-window ensemble nevertheless assigned 126 distinct first-window scores, whereas the endpoint assigned one (49.75612344 Hz). Thus the same historical design supplies zero B variants in the joint empirical envelope; a within-support timing contrast and the shape-only fraction of the observed increment are both unidentified.
+\section{Independent support-control sample}
+A uniform six-by-six pilot grid crossed distributed step fractions from 0.055 to 0.18 with inertia multipliers from 0.18 to 1.0. Each cell received a separate random load. The independent formal draws selected safe, complete B, incomplete B and other complete risk pilot cells with probabilities 0.35, 0.30, 0.15 and 0.20, respectively. Load scaling and step jitter each used a uniform factor from 0.97 to 1.03. Future crossing labels are unavailable to every online policy. Pilot categories describe a sampling distribution, and the realized strata below can change with jitter.
+\begin{center}\small\begin{tabular}{lrrrrrrrr}\toprule
+Split & Designs & A & B & C & Safe & Unknown & Complete & Complete B\\\midrule
+pilot & 36 & 5 & 6 & 8 & 17 & 0 & 20 & 1 \\
+train & 180 & 0 & 80 & 30 & 70 & 0 & 159 & 59 \\
+dev & 112 & 0 & 46 & 13 & 53 & 0 & 100 & 34 \\
+cal & 180 & 0 & 93 & 24 & 63 & 0 & 155 & 68 \\
+test & 240 & 0 & 111 & 40 & 89 & 0 & 210 & 81 \\
+\bottomrule\end{tabular}\end{center}
+The first-window support envelope uses inclusive coordinatewise minima and maxima from complete training variants. The frozen rule takes the intersection for both representations without scores, labels or alarm outcomes. The evaluation code computes predictions for all variants, constructs this common mask, then tabulates policy outcomes by mask. The envelope is a marginal-range diagnostic. It does not certify joint density. All contrasts use 2,000 common physical-design resamples (seed 915716), with all three noise variants retained and the subgroup denominator recomputed. The independent test ledger retains first alarms and leads for each variant. The archive also gives absolute counts by noise law and support flag, safe-event costs, ties, leaf counts, and worst-case identification bounds for unknown events.
+
+\paragraph{Ridge and the test freeze.} The pilot protocol names a single penalty, $\alpha=1$, for the secondary ridge comparisons. There was no development-set penalty search. For each decision we trained a separate pipeline on the three equally represented measurements of each of 159 complete training designs, using their common COI minimum strictly after that decision. Inputs are measured Hz minus 50: the last sample alone or all samples in chronological order, from time zero through the decision (11, 16, 21 or 26 columns). The training mean and population standard deviation of each column define its standardisation; a constant column has scale one. Ridge fits an unpenalised intercept. Both representations use the same quality references procedure and global safe-event calibration rule. Unlike a tree leaf, a ridge prediction can change continuously outside a fitted coordinate range.
+
+The pilot seed was 912711. Training, development, calibration and test design seeds were 912712--912715; their respective measurement seeds were 915712--915715. The per-design measurement seed is 10,000 times the split measurement seed plus 1,000 plus the design ID. The tree seed was 42; the dense ridge fit used no random draw. The recorded environment used Python 3.14.6, NumPy 2.4.6, scikit-learn 1.9.0 and ANDES 2.0.0. The pilot lock hashes the declared models and sampling procedure through the protocol. The exclusive pre-test lock hashes the training/evaluation code, fitted tree and ridge objects in a common model file, training envelope, binary offsets and thresholds, and pre-test trajectories. The training entry checks that test trajectories are absent before fitting, and test generation verifies the lock before drawing designs. These local records support a prespecified secondary role for ridge. No third-party timestamp is available.
+
+\section{Independent test by measurement law and first-window training range}
+The B stratum contains crossings from 400 to strictly below 700 ms. Safety requires a complete non-crossing trajectory. Each safe design contributes one measurement under each law and three to the mixture. One set of 2,000 draws of the 240 physical designs (seed 915716) supplies both families, both policies and every subgroup. All variants travel with their design and the subgroup denominator is recalculated in each draw. Counts are full-window/endpoint with the common variant denominator in parentheses. Each observed B difference and its empirical interval is zero because both policies reached the ceiling in every nonempty B cell. Neither this interval nor an empty cell establishes population equivalence. Outside the envelope there are no clean safe variants: the rates and the bootstrap interval are undefined (zero valid draws); for a hypothetical nonempty population the unrestricted difference spans $[-100,100]$ percentage points. The two noisy outside groups each contain nine safe variants. All other reported paired intervals use all 2,000 draws. Table rows derive from the same independent first-alarm ledger as main Table~8. Only its all-design, mixed-law tree comparison was primary.
+
+\begin{table}[htbp]\centering\small
+\caption{Tree predictors through 500 ms on 240 independent IEEE 39 designs (111 B, 89 safe, 40 C). Safe rates are absolute percentages; contrasts are full minus endpoint in percentage points [paired 95\% interval]. The final column refers to safe designs.}\label{tab:r4tree}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llrrrrr}\toprule
+Range & Law & Timely B & B difference & Safe alarms & Safe rates (\%) & Safe difference\\\midrule
+all & Mix & 333/333 (333) & 0 [0, 0] & 61/33 (267) & 22.85/12.36 & +10.49 [2.53, 18.67] \\
+all & clean & 111/111 (111) & 0 [0, 0] & 23/13 (89) & 25.84/14.61 & +11.24 [3.37, 19.05] \\
+all & white & 111/111 (111) & 0 [0, 0] & 18/10 (89) & 20.22/11.24 & +8.99 [0.00, 18.30] \\
+all & AR(1) & 111/111 (111) & 0 [0, 0] & 20/10 (89) & 22.47/11.24 & +11.24 [0.94, 21.22] \\
+inside & Mix & 263/263 (263) & 0 [0, 0] & 60/32 (249) & 24.10/12.85 & +11.24 [2.98, 19.58] \\
+inside & clean & 97/97 (97) & 0 [0, 0] & 23/13 (89) & 25.84/14.61 & +11.24 [3.37, 19.05] \\
+inside & white & 79/79 (79) & 0 [0, 0] & 17/10 (80) & 21.25/12.50 & +8.75 [-1.39, 19.39] \\
+inside & AR(1) & 87/87 (87) & 0 [0, 0] & 20/9 (80) & 25.00/11.25 & +13.75 [2.53, 24.59] \\
+outside & Mix & 70/70 (70) & 0 [0, 0] & 1/1 (18) & 5.56/5.56 & +0.00 [-17.39, 15.39] \\
+outside & clean & 14/14 (14) & 0 [0, 0] & --- (0) & --- & undefined \\
+outside & white & 32/32 (32) & 0 [0, 0] & 1/0 (9) & 11.11/0.00 & +11.11 [0.00, 33.33] \\
+outside & AR(1) & 24/24 (24) & 0 [0, 0] & 0/1 (9) & 0.00/11.11 & -11.11 [-37.50, 0.00] \\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[htbp]\centering\small
+\caption{Ridge predictors through 500 ms on 240 independent IEEE 39 designs (111 B, 89 safe, 40 C). Safe rates are absolute percentages; contrasts are full minus endpoint in percentage points [paired 95\% interval]. The final column refers to safe designs.}\label{tab:r4ridge}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llrrrrr}\toprule
+Range & Law & Timely B & B difference & Safe alarms & Safe rates (\%) & Safe difference\\\midrule
+all & Mix & 333/333 (333) & 0 [0, 0] & 55/27 (267) & 20.60/10.11 & +10.49 [3.90, 17.27] \\
+all & clean & 111/111 (111) & 0 [0, 0] & 24/17 (89) & 26.97/19.10 & +7.87 [-1.08, 16.87] \\
+all & white & 111/111 (111) & 0 [0, 0] & 16/5 (89) & 17.98/5.62 & +12.36 [4.60, 20.73] \\
+all & AR(1) & 111/111 (111) & 0 [0, 0] & 15/5 (89) & 16.85/5.62 & +11.24 [3.03, 19.77] \\
+inside & Mix & 263/263 (263) & 0 [0, 0] & 54/26 (249) & 21.69/10.44 & +11.24 [4.54, 18.34] \\
+inside & clean & 97/97 (97) & 0 [0, 0] & 24/17 (89) & 26.97/19.10 & +7.87 [-1.08, 16.87] \\
+inside & white & 79/79 (79) & 0 [0, 0] & 15/5 (80) & 18.75/6.25 & +12.50 [3.90, 21.84] \\
+inside & AR(1) & 87/87 (87) & 0 [0, 0] & 15/4 (80) & 18.75/5.00 & +13.75 [5.26, 22.68] \\
+outside & Mix & 70/70 (70) & 0 [0, 0] & 1/1 (18) & 5.56/5.56 & +0.00 [-17.39, 15.39] \\
+outside & clean & 14/14 (14) & 0 [0, 0] & --- (0) & --- & undefined \\
+outside & white & 32/32 (32) & 0 [0, 0] & 1/0 (9) & 11.11/0.00 & +11.11 [0.00, 33.33] \\
+outside & AR(1) & 24/24 (24) & 0 [0, 0] & 0/1 (9) & 0.00/11.11 & -11.11 [-37.50, 0.00] \\
+\bottomrule\end{tabular}\end{table}
+
+\clearpage
+\section{Replaying and rebuilding the independent network study}
+Run the following commands in the r4 delivery directory in PowerShell. The analysis uses the project Python environment and the simulator uses the archived ANDES environment. Each mode writes a separate execution log in r4.
+\begin{description}
+\item[Replay.] \verb|.\run.ps1 -Mode Replay| checks the r3 delivery, pilot and test hashes. It reads the original test trajectories, recomputes window scores with the archived models and binary thresholds, and checks every valid score, first alarm and training-range flag. It also rebuilds Tables 7 and 8 from per-design records. Outputs include \texttt{replay-policy.npz}, the count audit, measurement-specific CSV and per-window comparisons. No solver or estimator fit runs in this mode.
+\item[Reintegrate.] \verb|.\run.ps1 -Mode Reintegrate| recreates the 240 test designs from the archived seed and sampling frame, checks the physical parameters against the saved design list, integrates into a fresh \texttt{reintegrated} directory and rescores using the original fitted policies. Outputs include per-design solver logs, trajectories and a paired comparison with archived first alarms. This command keeps the original calibration.
+\item[Regenerate.] \verb|.\run.ps1 -Mode Regenerate| starts an empty r4 \texttt{support-control} directory from verified simulator, analysis and protocol files. It runs the pilot, freezes the design frame, integrates training, development and calibration splits, fits both model families, estimates offsets and thresholds, writes a new test lock, then draws and integrates the test split. Evaluation and verification rebuild the split ledger, valid-window scores, first alarms, absolute and paired results, training ranges and missing-outcome bounds. Both integration modes require an unused output directory so cached successes cannot stand in for fresh runs.
+\item[Build.] \verb|.\run.ps1 -Mode Build| repeats the archive audit, traces one existing aggregate RK4 design, checks the transfer clocks, generates both manuscripts and compiles and renders every page. The local reproduction guide lists source and result paths. Only Replay and Build were executed for this revision.
+\end{description}
+\end{document}

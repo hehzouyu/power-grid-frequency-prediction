@@ -1,5 +1,9 @@
 # 端点约束下的短窗形状信息及其对最低频率预测与低频预警的作用
 
+**2026 年 11 月 26 日英文稿**研究短窗形状、预警提前量和跨系统迁移。[正文 PDF](manuscript/2026-11-26-cross-system/paper.pdf) · [补充材料 PDF](manuscript/2026-11-26-cross-system/supplement.pdf) · [TeX 源文件、结果表与校验清单](manuscript/2026-11-26-cross-system/)
+
+## 中文稿与历史归档
+
 2026 年 11 月 23 日科学修订版。正文 24 页，补充材料 31 页。可编辑 TeX 和图件见 [manuscript/](manuscript/)。[修订对照与证据边界](manuscript/修订对照与证据边界.md) 列出本版修改、确认结果和回顾性检验。
 
 ## 源码与样本目录
@@ -22,7 +26,7 @@ MAT、NPZ 和逐事件记录来自数值仿真。早期 MATLAB 样本与论文�
 
 | 文件 | 内容 |
 | --- | --- |
-| [主稿](paper.pdf) · [补充材料](supplement.pdf) | 当前科学修订版正文与附表 |
+| [主稿](paper.pdf) · [补充材料](supplement.pdf) | 11 月 23 日中文修订版正文与附表 |
 | [LaTeX 源码](latex-source.zip) | 主稿、补充材料和全部图件。使用 XeLaTeX，先编译 frequency-project-supplement.tex 再编译 frequency-project.tex |
 | [代码及复算表](code-and-recomputed-tables.zip) | 前版归档的 MATLAB 和 Python 研究代码，证据审计脚本、复算 CSV、数字追溯索引和文献核验表 |
 | [固定截止证据](evidence-nadir.zip) | 近端点配对、ECGR、质量门控及其他固定截止预测记录 |

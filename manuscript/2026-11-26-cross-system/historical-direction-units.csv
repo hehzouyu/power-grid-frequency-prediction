@@ -1,0 +1,17 @@
+Condition,Policy,direction_records,pairs,repeats
+clean,ecgr,288,288,1
+clean,endpoint,288,288,1
+clean,no_cubic,288,288,1
+clean,no_shrink,288,288,1
+clean,no_white,288,288,1
+clean,physical,288,288,1
+clean,quadratic,288,288,1
+clean,raw,288,288,1
+white30,ecgr,2880,288,10
+white30,endpoint,2880,288,10
+white30,no_cubic,2880,288,10
+white30,no_shrink,2880,288,10
+white30,no_white,2880,288,10
+white30,physical,2880,288,10
+white30,quadratic,2880,288,10
+white30,raw,2880,288,10
